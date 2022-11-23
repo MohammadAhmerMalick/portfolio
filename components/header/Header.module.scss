@@ -2,12 +2,12 @@
 
 .header {
   display: grid;
-  grid-template-columns: 280px auto;
+  grid-template-columns: calc($sidePanelWidth - 17px) auto;
   align-items: center;
 
-  height: 80px;
-
   padding: 15px 15px;
+
+  background-color: white;
 
   box-shadow: 0px 1px 15px 1px rgba($color: black, $alpha: 0.1);
 
@@ -37,9 +37,11 @@
           height: 100%;
           width: 200px;
 
-          background: linear-gradient(90deg, white, #f2f4f8);
-
-          z-index: -1;
+          background: linear-gradient(
+            90deg,
+            rgba($color: $lightGrayColor, $alpha: 0.1),
+            $lightGrayColor
+          );
         }
       }
     }

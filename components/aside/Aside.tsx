@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import classNames from 'classnames'
+import { useRouter } from 'next/router'
 
 import { uuid } from '@/utils/utilFunctions'
 
@@ -16,9 +18,9 @@ import S from './Aside.module.scss'
 
 const routes = [
   { link: '/', icon: <HomeIcon />, text: 'Home' },
-  { link: '/', icon: <HomeIcon />, text: 'About' },
-  { link: '/', icon: <PortfolioIcon />, text: 'Portfolio' },
-  { link: '/', icon: <ContactIcon />, text: 'Contact' },
+  { link: '/404', icon: <HomeIcon />, text: 'About' },
+  { link: '/404', icon: <PortfolioIcon />, text: 'Portfolio' },
+  { link: '/contact', icon: <ContactIcon />, text: 'Contact' },
 ]
 
 const socialRoutes = [
@@ -36,39 +38,45 @@ const contactRoutes = [
 ]
 
 const Aside = () => {
+  const router = useRouter()
+
   return (
     <aside className={S.aside}>
       <nav className={S.nav}>
         {routes.map((route) => (
           <Link key={uuid()} href={route.link} className={S.link}>
             {route.icon}
-            <span className={S.text}>{route.text}</span>
+            <span
+              className={classNames(S.text, {
+                [S.active]: router.asPath === route.link,
+              })}
+            >
+              {route.text}
+            </span>
           </Link>
         ))}
       </nav>
-      <div>
-        <div className={S.contactLinksSection}>
-          <p className={S.title}>Contact Info</p>
+      <div className={S.contactLinksSection}>
+        <p className={S.title}>Contact Info</p>
 
-          <div className={S.links}>
-            {contactRoutes.map((route) => (
-              <Link key={uuid()} href={route.link} className={S.link}>
-                {route.icon} {route.text}
-              </Link>
-            ))}
-          </div>
+        <div className={S.links}>
+          {contactRoutes.map((route) => (
+            <Link key={uuid()} href={route.link} className={S.link}>
+              {route.icon} {route.text}
+            </Link>
+          ))}
         </div>
+      </div>
 
-        <div className={S.socialLinksSection}>
-          <p className={S.title}>Social Links</p>
+      <div className={S.socialLinksSection}>
+        <p className={S.title}>Social Links</p>
 
-          <div className={S.links}>
-            {socialRoutes.map((route) => (
-              <Link key={uuid()} href={route.link}>
-                <Button className={S.link}>{route.icon}</Button>
-              </Link>
-            ))}
-          </div>
+        <div className={S.links}>
+          {socialRoutes.map((route) => (
+            <Link key={uuid()} href={route.link}>
+              <Button className={S.link}>{route.icon}</Button>
+            </Link>
+          ))}
         </div>
       </div>
     </aside>

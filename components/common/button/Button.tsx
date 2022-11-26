@@ -11,6 +11,7 @@ enum buttonType {
 
 interface Button {
   form?: string
+  title?: string
   shadow?: boolean
   className?: string
   ariaLabel?: string
@@ -21,6 +22,7 @@ interface Button {
 const Button: FC<Button> = ({
   type,
   form,
+  title,
   shadow,
   children,
   ariaLabel,
@@ -30,6 +32,7 @@ const Button: FC<Button> = ({
     <button
       type={type}
       form={form}
+      title={title}
       aria-label={ariaLabel}
       className={classNames(S.button, { [S.shadow]: shadow }, className)}
     >
@@ -42,6 +45,7 @@ Button.defaultProps = {
   shadow: false,
   className: '',
   form: undefined,
+  title: undefined,
   ariaLabel: undefined,
   type: buttonType.button,
 }

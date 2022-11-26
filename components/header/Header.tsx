@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import Button from '@/components/common/button/Button'
@@ -12,9 +13,11 @@ const Header = () => {
       <div className={S.logo}>Mohammad Ahmer Malick</div>
       <div className={S.left}>
         <div className={S.title}>
-          <p className={S.text}>{router.asPath.slice(1) || 'HOME'}</p>
+          <p className={S.text}>{router.pathname.slice(1) || 'home'}</p>
         </div>
-        <Button shadow>Contact</Button>
+        <Link href="/contact">
+          <Button shadow>Contact</Button>
+        </Link>
       </div>
     </header>
   )

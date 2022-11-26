@@ -18,15 +18,27 @@ import S from './Aside.module.scss'
 
 const routes = [
   { link: '/', icon: <HomeIcon />, text: 'Home' },
-  { link: '/404', icon: <HomeIcon />, text: 'About' },
-  { link: '/404', icon: <PortfolioIcon />, text: 'Portfolio' },
+  { link: '/about', icon: <HomeIcon />, text: 'About' },
+  { link: '/portfolio', icon: <PortfolioIcon />, text: 'Portfolio' },
   { link: '/contact', icon: <ContactIcon />, text: 'Contact' },
 ]
 
 const socialRoutes = [
-  { link: '/', ariaLabel: 'Visit my github', icon: <GithubIcon /> },
-  { link: '/', ariaLabel: 'Visit my github gist', icon: <GithubIcon /> },
-  { link: '/', ariaLabel: 'Visit my linkedin', icon: <LinkedInIcon /> },
+  {
+    ariaLabel: 'Github',
+    icon: <GithubIcon />,
+    link: 'https://github.com/MohammadAhmerMalick/',
+  },
+  {
+    icon: <GithubIcon />,
+    ariaLabel: 'Github Gist',
+    link: 'https://gist.github.com/MohammadAhmerMalick',
+  },
+  {
+    ariaLabel: 'linkedin',
+    icon: <LinkedInIcon />,
+    link: 'https://www.linkedin.com/in/mohammad-ahmer-malick-1a6586175/',
+  },
 ]
 
 const contactRoutes = [
@@ -48,7 +60,7 @@ const Aside = () => {
             {route.icon}
             <span
               className={classNames(S.text, {
-                [S.active]: router.asPath === route.link,
+                [S.active]: router.pathname === route.link,
               })}
             >
               {route.text}
@@ -73,8 +85,17 @@ const Aside = () => {
 
         <div className={S.links}>
           {socialRoutes.map((route) => (
-            <Link aria-label={route.ariaLabel} key={uuid()} href={route.link}>
-              <Button ariaLabel={route.ariaLabel} className={S.link}>
+            <Link
+              key={uuid()}
+              target="_blank"
+              href={route.link}
+              aria-label={route.ariaLabel}
+            >
+              <Button
+                className={S.link}
+                title={route.ariaLabel}
+                ariaLabel={route.ariaLabel}
+              >
                 {route.icon}
               </Button>
             </Link>

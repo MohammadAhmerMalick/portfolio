@@ -24,9 +24,9 @@ const routes = [
 ]
 
 const socialRoutes = [
-  { link: '/', icon: <GithubIcon /> },
-  { link: '/', icon: <GithubIcon /> },
-  { link: '/', icon: <LinkedInIcon /> },
+  { link: '/', ariaLabel: 'Visit my github', icon: <GithubIcon /> },
+  { link: '/', ariaLabel: 'Visit my github gist', icon: <GithubIcon /> },
+  { link: '/', ariaLabel: 'Visit my linkedin', icon: <LinkedInIcon /> },
 ]
 
 const contactRoutes = [
@@ -73,8 +73,10 @@ const Aside = () => {
 
         <div className={S.links}>
           {socialRoutes.map((route) => (
-            <Link key={uuid()} href={route.link}>
-              <Button className={S.link}>{route.icon}</Button>
+            <Link aria-label={route.ariaLabel} key={uuid()} href={route.link}>
+              <Button ariaLabel={route.ariaLabel} className={S.link}>
+                {route.icon}
+              </Button>
             </Link>
           ))}
         </div>

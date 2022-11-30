@@ -1,0 +1,55 @@
+@import '/styles/variables.scss';
+
+.sectionHeading {
+  display: grid;
+  gap: 10px;
+
+  .heading {
+    text-transform: uppercase;
+    .primary {
+      color: $textColor;
+    }
+
+    .secondary {
+      color: $primaryColor;
+    }
+  }
+
+  .paragraph {
+    position: relative;
+
+    max-width: 500px;
+
+    padding-bottom: 30px;
+
+    &:before {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      height: 2px;
+      width: 100%;
+
+      background-color: $lightGrayColor;
+    }
+
+    &:after {
+      content: '';
+
+      position: absolute;
+
+      bottom: calc(0% - 3px);
+      right: 0;
+
+      $size: 9px;
+      height: $size;
+      width: $size;
+
+      border-radius: 100%;
+
+      background-color: $primaryColor;
+    }
+  }
+}

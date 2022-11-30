@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 import { uuid } from '@/utils/utilFunctions'
 
@@ -52,6 +53,10 @@ const contactRoutes = [
 const Aside = () => {
   const router = useRouter()
 
+  const [asPath, setAsPath] = useState('')
+
+  useEffect(() => setAsPath(router.asPath), [router])
+
   return (
     <aside className={S.aside}>
       <nav className={S.nav}>
@@ -60,7 +65,7 @@ const Aside = () => {
             {route.icon}
             <span
               className={classNames(S.text, {
-                [S.active]: router.pathname === route.link,
+                [S.active]: asPath === route.link,
               })}
             >
               {route.text}

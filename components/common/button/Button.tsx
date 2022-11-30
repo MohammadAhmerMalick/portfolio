@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react'
 
 import S from './Button.module.scss'
 
-enum buttonType {
+export enum buttonType {
   button = 'button',
   submit = 'submit',
   reset = 'reset',

@@ -1,0 +1,45 @@
+@import '/styles/variables.scss';
+
+.contact {
+  .form {
+    display: grid;
+    gap: 10px;
+
+    max-width: 700px;
+
+    margin: 30px 0;
+
+    .field {
+      display: grid;
+      grid-template:
+        'a b' 50px
+        / 50px auto;
+
+      .icon {
+        display: grid;
+        place-items: center;
+
+        border: 1px solid $borderColor;
+
+        background: $primaryColor;
+
+        font-size: 18px;
+      }
+    }
+
+    .input,
+    .textarea {
+      padding: 15px;
+
+      border: 1px solid $borderColor;
+      outline: 0;
+
+      background-color: $lightGrayColor;
+    }
+
+    .textarea {
+      resize: vertical;
+      border-bottom: 2px solid $primaryColor;
+    }
+  }
+}

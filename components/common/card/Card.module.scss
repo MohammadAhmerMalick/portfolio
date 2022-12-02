@@ -1,0 +1,9 @@
+@import '/styles/variables.scss';
+
+.card {
+  padding: 20px;
+
+  background-color: $lightGrayColor;
+
+  border: 1px solid $borderColor;
+}

@@ -1,0 +1,218 @@
+@import '/styles/variables.scss';
+
+.experience {
+  display: grid;
+  gap: 30px;
+
+  .block {
+    display: grid;
+    grid-template:
+      'togglerContainer companyTitleContainer companyDetails'
+      /34px 350px auto;
+    gap: 30px;
+
+    overflow: hidden;
+
+    &.collapsed {
+      grid-template-rows: 120px;
+    }
+
+    @media (max-width: $wideRes) {
+      grid-template:
+        'togglerContainer companyTitleContainer' 90px
+        'companyDetails companyDetails' auto
+        / 34px auto;
+      gap: 15px;
+
+      &.collapsed {
+        grid-template-rows: 90px 0;
+        gap: 0 15px;
+      }
+    }
+
+    .togglerContainer {
+      grid-area: togglerContainer;
+
+      position: relative;
+
+      z-index: 0;
+
+      .toggler {
+        display: grid;
+        place-items: center;
+
+        $size: 34px;
+        width: $size;
+        height: $size;
+
+        margin-top: 25px;
+
+        border: 5px solid $primaryColor;
+        border-radius: 100%;
+
+        background-color: white;
+
+        cursor: pointer;
+
+        .icon {
+          display: flex;
+
+          color: $textColor;
+          font-size: 14px;
+        }
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          top: 0;
+
+          height: 100%;
+          width: 1px;
+
+          background-color: $borderColor;
+
+          z-index: -1;
+        }
+      }
+    }
+
+    .companyTitleContainer {
+      grid-area: companyTitleContainer;
+
+      .companyTitle {
+        display: grid;
+        align-items: center;
+        grid-template:
+          'icon company' 25px
+          'icon period' 25px
+          /65px auto;
+
+        cursor: pointer;
+
+        &.expended {
+          border-bottom: 2px solid $primaryColor;
+        }
+
+        .icon {
+          display: grid;
+          place-items: center;
+
+          grid-area: icon;
+
+          height: 50px;
+          margin-right: 15px;
+
+          background-color: $primaryColor;
+
+          font-size: 20px;
+        }
+
+        .company {
+          grid-area: company;
+
+          font-size: 18px;
+        }
+
+        .period {
+          grid-area: period;
+
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+
+      .count {
+        display: inline-block;
+
+        margin-top: 20px;
+
+        color: $lightGrayColor;
+        font-size: 70px;
+        font-weight: 900;
+
+        transform: rotate(-90deg);
+
+        &.collapsed {
+          display: block;
+
+          margin-top: 5px;
+
+          font-size: 20px;
+          text-align: right;
+          color: $borderColor;
+
+          transform: rotate(0);
+        }
+
+        @media (max-width: $wideRes) {
+          display: none;
+
+          &.collapsed {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .companyDetails {
+      position: relative;
+
+      grid-area: companyDetails;
+      display: grid;
+      gap: 8px;
+
+      overflow: hidden;
+
+      .points {
+        list-style: none;
+
+        .point {
+          position: relative;
+
+          padding-left: 20px;
+
+          &::before {
+            content: '';
+
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+
+            margin: auto;
+
+            width: $dotSize;
+            height: $dotSize;
+
+            border-radius: 100%;
+
+            background-color: $primaryColor;
+          }
+        }
+      }
+
+      .button {
+        margin: {
+          top: 8px;
+          right: auto;
+        }
+        padding : {
+          top: 10px;
+          bottom: 10px;
+          left: 25px;
+          right: 25px;
+        }
+      }
+
+      .overlay {
+        background: linear-gradient(transparent, $lightGrayColor);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+}

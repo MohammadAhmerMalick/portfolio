@@ -4,11 +4,10 @@
   display: grid;
   gap: 10px;
 
+  margin-bottom: 30px;
+
   .heading {
     text-transform: uppercase;
-    .primary {
-      color: $textColor;
-    }
 
     .secondary {
       color: $primaryColor;
@@ -40,12 +39,11 @@
 
       position: absolute;
 
-      bottom: calc(0% - 3px);
+      bottom: calc(0% - 2px);
       right: 0;
 
-      $size: 9px;
-      height: $size;
-      width: $size;
+      height: $dotSize;
+      width: $dotSize;
 
       border-radius: 100%;
 

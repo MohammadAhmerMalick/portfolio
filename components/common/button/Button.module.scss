@@ -3,6 +3,11 @@
 .button {
   padding: 15px 38px;
 
+  &.small {
+    padding: 10px 25px;
+    max-width: max-content;
+  }
+
   background-color: $primaryColor;
 
   border: 0;

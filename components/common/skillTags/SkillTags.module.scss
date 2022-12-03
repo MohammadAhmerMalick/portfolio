@@ -1,0 +1,36 @@
+@import '/styles/variables.scss';
+
+.skillTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  .tag {
+    display: grid;
+    align-items: center;
+    grid-template:
+      'a b' 12px
+      / auto auto;
+    gap: 3px;
+
+    padding: 5px 8px;
+
+    border-radius: 5px;
+    border: 1px solid $borderColor;
+
+    background-color: $lightGrayColor;
+
+    font-size: 10px;
+
+    .iconContainer {
+      position: relative;
+
+      height: 100%;
+
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

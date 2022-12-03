@@ -33,7 +33,9 @@ const Epx1Details = () => {
         <li className={S.point}>Interior design</li>
       </ul>
 
-      <Button className={S.button}>Details</Button>
+      <Button small className={S.button}>
+        Details
+      </Button>
     </>
   )
 }

@@ -10,6 +10,7 @@ import HomeIcon from '@/components/common/icons/HomeIcon'
 import EmailIcon from '@/components/common/icons/EmailIcon'
 import GithubIcon from '@/components/common/icons/GithubIcon'
 import ContactIcon from '@/components/common/icons/ContactIcon'
+import TwitterIcon from '@/components/common/icons/TwitterIcon'
 import LinkedInIcon from '@/components/common/icons/LinkedInIcon'
 import WhatsAppIcon from '@/components/common/icons/WhatsAppIcon'
 import LocationIcon from '@/components/common/icons/LocationIcon'
@@ -38,7 +39,12 @@ const socialRoutes = [
   {
     ariaLabel: 'linkedin',
     icon: <LinkedInIcon />,
-    link: 'https://www.linkedin.com/in/mohammad-ahmer-malick-1a6586175/',
+    link: 'https://www.linkedin.com/in/mohammad-ahmer-malick-1a6586175',
+  },
+  {
+    ariaLabel: 'Twitter',
+    icon: <TwitterIcon />,
+    link: 'https://twitter.com/MohammadAhmerMK',
   },
 ]
 

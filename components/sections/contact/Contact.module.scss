@@ -29,12 +29,14 @@
 
     .input,
     .textarea {
+      width: 100%;
+
       padding: 15px;
+
+      background-color: $lightGrayColor;
 
       border: 1px solid $borderColor;
       outline: 0;
-
-      background-color: $lightGrayColor;
     }
 
     .textarea {

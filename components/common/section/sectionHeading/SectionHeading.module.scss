@@ -9,6 +9,18 @@
   .heading {
     text-transform: uppercase;
 
+    @media (max-width: $fullWideRes) {
+      font-size: 28px;
+    }
+
+    @media (max-width: $tabletRes) {
+      font-size: 26px;
+    }
+
+    @media (max-width: $mobileRes) {
+      font-size: 20px;
+    }
+
     .secondary {
       color: $primaryColor;
     }

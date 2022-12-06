@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { FC, ReactNode } from 'react'
+import { FC, MouseEventHandler, ReactNode } from 'react'
 
 import S from './Button.module.scss'
 
@@ -18,6 +18,7 @@ interface Button {
   ariaLabel?: string
   children: ReactNode
   type?: buttonType | undefined
+  onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 const Button: FC<Button> = ({
@@ -26,6 +27,7 @@ const Button: FC<Button> = ({
   small,
   title,
   shadow,
+  onClick,
   children,
   ariaLabel,
   className,
@@ -36,6 +38,7 @@ const Button: FC<Button> = ({
       form={form}
       title={title}
       aria-label={ariaLabel}
+      onClick={onClick}
       className={classNames(
         S.button,
         { [S.small]: small },
@@ -54,6 +57,7 @@ Button.defaultProps = {
   className: '',
   form: undefined,
   title: undefined,
+  onClick: undefined,
   ariaLabel: undefined,
   type: buttonType.button,
 }

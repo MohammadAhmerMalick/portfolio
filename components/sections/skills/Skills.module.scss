@@ -5,6 +5,12 @@
   grid-template-columns: 200px auto;
   gap: 30px;
 
+  margin-top: 30px;
+
+  @media (max-width: $tabletRes) {
+    grid-template-columns: auto;
+  }
+
   .categories {
     display: grid;
     gap: 8px;
@@ -12,7 +18,7 @@
     height: min-content;
 
     * {
-      transition: 0.3s;
+      transition: $transitionDuration;
     }
 
     .category {
@@ -110,10 +116,28 @@
 
     background-color: white;
 
-    .imageContainer {
-      position: relative;
+    .haad {
+      display: grid;
+      grid-template-columns: 440px auto;
+      align-items: center;
+      gap: 30px;
 
-      height: 200px;
+      @media (max-width: $fullWideRes) {
+        grid-template-columns: 400px auto;
+      }
+
+      @media (max-width: $wideRes) {
+        grid-template-columns: auto;
+      }
+
+      .image {
+        max-width: 100%;
+        height: 100%;
+      }
+
+      .sectionHeading {
+        margin-bottom: 0;
+      }
     }
   }
 }

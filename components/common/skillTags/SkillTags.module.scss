@@ -3,15 +3,19 @@
 .skillTags {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 8px;
+
+  height: min-content;
 
   .tag {
+    $height: 12px;
+
     display: grid;
     align-items: center;
     grid-template:
-      'a b' 12px
+      'a b' $height
       / auto auto;
-    gap: 3px;
+    gap: 5px;
 
     padding: 5px 8px;
 
@@ -20,7 +24,9 @@
 
     background-color: $lightGrayColor;
 
-    font-size: 10px;
+    font-size: $height;
+
+    height: min-content;
 
     .iconContainer {
       position: relative;

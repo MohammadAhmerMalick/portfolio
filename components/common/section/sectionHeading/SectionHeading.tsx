@@ -1,26 +1,31 @@
 import { FC } from 'react'
+import classNames from 'classnames'
 
 import S from './SectionHeading.module.scss'
 
-interface SectionHeading1 {
-  primary: string
-  secondary?: string
+interface SectionHeading {
   paragraph?: string
+  className?: string
 }
 
-interface SectionHeading2 {
+interface SectionHeading1 extends SectionHeading {
+  primary: string
+  secondary?: string
+}
+
+interface SectionHeading2 extends SectionHeading {
   primary?: string
   secondary: string
-  paragraph?: string
 }
 
 const SectionHeading: FC<SectionHeading1 | SectionHeading2> = ({
   primary,
   secondary,
   paragraph,
+  className,
 }) => {
   return (
-    <div className={S.sectionHeading}>
+    <div className={classNames(S.sectionHeading, className)}>
       <h1 className={S.heading}>
         <span className={S.primary}>{primary}</span>{' '}
         <span className={S.secondary}>{secondary}</span>
@@ -29,6 +34,5 @@ const SectionHeading: FC<SectionHeading1 | SectionHeading2> = ({
     </div>
   )
 }
-SectionHeading.defaultProps = {}
 
 export default SectionHeading

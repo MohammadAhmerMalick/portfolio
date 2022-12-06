@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 
 import { uuid } from '@/utils/utilFunctions'
 
@@ -56,7 +56,12 @@ const contactRoutes = [
   { link: '/', text: '+92 3494941593', icon: <WhatsAppIcon /> },
 ]
 
-const Aside = () => {
+interface Aside {
+  minimized: boolean
+  setMinimized: Dispatch<SetStateAction<boolean>>
+}
+
+const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
   const router = useRouter()
 
   const [asPath, setAsPath] = useState('')
@@ -64,7 +69,7 @@ const Aside = () => {
   useEffect(() => setAsPath(router.asPath), [router])
 
   return (
-    <aside className={S.aside}>
+    <aside className={classNames(S.aside, { [S.minimized]: minimized })}>
       <nav className={S.nav}>
         {routes.map((route) => (
           <Link key={uuid()} href={route.link} className={S.link}>
@@ -79,6 +84,7 @@ const Aside = () => {
           </Link>
         ))}
       </nav>
+
       <div className={S.contactLinksSection}>
         <p className={S.title}>Contact Info</p>
 
@@ -113,6 +119,14 @@ const Aside = () => {
           ))}
         </div>
       </div>
+
+      <button
+        className={classNames(S.toggle, { [S.minimized]: minimized })}
+        onClick={() => setMinimized(!minimized)}
+      >
+        <span className={S.line} />
+        <span className={S.line} />
+      </button>
     </aside>
   )
 }

@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { useState } from 'react'
+import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import type { AppProps } from 'next/app'
 
@@ -16,6 +18,9 @@ const metaDescription =
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
+
+  const [isSidePanelminimized, setIsSidePanelMinimized] = useState(false)
+
   return (
     <>
       <Head>
@@ -48,13 +53,25 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="twitter:description" content={metaDescription} />
         <meta property="twitter:image" content={metaImage} />
       </Head>
-      <Header />
-      <div className="bodyLayout">
-        <Aside />
-        <main>
-          <Component {...pageProps} />
-        </main>
-      </div>
+
+      <Header
+        isSidePanelminimized={isSidePanelminimized}
+        setIsSidePanelMinimized={setIsSidePanelMinimized}
+      />
+      <Aside
+        minimized={isSidePanelminimized}
+        setMinimized={setIsSidePanelMinimized}
+      />
+      <main className={classNames({ expended: isSidePanelminimized })}>
+        <Component {...pageProps} />
+        <div
+          aria-hidden
+          onClick={() => setIsSidePanelMinimized(true)}
+          className={classNames('bodyOverlay', {
+            expended: isSidePanelminimized,
+          })}
+        />
+      </main>
     </>
   )
 }

@@ -7,21 +7,71 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
+  background-color: $lightGrayColor;
+
   #__next {
     display: grid;
     grid-template-rows: 80px auto;
 
-    background-color: #f2f4f8;
-
     height: 100vh;
 
-    .bodyLayout {
-      display: grid;
-      grid-template-columns: $sidePanelWidth auto;
-      // grid-template-columns: 0 auto;
+    main {
+      position: absolute;
+      top: $headerHeight;
+      left: $asideWidth;
 
-      main {
-        padding: 30px;
+      height: calc(100vh - $headerHeight);
+      width: calc(100vw - $asideWidth);
+
+      padding: 30px;
+      @media (max-width: $sidePanelLayoutShiftRes) {
+        padding: 15px;
+      }
+
+      transition: $transitionDuration;
+
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      .bodyOverlay {
+        display: block;
+
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 100%;
+
+        background-color: rgba($color: #000000, $alpha: 0.5);
+
+        opacity: 1;
+
+        transition: $transitionDuration;
+      }
+
+      &.expended {
+        left: 0;
+        width: calc(100vw);
+      }
+
+      @media (max-width: $sidePanelLayoutShiftRes) {
+        left: 0;
+
+        width: calc(100vw);
+
+        .bodyOverlay {
+          right: 0;
+
+          opacity: 1;
+        }
+
+        &.expended {
+          .bodyOverlay {
+            right: 100%;
+
+            opacity: 0;
+          }
+        }
       }
     }
   }

@@ -3,6 +3,10 @@
 .sectionContainer {
   padding: 30px;
 
+  @media (max-width: $mobileRes) {
+    padding: 15px;
+  }
+
   border: 1px solid $borderColor;
 
   background-color: white;

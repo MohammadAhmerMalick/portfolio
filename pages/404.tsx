@@ -2,23 +2,25 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import Button from '@/components/common/button/Button'
+import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
 
 import S from '@/styles/404.module.scss'
 
 const Custom404 = () => {
   return (
-    <div className={S.custom404}>
+    <SectionContainer className={S.custom404}>
       <Image
-        src="/images/404.svg"
-        alt="404 Page Not Found"
         width={700}
         height={500}
+        className={S.image}
+        src="/images/404.svg"
+        alt="404 Page Not Found"
       />
 
       <Link href="/">
         <Button shadow>Go back to home page</Button>
       </Link>
-    </div>
+    </SectionContainer>
   )
 }
 

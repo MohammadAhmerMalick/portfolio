@@ -17,10 +17,6 @@
 
     height: min-content;
 
-    * {
-      transition: $transitionDuration;
-    }
-
     .category {
       display: grid;
       grid-template-columns: 40px auto;

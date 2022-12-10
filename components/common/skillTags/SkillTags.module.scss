@@ -12,12 +12,13 @@
 
     display: grid;
     align-items: center;
-    grid-template:
-      'a b' $height
-      / auto auto;
     gap: 5px;
+    grid-template: 'a b' $height / auto auto;
+    &.onlyIcon {
+      grid-template: 'a' $height / auto;
+    }
 
-    padding: 5px 8px;
+    padding: 5px;
 
     border-radius: 5px;
     border: 1px solid $borderColor;
@@ -30,6 +31,8 @@
 
     .iconContainer {
       position: relative;
+
+      display: flex;
 
       height: 100%;
 

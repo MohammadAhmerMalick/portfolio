@@ -74,7 +74,7 @@ const Skills = () => {
           iusto quidem quos eaque corrupti.
         </p>
 
-        <SkillTags includes={[category]} />
+        <SkillTags categories={[category]} />
         <Button small>Checkout {category} Projects</Button>
       </div>
     </div>

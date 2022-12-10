@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import classNames from 'classnames'
 
 import { uuid } from '@/utils/utilFunctions'
 
@@ -21,54 +22,106 @@ interface x {
   [SkillCategories.extra]: o[]
 }
 
-const skillList: x = {
+export const HTMLTag = { name: 'HTML', link: '/images/html.svg' }
+export const CSSTag = { name: 'CSS', link: '/images/css.svg' }
+export const SASSTag = { name: 'SASS', link: '/images/sass.svg' }
+export const BootstrapTag = { name: 'Bootstrap', link: '/images/bootstrap.svg' }
+export const SVGAnimationTag = {
+  name: 'SVG Animation',
+  link: '/images/svg.svg',
+}
+export const JavaScriptTag = {
+  name: 'JavaScript',
+  link: '/images/javascript.svg',
+}
+export const ReactJSTag = { name: 'React.JS', link: '/images/react-js.svg' }
+export const NodeJSTag = { name: 'Node.JS', link: '/images/node-js.svg' }
+export const NextJSTag = { name: 'Next.JS', link: '/images/next-js.svg' }
+export const APITag = { name: 'API', link: '/images/api.svg' }
+export const jQueryTag = { name: 'jQuery', link: '/images/jquery.svg' }
+export const WordPressTag = { name: 'WordPress', link: '/images/wordpress.svg' }
+export const EmailTemplatesTag = {
+  name: 'Email Templates',
+  link: '/images/email.svg',
+}
+export const SendGridTag = { name: 'SendGrid', link: '/images/sendgrid.svg' }
+export const PHPTag = { name: 'PHP', link: '/images/php.svg' }
+export const MongoDBTag = { name: 'MongoDB', link: '/images/mongodb.svg' }
+export const MYSQLTag = { name: 'MYSQL', link: '/images/mysql.svg' }
+export const GitHubTag = { name: 'GitHub', link: '/images/github.svg' }
+export const CPanelTag = { name: 'CPanel', link: '/images/cpanel.svg' }
+
+export const FigmaTag = { name: 'Figma', link: '/images/figma.svg' }
+export const PhotoshopTag = {
+  name: 'Photoshop',
+  link: '/images/adobe-photoshop.svg',
+}
+export const IllustratorTag = {
+  name: 'Illustrator',
+  link: '/images/adobe-illustrator.svg',
+}
+export const FilmoraTag = { name: 'Filmora', link: '/images/filmora.svg' }
+export const SonyVegasTag = {
+  name: 'Sony Vegas',
+  link: '/images/sony-vegas.svg',
+}
+export const BlenderTag = { name: 'Blender', link: '/images/blender.svg' }
+
+export const MSWordTag = { name: 'MS Word', link: '/images/word.svg' }
+export const MSExcelTag = { name: 'MS Excel', link: '/images/excel.svg' }
+export const MSPowerpointTag = {
+  name: 'MS Powerpoint',
+  link: '/images/powerpoint.svg',
+}
+
+export const skillList: x = {
   [SkillCategories.web]: [
-    { name: 'HTML', link: '/images/html.svg' },
-    { name: 'CSS', link: '/images/css.svg' },
-    { name: 'SASS', link: '/images/sass.svg' },
-    { name: 'Bootstrap', link: '/images/bootstrap.svg' },
-    { name: 'SVG Animation', link: '/images/svg.svg' },
-    { name: 'JavaScript', link: '/images/javascript.svg' },
-    { name: 'React.JS', link: '/images/react-js.svg' },
-    { name: 'Node.JS', link: '/images/node-js.svg' },
-    { name: 'Next.JS', link: '/images/next-js.svg' },
-    { name: 'API', link: '/images/api.svg' },
-    { name: 'jQuery', link: '/images/jquery.svg' },
-    { name: 'WordPress', link: '/images/wordpress.svg' },
-    { name: 'Email Templates', link: '/images/email.svg' },
-    { name: 'SendGrid', link: '/images/sendgrid.svg' },
-    { name: 'PHP', link: '/images/php.svg' },
-    { name: 'MongoDB', link: '/images/mongodb.svg' },
-    { name: 'MYSQL', link: '/images/mysql.svg' },
-    { name: 'GitHub', link: '/images/github.svg' },
-    { name: 'CPanel', link: '/images/cpanel.svg' },
+    HTMLTag,
+    CSSTag,
+    SASSTag,
+    BootstrapTag,
+    SVGAnimationTag,
+    JavaScriptTag,
+    ReactJSTag,
+    NodeJSTag,
+    NextJSTag,
+    APITag,
+    jQueryTag,
+    WordPressTag,
+    EmailTemplatesTag,
+    SendGridTag,
+    PHPTag,
+    MongoDBTag,
+    MYSQLTag,
+    GitHubTag,
+    CPanelTag,
   ],
   [SkillCategories.graphic]: [
-    { name: 'Photoshop', link: '/images/adobe-photoshop.svg' },
-    { name: 'Figma', link: '/images/figma.svg' },
-    { name: 'Illustrator', link: '/images/adobe-illustrator.svg' },
-    { name: 'Filmora', link: '/images/filmora.svg' },
-    { name: 'Sony Vegas', link: '/images/sony-vegas.svg' },
-    { name: 'Blender', link: '/images/blender.svg' },
+    FigmaTag,
+    PhotoshopTag,
+    IllustratorTag,
+    FilmoraTag,
+    SonyVegasTag,
+    BlenderTag,
   ],
-  [SkillCategories.extra]: [
-    { name: 'MS Word', link: '/images/word.svg' },
-    { name: 'MS Excel', link: '/images/excel.svg' },
-    { name: 'MS Powerpoint', link: '/images/powerpoint.svg' },
-  ],
+  [SkillCategories.extra]: [MSWordTag, MSExcelTag, MSPowerpointTag],
 }
 
 interface SkillTags {
-  includes?: SkillCategories[]
+  categories?: SkillCategories[]
+  customList?: o[]
+  hideName?: boolean
 }
 
-const SkillTags: FC<SkillTags> = ({ includes }) => {
+const SkillTags: FC<SkillTags> = ({ categories, customList, hideName }) => {
   return (
     <div className={S.skillTags}>
-      {!!includes?.length &&
-        includes.map((key) =>
-          skillList[key].map((tag) => (
-            <div key={uuid()} className={S.tag}>
+      {customList?.length
+        ? customList.map((tag) => (
+            <div
+              key={uuid()}
+              className={classNames(S.tag, { [S.onlyIcon]: hideName })}
+            >
               <div className={S.iconContainer}>
                 <img
                   width={50}
@@ -78,18 +131,39 @@ const SkillTags: FC<SkillTags> = ({ includes }) => {
                   className={S.icon}
                 />
               </div>
-              <span>{tag.name}</span>
+              {!hideName && <span>{tag.name}</span>}
             </div>
           ))
-        )}
+        : !!categories?.length &&
+          categories.map((key) =>
+            skillList[key].map((tag) => (
+              <div
+                key={uuid()}
+                className={classNames(S.tag, { [S.onlyIcon]: hideName })}
+              >
+                <div className={S.iconContainer}>
+                  <img
+                    width={50}
+                    height={50}
+                    src={tag.link}
+                    alt={tag.name}
+                    className={S.icon}
+                  />
+                </div>
+                {!hideName && <span>{tag.name}</span>}
+              </div>
+            ))
+          )}
     </div>
   )
 }
 
 SkillTags.defaultProps = {
-  includes: (
+  categories: (
     Object.keys(SkillCategories) as Array<keyof typeof SkillCategories>
   ).map((key) => SkillCategories[key]),
+  customList: [],
+  hideName: false,
 }
 
 export default SkillTags

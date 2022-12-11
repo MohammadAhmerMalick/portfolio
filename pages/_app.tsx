@@ -6,8 +6,9 @@ import type { AppProps } from 'next/app'
 
 import { capitalize } from '@/utils/utilFunctions'
 
-import Header from '@/components/header/Header'
 import Aside from '@/components/aside/Aside'
+import Header from '@/components/header/Header'
+import RouteProgressBar from '@/components/common/loading/routeProgressBar/RouteProgressBar'
 
 import '@/styles/globals.scss'
 
@@ -62,6 +63,7 @@ export default function App({ Component, pageProps }: AppProps) {
         minimized={isSidePanelminimized}
         setMinimized={setIsSidePanelMinimized}
       />
+      <RouteProgressBar />
       <main className={classNames({ expended: isSidePanelminimized })}>
         <Component {...pageProps} />
         <div

@@ -1,7 +1,5 @@
 import classNames from 'classnames'
-import { useEffect, useState } from 'react'
-
-import { uuid } from '@/utils/utilFunctions'
+import { useCallback, useEffect, useState } from 'react'
 
 import Card from '@/components/common/card/Card'
 import Button from '@/components/common/button/Button'
@@ -42,30 +40,35 @@ const Epx1Details = () => {
 
 const data = [
   {
+    id: 'exp-1',
     company: 'Denovers',
     period: 'December 2021 - December 2022',
     designation: 'Full Stack Developer',
     description: <Epx1Details />,
   },
   {
+    id: 'exp-2',
     company: 'Paz Technologies',
     period: 'August 2021 - November 2021',
     designation: 'Web Developer',
     description: <Epx1Details />,
   },
   {
+    id: 'exp-3',
     company: 'Phoenix Technologies',
     period: 'May 2021 - August 2021',
     designation: 'Front End Developer',
     description: <Epx1Details />,
   },
   {
+    id: 'exp-4',
     company: 'Bizz World Communications',
     period: 'January 2020 - January 2021',
     designation: 'Web Developer',
     description: <Epx1Details />,
   },
   {
+    id: 'exp-5',
     company: 'Bizz World Communications',
     period: 'August 2019 - November 2019',
     designation: 'Junior Developer',
@@ -74,12 +77,49 @@ const data = [
 ]
 
 const Experience = () => {
-  const [collapsed, setCollapsed] = useState<boolean[]>([])
+  const [collapsed, setCollapsed] = useState<boolean[]>(
+    data.map((_, index) => index > 1)
+  )
 
-  const handleToggle = (index: number) =>
-    setCollapsed(collapsed.map((v, i) => (i === index ? !v : v)))
+  const adjustHeight = (id: string, isCollapsed: boolean) => {
+    const exp = document.getElementById(id)
+    const child = exp?.children[0]
+    const height = child?.clientHeight
 
-  useEffect(() => setCollapsed(data.map((_, index) => index > 1)), [])
+    if (exp && child && height) {
+      if (isCollapsed) {
+        exp.classList.add(S.collapsed)
+        exp.removeAttribute('style')
+      } else {
+        exp.classList.remove(S.collapsed)
+        exp.style.maxHeight = `${height + 50}px`
+      }
+    }
+  }
+
+  const handleToggle = (index: number, id: string) => {
+    setCollapsed(
+      collapsed.map((isCollapsed, i) => {
+        if (i === index) {
+          adjustHeight(id, !isCollapsed)
+          return !isCollapsed
+        }
+        return isCollapsed
+      })
+    )
+  }
+
+  const adjustAllHeight = useCallback(() => {
+    data.forEach(({ id }, i) => adjustHeight(id, collapsed[i]))
+  }, [collapsed])
+
+  useEffect(() => {
+    adjustAllHeight()
+    window.addEventListener('resize', adjustAllHeight)
+    return () => {
+      window.removeEventListener('resize', adjustAllHeight)
+    }
+  }, [adjustAllHeight])
 
   return (
     <SectionContainer>
@@ -90,13 +130,13 @@ const Experience = () => {
       />
 
       <div className={S.experience}>
-        {data.map((exp, index) => (
-          <div
-            key={uuid()}
-            className={classNames(S.block, { [S.collapsed]: collapsed[index] })}
-          >
+        {data.map(({ id, company, period, description }, index) => (
+          <div key={id} className={S.block}>
             <div className={S.togglerContainer}>
-              <button className={S.toggler} onClick={() => handleToggle(index)}>
+              <button
+                className={S.toggler}
+                onClick={() => handleToggle(index, id)}
+              >
                 <div className={S.icon}>
                   {collapsed[index] ? <AddIcon /> : <SubtractIcon />}
                 </div>
@@ -104,7 +144,7 @@ const Experience = () => {
             </div>
             <div className={S.companyTitleContainer}>
               <Card
-                onClick={() => handleToggle(index)}
+                onClick={() => handleToggle(index, id)}
                 className={classNames(S.companyTitle, {
                   [S.expended]: !collapsed[index],
                 })}
@@ -112,21 +152,25 @@ const Experience = () => {
                 <div className={S.icon}>
                   <BriefcaseIcon />
                 </div>
-                <h3 className={S.company}>{exp.company}</h3>
-                <p className={S.period}>{exp.period}</p>
+                <h3 className={S.company}>{company}</h3>
+                <p className={S.period}>{period}</p>
               </Card>
               <div
                 className={classNames(S.count, {
                   [S.collapsed]: collapsed[index],
                 })}
               >
-                0{index + 1}.
+                <p className={S.text}>{`0${index + 1}.`}</p>
               </div>
             </div>
-            <Card className={S.companyDetails}>
-              {exp.description}
-              {collapsed[index] && <div className={S.overlay} />}
-            </Card>
+            <div className={S.companyDetails} id={id}>
+              <Card className={S.companyDetailCard}>{description}</Card>
+              <div
+                className={classNames(S.overlay, {
+                  [S.collapsed]: collapsed[index],
+                })}
+              />
+            </div>
           </div>
         ))}
       </div>

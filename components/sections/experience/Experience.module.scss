@@ -4,6 +4,10 @@
   display: grid;
   gap: 30px;
 
+  @media (max-width: $mobileRes) {
+    gap: 15px;
+  }
+
   .block {
     display: grid;
     grid-template:
@@ -13,29 +17,32 @@
 
     overflow: hidden;
 
-    &.collapsed {
-      grid-template-rows: 120px;
-    }
-
     @media (max-width: $wideRes) {
       grid-template:
         'togglerContainer companyTitleContainer' 90px
         'companyDetails companyDetails' auto
         / 34px auto;
       gap: 15px;
+    }
 
-      &.collapsed {
-        grid-template-rows: 90px 0;
-        gap: 0 15px;
-      }
+    @media (max-width: $mobileRes) {
+      grid-template:
+        'companyTitleContainer' 72px
+        'companyDetails' auto
+        / auto;
+      gap: 3px;
     }
 
     .togglerContainer {
-      grid-area: togglerContainer;
-
       position: relative;
 
+      grid-area: togglerContainer;
+
       z-index: 0;
+
+      @media (max-width: $mobileRes) {
+        display: none;
+      }
 
       .toggler {
         display: grid;
@@ -88,6 +95,12 @@
           'icon period' 25px
           /65px auto;
 
+        @media (max-width: $mobileRes) {
+          grid-template: 'company' 'period';
+
+          padding: 15px;
+        }
+
         cursor: pointer;
 
         &.expended {
@@ -106,12 +119,20 @@
           background-color: $primaryColor;
 
           font-size: 20px;
+
+          @media (max-width: $mobileRes) {
+            display: none;
+          }
         }
 
         .company {
           grid-area: company;
 
           font-size: 18px;
+
+          @media (max-width: $wideRes) {
+            font-size: 16px;
+          }
         }
 
         .period {
@@ -123,26 +144,35 @@
       }
 
       .count {
-        display: inline-block;
+        display: block;
+
+        width: 95px;
 
         margin-top: 20px;
 
-        color: $lightGrayColor;
-        font-size: 70px;
-        font-weight: 900;
-
         transform: rotate(-90deg);
 
+        transition: $transitionDuration;
+
+        .text {
+          color: $lightGrayColor;
+          font-size: 70px;
+          font-weight: 900;
+          text-align: right;
+
+          transition: $transitionDuration;
+        }
+
         &.collapsed {
-          display: block;
+          width: 100%;
 
           margin-top: 5px;
 
-          font-size: 20px;
-          text-align: right;
-          color: $borderColor;
-
           transform: rotate(0);
+
+          .text {
+            font-size: 20px;
+          }
         }
 
         @media (max-width: $wideRes) {
@@ -159,50 +189,78 @@
       position: relative;
 
       grid-area: companyDetails;
-      display: grid;
-      gap: 8px;
 
-      overflow: hidden;
+      transition: $transitionDuration;
 
-      .points {
-        list-style: none;
+      &.collapsed {
+        max-height: 120px;
 
-        .point {
-          position: relative;
-
-          padding-left: 20px;
-
-          &::before {
-            content: '';
-
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-
-            margin: auto;
-
-            width: $dotSize;
-            height: $dotSize;
-
-            border-radius: 100%;
-
-            background-color: $primaryColor;
-          }
+        @media (max-width: $wideRes) {
+          max-height: 0;
         }
       }
 
-      .button {
-        margin-top: 8px;
+      .companyDetailCard {
+        display: grid;
+        gap: 8px;
+
+        overflow: hidden;
+
+        transition: $transitionDuration;
+
+        @media (max-width: $mobileRes) {
+          padding: 15px;
+        }
+
+        .points {
+          list-style: none;
+
+          .point {
+            position: relative;
+
+            padding-left: 20px;
+
+            &::before {
+              content: '';
+
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+
+              margin: auto;
+
+              width: $dotSize;
+              height: $dotSize;
+
+              border-radius: 100%;
+
+              background-color: $primaryColor;
+            }
+          }
+        }
+
+        .button {
+          margin-top: 8px;
+        }
       }
 
       .overlay {
-        background: linear-gradient(transparent, $lightGrayColor);
         position: absolute;
         top: 0;
-        bottom: 0;
+        bottom: -5px;
         left: 0;
         right: 0;
+
+        background: linear-gradient(transparent, $lightGrayColor);
+
+        opacity: 0;
+
+        transition: $transitionDuration;
+
+        &.collapsed {
+          opacity: 1;
+        }
       }
     }
   }

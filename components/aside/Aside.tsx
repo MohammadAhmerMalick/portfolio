@@ -70,53 +70,55 @@ const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
 
   return (
     <aside className={classNames(S.aside, { [S.minimized]: minimized })}>
-      <nav className={S.nav}>
-        {routes.map((route) => (
-          <Link key={uuid()} href={route.link} className={S.link}>
-            {route.icon}
-            <span
-              className={classNames(S.text, {
-                [S.active]: asPath === route.link,
-              })}
-            >
-              {route.text}
-            </span>
-          </Link>
-        ))}
-      </nav>
-
-      <div className={S.contactLinksSection}>
-        <p className={S.title}>Contact Info</p>
-
-        <div className={S.links}>
-          {contactRoutes.map((route) => (
+      <div className={S.container}>
+        <nav className={S.nav}>
+          {routes.map((route) => (
             <Link key={uuid()} href={route.link} className={S.link}>
-              {route.icon} {route.text}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      <div className={S.socialLinksSection}>
-        <p className={S.title}>Social Links</p>
-
-        <div className={S.links}>
-          {socialRoutes.map((route) => (
-            <Link
-              key={uuid()}
-              target="_blank"
-              href={route.link}
-              aria-label={route.ariaLabel}
-            >
-              <Button
-                className={S.link}
-                title={route.ariaLabel}
-                ariaLabel={route.ariaLabel}
+              {route.icon}
+              <span
+                className={classNames(S.text, {
+                  [S.active]: asPath === route.link,
+                })}
               >
-                {route.icon}
-              </Button>
+                {route.text}
+              </span>
             </Link>
           ))}
+        </nav>
+
+        <div className={S.contactLinksSection}>
+          <p className={S.title}>Contact Info</p>
+
+          <div className={S.links}>
+            {contactRoutes.map((route) => (
+              <Link key={uuid()} href={route.link} className={S.link}>
+                {route.icon} {route.text}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className={S.socialLinksSection}>
+          <p className={S.title}>Social Links</p>
+
+          <div className={S.links}>
+            {socialRoutes.map((route) => (
+              <Link
+                key={uuid()}
+                target="_blank"
+                href={route.link}
+                aria-label={route.ariaLabel}
+              >
+                <Button
+                  className={S.link}
+                  title={route.ariaLabel}
+                  ariaLabel={route.ariaLabel}
+                >
+                  {route.icon}
+                </Button>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 

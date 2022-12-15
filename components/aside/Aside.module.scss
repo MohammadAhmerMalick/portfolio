@@ -9,23 +9,26 @@
     left: -($asideWidth);
   }
 
-  width: $asideWidth;
-  height: calc(100vh - $headerHeight);
-
-  background-color: white;
-
   color: $textColor;
   font-weight: 500;
   font-size: 14px;
 
   z-index: 50;
-
-  border-right: 1px solid $borderColor;
-
   transition: $transitionDuration;
 
   * {
     transition: $transitionDuration;
+  }
+
+  .container {
+    width: calc($asideWidth);
+    height: calc(100vh - $headerHeight);
+
+    border-right: 1px solid $borderColor;
+
+    background-color: white;
+
+    overflow: auto;
   }
 
   .nav {

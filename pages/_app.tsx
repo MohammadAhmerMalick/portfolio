@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { AppProps } from 'next/app'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
-import type { AppProps } from 'next/app'
+import { useEffect, useState } from 'react'
 
 import { capitalize } from '@/utils/utilFunctions'
 
@@ -12,15 +12,20 @@ import RouteProgressBar from '@/components/common/loading/routeProgressBar/Route
 
 import '@/styles/globals.scss'
 
-const metaUrl = 'http://mohammadahmermalick.com'
+const metaUrl = 'http://www.mohammadahmermalick.com'
 const metaImage = '/'
 const metaDescription =
   'This is my portfolio website. Here you will find all my project and ways to contact me, Mohammad Ahmer Malick | mohammadahmermalick@gmail.com'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
+  const [isSidePanelminimized, setIsSidePanelMinimized] = useState(true)
 
-  const [isSidePanelminimized, setIsSidePanelMinimized] = useState(false)
+  useEffect(() => {
+    setIsSidePanelMinimized(
+      typeof window !== 'undefined' && window.screen.width <= 992
+    )
+  }, [])
 
   return (
     <>
@@ -63,7 +68,7 @@ export default function App({ Component, pageProps }: AppProps) {
         minimized={isSidePanelminimized}
         setMinimized={setIsSidePanelMinimized}
       />
-      <RouteProgressBar />
+      <RouteProgressBar minimizeSidepanel={setIsSidePanelMinimized} />
       <main className={classNames({ expended: isSidePanelminimized })}>
         <Component {...pageProps} />
         <div

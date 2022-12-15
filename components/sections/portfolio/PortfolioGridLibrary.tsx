@@ -14,7 +14,7 @@ import Button from '@/components/common/button/Button'
 
 import S from './PortfolioGridLibrary.module.scss'
 
-const item = [
+const items = [
   {
     name: 'card',
     description: 'card',
@@ -71,19 +71,19 @@ const PortfolioGridLibrary = () => {
 
       {/* items */}
       <div className={S.items}>
-        {item.map((e, i) => (
+        {items.map((item) => (
           <Link
             key={uuid()}
-            href={`portfolio/${e.name}`}
+            href={`portfolio/${item.name}`}
             className={classNames(S.item, {
-              [S.hide]: !e.category.includes(activeCategory),
+              [S.hide]: !item.category.includes(activeCategory),
             })}
           >
-            <img src={e.image} alt="" />
+            <img src={item.image} alt={item.name} />
             <div className={S.details}>
-              <h3 className={S.title}>{e.name}</h3>
-              <SkillTags customList={e.tags} hideName />
-              <p className={S.para}>{e.description}</p>
+              <h3 className={S.title}>{item.name}</h3>
+              <SkillTags customList={item.tags} hideName />
+              <p className={S.para}>{item.description}</p>
             </div>
           </Link>
         ))}

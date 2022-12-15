@@ -1,9 +1,20 @@
 import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
+import {
+  FC,
+  useRef,
+  useState,
+  Dispatch,
+  useEffect,
+  SetStateAction,
+} from 'react'
 
 import S from './RouteProgressBar.module.scss'
 
-const RouteProgressBar = () => {
+interface RouteProgressBar {
+  minimizeSidepanel: Dispatch<SetStateAction<boolean>>
+}
+
+const RouteProgressBar: FC<RouteProgressBar> = ({ minimizeSidepanel }) => {
   const router = useRouter()
 
   const interval = useRef<NodeJS.Timer>()
@@ -11,8 +22,13 @@ const RouteProgressBar = () => {
   const [isCompleted, setIsCompleted] = useState<boolean>(true) // is page loaded completely
 
   useEffect(() => {
-    const handleRouteChange = () => setIsCompleted(false)
-    const handleRouteChanged = () => setIsCompleted(true)
+    const handleRouteChange = () => {
+      setIsCompleted(false)
+      if (window.screen.width <= 992) minimizeSidepanel(true)
+    }
+    const handleRouteChanged = () => {
+      setIsCompleted(true)
+    }
 
     router.events.on('routeChangeStart', handleRouteChange) // when page loading
     router.events.on('routeChangeComplete', handleRouteChanged) // when page loaded
@@ -21,7 +37,7 @@ const RouteProgressBar = () => {
       router.events.off('routeChangeStart', handleRouteChange)
       router.events.off('routeChangeComplete', handleRouteChanged)
     }
-  }, [router.events])
+  }, [router.events, minimizeSidepanel])
 
   const handleProgress = () => {
     interval.current = setInterval(() => {

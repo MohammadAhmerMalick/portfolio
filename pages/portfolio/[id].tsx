@@ -14,10 +14,10 @@ const SinglePortfolio: FC<SinglePortfolio> = ({ id }) => {
     <>
       <SectionContainer>
         <SectionHeading
-          primary="Bizzworld Communicatinos"
+          primary="Bizzworld Communications"
           paragraph="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis tempora similique voluptate nesciunt excepturi ipsam debitis doloremque ab odit maiores."
         />
-        <article>a</article>
+        <article>{id}</article>
       </SectionContainer>
 
       <Contact />

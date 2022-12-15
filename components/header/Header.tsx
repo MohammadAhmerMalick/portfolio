@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Dispatch, FC, SetStateAction } from 'react'
 
@@ -26,16 +25,14 @@ const Header: FC<Header> = ({
         <div className={S.title}>
           <p className={S.text}>{router.pathname.split('/')[1] || 'home'}</p>
         </div>
-        <Link href="/contact" className={S.link}>
-          <Button shadow>Contact</Button>
-        </Link>
+        <Button
+          className={S.menuButton}
+          onClick={() => setIsSidePanelMinimized(!isSidePanelminimized)}
+        >
+          {isSidePanelminimized ? <MenuIcon /> : <CloseIcon />}
+          <span className={S.text}>Menu</span>
+        </Button>
       </div>
-      <Button
-        className={S.menuButton}
-        onClick={() => setIsSidePanelMinimized(!isSidePanelminimized)}
-      >
-        {isSidePanelminimized ? <MenuIcon /> : <CloseIcon />}
-      </Button>
     </header>
   )
 }

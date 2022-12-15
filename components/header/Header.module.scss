@@ -23,14 +23,14 @@
     align-items: center;
     justify-content: space-between;
 
-    @media (max-width: $mobileRes) {
-      display: none;
-    }
-
     .title {
       padding-left: 36px;
 
       border-left: 2px solid $primaryColor;
+
+      @media (max-width: $mobileRes) {
+        display: none;
+      }
 
       .text {
         position: relative;
@@ -60,24 +60,30 @@
       }
     }
 
-    .link {
-      z-index: 5;
-    }
-  }
-
-  .menuButton {
-    display: none;
-
-    @media (max-width: $mobileRes) {
+    .menuButton {
       display: flex;
+      align-items: center;
+      gap: 5px;
+
+      width: max-content;
+      height: 40px;
+
+      margin-left: auto;
+      padding: 7px 18px;
+
+      color: $textColor;
+
+      z-index: 5;
+
+      svg {
+        font-size: 20px;
+      }
+
+      .text {
+        @media (max-width: $mobileRes) {
+          display: none;
+        }
+      }
     }
-
-    width: max-content;
-
-    margin-left: auto;
-    padding: 7px;
-
-    font-size: 20px;
-    color: $textColor;
   }
 }

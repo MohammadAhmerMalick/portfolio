@@ -10,10 +10,9 @@ interface SectionContainer {
 
 const SectionContainer: FC<SectionContainer> = ({ children, className }) => {
   return (
-    <section className={classNames(S.sectionContainer, className)}>
-      {children}
-
-      {/* <div className={S.bg} /> */}
+    <section className={S.sectionContainer}>
+      <div className={classNames(S.sectionContent, className)}>{children}</div>
+      <div className={S.bg} />
     </section>
   )
 }

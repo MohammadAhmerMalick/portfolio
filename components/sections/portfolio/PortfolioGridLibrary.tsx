@@ -1,8 +1,7 @@
 import Link from 'next/link'
-import { useState } from 'react'
 import classNames from 'classnames'
-
-import { uuid } from '@/utils/utilFunctions'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 import SkillTags, {
   BlenderTag,
@@ -16,13 +15,6 @@ import S from './PortfolioGridLibrary.module.scss'
 
 const items = [
   {
-    name: 'card',
-    description: 'card',
-    tags: [IllustratorTag],
-    category: SkillCategories.graphic,
-    image: './images/3.png',
-  },
-  {
     name: 'Bizzworld communications',
     description: 'bizzworld communications main website',
     tags: [IllustratorTag, PhotoshopTag, BlenderTag],
@@ -30,25 +22,24 @@ const items = [
     image: './images/2.png',
   },
   {
-    name: 'card',
-    description: 'card',
-    tags: [IllustratorTag],
-    category: SkillCategories.graphic,
-    image: './images/3.png',
-  },
-  {
     name: 'lillypads',
     description: 'lillypads main website',
     tags: [IllustratorTag],
-    category: SkillCategories.web,
+    category: [SkillCategories.web, SkillCategories.graphic],
     image: './images/3.png',
   },
 ]
 
 const PortfolioGridLibrary = () => {
+  const router = useRouter()
   const [activeCategory, setActiveCategory] = useState<SkillCategories>(
     SkillCategories.web
   )
+
+  useEffect(() => {
+    const category = router.query.category as keyof typeof SkillCategories
+    setActiveCategory(SkillCategories[category] || SkillCategories.web)
+  }, [router])
 
   return (
     <section className={S.portfolioGridLibrary}>
@@ -73,7 +64,7 @@ const PortfolioGridLibrary = () => {
       <div className={S.items}>
         {items.map((item) => (
           <Link
-            key={uuid()}
+            key={item.name}
             href={`portfolio/${item.name}`}
             className={classNames(S.item, {
               [S.hide]: !item.category.includes(activeCategory),

@@ -9,6 +9,7 @@ import Button from '@/components/common/button/Button'
 import ColarPalette from '@/components/common/icons/ColarPalette'
 import WebDevelopmentIcon from '@/components/common/icons/WebDevelopmentIcon'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
+import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
 
 import S from './Skills.module.scss'
 
@@ -42,7 +43,7 @@ const Skills = () => {
         </button>
       </div>
 
-      <div className={S.block}>
+      <SectionContainer className={S.block}>
         <div className={S.haad}>
           <Image
             width={440}
@@ -76,7 +77,7 @@ const Skills = () => {
 
         <SkillTags categories={[category]} />
         <Button small>Checkout {category} Projects</Button>
-      </div>
+      </SectionContainer>
     </div>
   )
 }

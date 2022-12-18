@@ -64,20 +64,20 @@ interface Aside {
 const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
   const router = useRouter()
 
-  const [asPath, setAsPath] = useState('')
+  const [pageLink, setPageLink] = useState('/')
 
-  useEffect(() => setAsPath(router.asPath), [router])
+  useEffect(() => setPageLink(`/${router.pathname.split('/')[1]}`), [router])
 
   return (
     <aside className={classNames(S.aside, { [S.minimized]: minimized })}>
       <div className={S.container}>
         <nav className={S.nav}>
           {routes.map((route) => (
-            <Link key={uuid()} href={route.link} className={S.link}>
+            <Link key={route.link} href={route.link} className={S.link}>
               {route.icon}
               <span
                 className={classNames(S.text, {
-                  [S.active]: asPath === route.link,
+                  [S.active]: pageLink === route.link,
                 })}
               >
                 {route.text}

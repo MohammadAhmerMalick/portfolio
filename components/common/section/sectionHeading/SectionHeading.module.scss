@@ -1,0 +1,65 @@
+@import '/styles/variables.scss';
+
+.sectionHeading {
+  display: grid;
+  gap: 10px;
+
+  margin-bottom: 30px;
+
+  .heading {
+    text-transform: uppercase;
+
+    @media (max-width: $fullWideRes) {
+      font-size: 28px;
+    }
+
+    @media (max-width: $tabletRes) {
+      font-size: 26px;
+    }
+
+    @media (max-width: $mobileRes) {
+      font-size: 20px;
+    }
+
+    .secondary {
+      color: $primaryColor;
+    }
+  }
+
+  .paragraph {
+    position: relative;
+
+    max-width: 500px;
+
+    padding-bottom: 30px;
+
+    &:before {
+      content: '';
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      height: 2px;
+      width: 100%;
+
+      background-color: $lightGrayColor;
+    }
+
+    &:after {
+      content: '';
+
+      position: absolute;
+
+      bottom: calc(0% - 2px);
+      right: 0;
+
+      height: $dotSize;
+      width: $dotSize;
+
+      border-radius: 100%;
+
+      background-color: $primaryColor;
+    }
+  }
+}

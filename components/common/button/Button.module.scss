@@ -1,0 +1,23 @@
+@import '/styles/variables';
+
+.button {
+  padding: 15px 38px;
+
+  &.small {
+    padding: 10px 25px;
+    max-width: max-content;
+  }
+
+  background-color: $primaryColor;
+
+  border: 0;
+  border-radius: 2px;
+
+  color: #292929;
+
+  cursor: pointer;
+
+  &.shadow {
+    box-shadow: 0px 5px 10px 2px rgb(88 103 221 / 19%);
+  }
+}

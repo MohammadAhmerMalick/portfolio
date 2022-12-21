@@ -1,0 +1,267 @@
+@import '/styles/variables.scss';
+
+.experience {
+  display: grid;
+  gap: 30px;
+
+  @media (max-width: $mobileRes) {
+    gap: 15px;
+  }
+
+  .block {
+    display: grid;
+    grid-template:
+      'togglerContainer companyTitleContainer companyDetails'
+      /34px 350px auto;
+    gap: 30px;
+
+    overflow: hidden;
+
+    @media (max-width: $wideRes) {
+      grid-template:
+        'togglerContainer companyTitleContainer' 90px
+        'companyDetails companyDetails' auto
+        / 34px auto;
+      gap: 15px;
+    }
+
+    @media (max-width: $mobileRes) {
+      grid-template:
+        'companyTitleContainer' 72px
+        'companyDetails' auto
+        / auto;
+      gap: 3px;
+    }
+
+    .togglerContainer {
+      position: relative;
+
+      grid-area: togglerContainer;
+
+      z-index: 0;
+
+      @media (max-width: $mobileRes) {
+        display: none;
+      }
+
+      .toggler {
+        display: grid;
+        place-items: center;
+
+        $size: 34px;
+        width: $size;
+        height: $size;
+
+        margin-top: 25px;
+
+        border: 5px solid $primaryColor;
+        border-radius: 100%;
+
+        background-color: white;
+
+        cursor: pointer;
+
+        .icon {
+          display: flex;
+
+          color: $textColor;
+          font-size: 14px;
+        }
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          top: 0;
+
+          height: 100%;
+          width: 1px;
+
+          background-color: $borderColor;
+
+          z-index: -1;
+        }
+      }
+    }
+
+    .companyTitleContainer {
+      grid-area: companyTitleContainer;
+
+      .companyTitle {
+        display: grid;
+        align-items: center;
+        grid-template:
+          'icon company' 25px
+          'icon period' 25px
+          /65px auto;
+
+        @media (max-width: $mobileRes) {
+          grid-template: 'company' 'period';
+
+          padding: 15px;
+        }
+
+        cursor: pointer;
+
+        &.expended {
+          border-bottom: 2px solid $primaryColor;
+        }
+
+        .icon {
+          display: grid;
+          place-items: center;
+
+          grid-area: icon;
+
+          height: 50px;
+          margin-right: 15px;
+
+          background-color: $primaryColor;
+
+          font-size: 20px;
+
+          @media (max-width: $mobileRes) {
+            display: none;
+          }
+        }
+
+        .company {
+          grid-area: company;
+
+          font-size: 18px;
+
+          @media (max-width: $wideRes) {
+            font-size: 16px;
+          }
+        }
+
+        .period {
+          grid-area: period;
+
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+
+      .count {
+        display: block;
+
+        width: 95px;
+
+        margin-top: 20px;
+
+        transform: rotate(-90deg);
+
+        transition: $transitionDuration;
+
+        .text {
+          color: $lightGrayColor;
+          font-size: 70px;
+          font-weight: 900;
+          text-align: right;
+
+          transition: $transitionDuration;
+        }
+
+        &.collapsed {
+          width: 100%;
+
+          margin-top: 5px;
+
+          transform: rotate(0);
+
+          .text {
+            font-size: 20px;
+          }
+        }
+
+        @media (max-width: $wideRes) {
+          display: none;
+
+          &.collapsed {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .companyDetails {
+      position: relative;
+
+      grid-area: companyDetails;
+
+      transition: $transitionDuration;
+
+      &.collapsed {
+        max-height: 120px;
+
+        @media (max-width: $wideRes) {
+          max-height: 0;
+        }
+      }
+
+      .companyDetailCard {
+        display: grid;
+        gap: 8px;
+
+        overflow: hidden;
+
+        transition: $transitionDuration;
+
+        @media (max-width: $mobileRes) {
+          padding: 15px;
+        }
+
+        .points {
+          list-style: none;
+
+          .point {
+            position: relative;
+
+            padding-left: 20px;
+
+            &::before {
+              content: '';
+
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+
+              margin: auto;
+
+              width: $dotSize;
+              height: $dotSize;
+
+              border-radius: 100%;
+
+              background-color: $primaryColor;
+            }
+          }
+        }
+
+        .button {
+          margin-top: 8px;
+        }
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: -5px;
+        left: 0;
+        right: 0;
+
+        background: linear-gradient(transparent, $lightGrayColor);
+
+        opacity: 0;
+
+        transition: $transitionDuration;
+
+        &.collapsed {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

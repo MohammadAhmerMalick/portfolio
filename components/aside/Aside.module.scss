@@ -1,0 +1,194 @@
+@import '/styles/variables.scss';
+
+.aside {
+  position: fixed;
+  top: $headerHeight;
+  left: 0;
+
+  &.minimized {
+    left: -($asideWidth);
+  }
+
+  color: $textColor;
+  font-weight: 500;
+  font-size: 14px;
+
+  z-index: 50;
+  transition: $transitionDuration;
+
+  * {
+    transition: $transitionDuration;
+  }
+
+  .container {
+    width: calc($asideWidth);
+    height: calc(100vh - $headerHeight);
+
+    border-right: 1px solid $borderColor;
+
+    background-color: white;
+
+    overflow: auto;
+  }
+
+  .nav {
+    display: grid;
+
+    padding-top: 20px;
+
+    .link {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      padding: 18px 20px;
+
+      border-bottom: 1px solid $lightGrayColor;
+
+      overflow: hidden;
+
+      &:before {
+        content: '';
+
+        position: absolute;
+        left: 0;
+        top: -100%;
+
+        height: 100%;
+        width: 5px;
+
+        background-color: $primaryColor;
+      }
+
+      &:hover {
+        &:before {
+          top: 0;
+        }
+      }
+
+      svg {
+        font-size: 18px;
+        color: $primaryColor;
+      }
+
+      .text {
+        text-transform: uppercase;
+        color: $textColor;
+
+        &.active {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .contactLinksSection,
+  .socialLinksSection {
+    display: grid;
+    gap: 15px;
+
+    padding: 30px 20px;
+
+    border-bottom: 1px solid $lightGrayColor;
+
+    .title {
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  .contactLinksSection {
+    .links {
+      display: grid;
+      gap: 12px;
+
+      .link {
+        display: grid;
+        grid-template-columns: 16px auto;
+        align-items: center;
+        gap: 12px;
+
+        &:hover {
+          color: $primaryColor;
+        }
+
+        svg {
+          color: $primaryColor;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .socialLinksSection {
+    .links {
+      display: flex;
+      place-items: center;
+      gap: 8px;
+
+      .link {
+        width: 36px;
+        height: 36px;
+
+        padding: 0;
+
+        border-radius: 0px;
+
+        font-size: 20px;
+
+        svg {
+          display: flex;
+
+          margin: auto;
+
+          color: $textColor;
+        }
+
+        &:hover {
+          border-radius: 5px;
+          box-shadow: 0 0 2px 2px rgba($color: #000000, $alpha: 0.1);
+        }
+      }
+    }
+  }
+
+  .toggle {
+    position: absolute;
+    left: $asideWidth;
+    bottom: 50%;
+
+    display: flex;
+    justify-content: space-evenly;
+
+    height: 60px;
+    width: 13px;
+
+    border: $borderColor;
+
+    background-color: $borderColor;
+
+    clip-path: polygon(0 0, 100% 20%, 100% 80%, 0% 100%);
+
+    cursor: pointer;
+
+    &.minimized {
+      background-color: $primaryColor;
+    }
+
+    @media (max-width: $sidePanelLayoutShiftRes) {
+      background-color: $primaryColor;
+    }
+
+    .line {
+      height: 100%;
+
+      width: 2px;
+
+      background-color: $borderColor;
+      box-shadow: 0 0 1px 0px rgba($color: #5a5100, $alpha: 0.2);
+    }
+  }
+}

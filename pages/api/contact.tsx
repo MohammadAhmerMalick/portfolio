@@ -25,7 +25,7 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   })
 
   // email body
-  const html = `name: ${name} \nemail: ${email} \n\n${message}\n\nThis message is from ${hostEmail} contact form`
+  const html = `name: ${name} \nemail: ${email} \n\n${message}\n\nThis message is from ${host} contact form`
 
   try {
     const emailInfo = await transporter.sendMail({

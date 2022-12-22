@@ -14,6 +14,7 @@ interface Button {
   title?: string
   small?: boolean
   shadow?: boolean
+  disabled?: boolean
   className?: string
   ariaLabel?: string
   children: ReactNode
@@ -29,6 +30,7 @@ const Button: FC<Button> = ({
   shadow,
   onClick,
   children,
+  disabled,
   ariaLabel,
   className,
 }) => {
@@ -39,10 +41,12 @@ const Button: FC<Button> = ({
       title={title}
       aria-label={ariaLabel}
       onClick={onClick}
+      disabled={disabled}
       className={classNames(
         S.button,
         { [S.small]: small },
         { [S.shadow]: shadow },
+        { [S.disabled]: disabled },
         className
       )}
     >
@@ -55,6 +59,7 @@ Button.defaultProps = {
   small: false,
   shadow: false,
   className: '',
+  disabled: false,
   form: undefined,
   title: undefined,
   onClick: undefined,

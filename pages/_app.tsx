@@ -3,6 +3,7 @@ import { AppProps } from 'next/app'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 
 import { capitalize } from '@/utils/utilFunctions'
 
@@ -11,6 +12,7 @@ import Header from '@/components/header/Header'
 import RouteProgressBar from '@/components/common/loading/routeProgressBar/RouteProgressBar'
 
 import '@/styles/globals.scss'
+import 'react-toastify/dist/ReactToastify.css'
 
 const metaUrl = 'http://www.mohammadahmermalick.com'
 const metaImage = '/'
@@ -59,6 +61,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="twitter:description" content={metaDescription} />
         <meta property="twitter:image" content={metaImage} />
       </Head>
+
+      <ToastContainer />
 
       <Header
         isSidePanelminimized={isSidePanelminimized}

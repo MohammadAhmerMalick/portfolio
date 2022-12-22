@@ -24,6 +24,12 @@
         background: $primaryColor;
 
         font-size: 18px;
+
+        transition: $transitionDuration;
+
+        &.disabled {
+          background-color: $borderColor;
+        }
       }
     }
 

@@ -1,6 +1,9 @@
+import classNames from 'classnames'
+import { toast } from 'react-toastify'
 import { FormEvent, useState } from 'react'
 
 import UserIcon from '@/components/common/icons/UserIcon'
+import BookIcon from '@/components/common/icons/BookIcon'
 import EmailIcon from '@/components/common/icons/EmailIcon'
 import Button, { buttonType } from '@/components/common/button/Button'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
@@ -9,7 +12,13 @@ import SectionContainer from '@/components/common/section/sectionContainer/Secti
 import S from './Contact.module.scss'
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [isFormDisabled, setIsFormDisabled] = useState(false)
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
 
   interface HandleOnChange {
     target: HTMLInputElement | HTMLTextAreaElement
@@ -21,10 +30,25 @@ const Contact = () => {
     setForm((state) => ({ ...state, [name]: value }))
   }
 
-  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setIsFormDisabled(true)
 
-    console.log({ form })
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: JSON.stringify(form),
+      })
+
+      if (res.status !== 200) throw Error
+      toast.success('I will get back to you soon')
+    } catch (error) {
+      toast.error('Unable to send email')
+      toast.info('You can contact me on mohammadahmermalick@gmail.com')
+      console.log({ error })
+    } finally {
+      setIsFormDisabled(false)
+    }
   }
 
   return (
@@ -41,7 +65,7 @@ const Contact = () => {
         onSubmit={(e) => handleOnSubmit(e)}
       >
         <div className={S.field}>
-          <div className={S.icon}>
+          <div className={classNames(S.icon, { [S.disabled]: isFormDisabled })}>
             <UserIcon />
           </div>
           <input
@@ -52,10 +76,11 @@ const Contact = () => {
             className={S.input}
             placeholder="Name"
             onChange={handleOnChange}
+            disabled={isFormDisabled}
           />
         </div>
         <div className={S.field}>
-          <div className={S.icon}>
+          <div className={classNames(S.icon, { [S.disabled]: isFormDisabled })}>
             <EmailIcon />
           </div>
           <input
@@ -66,6 +91,22 @@ const Contact = () => {
             className={S.input}
             placeholder="Email"
             onChange={handleOnChange}
+            disabled={isFormDisabled}
+          />
+        </div>
+        <div className={S.field}>
+          <div className={classNames(S.icon, { [S.disabled]: isFormDisabled })}>
+            <BookIcon />
+          </div>
+          <input
+            required
+            type="text"
+            name="subject"
+            value={form.subject}
+            className={S.input}
+            placeholder="Subject"
+            onChange={handleOnChange}
+            disabled={isFormDisabled}
           />
         </div>
         <textarea
@@ -76,9 +117,14 @@ const Contact = () => {
           className={S.textarea}
           placeholder="Message"
           onChange={handleOnChange}
+          disabled={isFormDisabled}
         />
       </form>
-      <Button type={buttonType.submit} form="contactForm">
+      <Button
+        type={buttonType.submit}
+        form="contactForm"
+        disabled={isFormDisabled}
+      >
         Submit
       </Button>
     </SectionContainer>

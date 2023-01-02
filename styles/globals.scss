@@ -9,6 +9,11 @@ body {
 
   background-color: $lightGrayColor;
 
+  ::selection {
+    color: $textColor;
+    background: $primaryColor;
+  }
+
   #__next {
     display: grid;
     grid-template-rows: 80px auto;

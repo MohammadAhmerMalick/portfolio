@@ -3,10 +3,11 @@
 .skills {
   display: grid;
   grid-template-columns: 200px auto;
-  gap: 30px;
-
+  gap: 15px;
+  
   @media (max-width: $tabletRes) {
     grid-template-columns: auto;
+    gap: 8px;
   }
 
   .categories {

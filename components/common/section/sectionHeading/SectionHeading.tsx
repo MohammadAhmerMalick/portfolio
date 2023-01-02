@@ -32,7 +32,7 @@ const SectionHeading: FC<SectionHeading1 | SectionHeading2> = ({
         <span className={S.primary}>{primary}</span>{' '}
         <span className={S.secondary}>{secondary}</span>
       </h1>
-      <p className={S.paragraph}>{paragraph}</p>
+      {paragraph && <p className={S.paragraph}>{paragraph}</p>}
       {children}
       <div className={S.after} />
     </div>

@@ -66,7 +66,7 @@ export const contactRoutes = [
     icon: <EmailIcon />,
   },
   {
-    link: 'https://goo.gl/maps/JLT6hZkHid4ERL57A',
+    link: 'https://goo.gl/maps/Y7ZTPGro1LHjNXF97',
     text: ContactEnum.UAELocation,
     icon: <LocationIcon />,
   },
@@ -108,7 +108,7 @@ const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
         </nav>
 
         <div className={S.contactLinksSection}>
-          <p className={S.title}>Contact Info</p>
+          <p className={S.title}>Contact</p>
 
           <div className={S.links}>
             {contactRoutes.map((route) => (
@@ -125,7 +125,7 @@ const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
         </div>
 
         <div className={S.socialLinksSection}>
-          <p className={S.title}>Social Links</p>
+          <p className={S.title}>Follow</p>
 
           <div className={S.links}>
             {socialRoutes.map((route) => (

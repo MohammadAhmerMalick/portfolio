@@ -4,7 +4,7 @@ export enum ContactEnum {
   email = 'mohammadahmermalick@gmail.com',
   emailWithLinebreak = 'mohammadahmermalick\n@gmail.com',
   PakistanLocation = 'Karchi, Sindh, Pakistan',
-  UAELocation = 'UAE',
+  UAELocation = 'Dubai, UAE',
 }
 
 export enum SectionIds {

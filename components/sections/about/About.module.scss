@@ -1,0 +1,13 @@
+@import '/styles/variables.scss';
+
+.about {
+  display: grid;
+  gap: 8px;
+
+  .link {
+    color: $primaryColor;
+    &:hover {
+      color: darken($primaryColor, 5);
+    }
+  }
+}

@@ -15,14 +15,14 @@ import TwitterIcon from '@/components/common/icons/TwitterIcon'
 import LinkedInIcon from '@/components/common/icons/LinkedInIcon'
 import WhatsAppIcon from '@/components/common/icons/WhatsAppIcon'
 import LocationIcon from '@/components/common/icons/LocationIcon'
-import PortfolioIcon from '@/components/common/icons/PortfolioIcon'
+// import PortfolioIcon from '@/components/common/icons/PortfolioIcon'
 
 import S from './Aside.module.scss'
 
 const routes = [
   { link: '/', icon: <HomeIcon />, text: 'Home' },
   { link: '/about', icon: <HomeIcon />, text: 'About' },
-  { link: '/portfolio', icon: <PortfolioIcon />, text: 'Portfolio' },
+  // { link: '/portfolio', icon: <PortfolioIcon />, text: 'Portfolio' },
   { link: '/contact', icon: <ContactIcon />, text: 'Contact' },
 ]
 

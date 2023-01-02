@@ -6,3 +6,7 @@ export enum ContactEnum {
   PakistanLocation = 'Karchi, Sindh, Pakistan',
   UAELocation = 'UAE',
 }
+
+export enum SectionIds {
+  Experience = 'Experience',
+}

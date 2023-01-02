@@ -1,5 +1,8 @@
+import Link from 'next/link'
 import classNames from 'classnames'
-import { useCallback, useEffect, useState } from 'react'
+import { FC, Fragment, useCallback, useEffect, useState } from 'react'
+
+import { SectionIds } from '@/utils/enums'
 
 import Card from '@/components/common/card/Card'
 import Button from '@/components/common/button/Button'
@@ -76,9 +79,14 @@ const data = [
   },
 ]
 
-const Experience = () => {
+interface Experience {
+  limit?: number
+  collapsedTill?: number
+}
+
+const Experience: FC<Experience> = ({ limit, collapsedTill }) => {
   const [collapsed, setCollapsed] = useState<boolean[]>(
-    data.map((_, index) => index > 1)
+    data.map((_, index) => index >= (collapsedTill || 2))
   )
 
   const adjustHeight = (id: string, isCollapsed: boolean) => {
@@ -122,7 +130,7 @@ const Experience = () => {
   }, [adjustAllHeight])
 
   return (
-    <SectionContainer>
+    <SectionContainer id={SectionIds.Experience}>
       <SectionHeading
         primary="My Working"
         secondary="Experience"
@@ -131,51 +139,71 @@ const Experience = () => {
 
       <div className={S.experience}>
         {data.map(({ id, company, period, description }, index) => (
-          <div key={id} className={S.block}>
-            <div className={S.togglerContainer}>
-              <button
-                className={S.toggler}
-                onClick={() => handleToggle(index, id)}
-              >
-                <div className={S.icon}>
-                  {collapsed[index] ? <AddIcon /> : <SubtractIcon />}
+          <Fragment key={id}>
+            {(limit || 100) > index && (
+              <div className={S.block}>
+                <div className={S.togglerContainer}>
+                  <button
+                    className={S.toggler}
+                    onClick={() => handleToggle(index, id)}
+                  >
+                    <div className={S.icon}>
+                      {collapsed[index] ? <AddIcon /> : <SubtractIcon />}
+                    </div>
+                  </button>
                 </div>
-              </button>
-            </div>
-            <div className={S.companyTitleContainer}>
-              <Card
-                onClick={() => handleToggle(index, id)}
-                className={classNames(S.companyTitle, {
-                  [S.expended]: !collapsed[index],
-                })}
-              >
-                <div className={S.icon}>
-                  <BriefcaseIcon />
+                <div className={S.companyTitleContainer}>
+                  <Card
+                    onClick={() => handleToggle(index, id)}
+                    className={classNames(S.companyTitle, {
+                      [S.expended]: !collapsed[index],
+                    })}
+                  >
+                    <div className={S.icon}>
+                      <BriefcaseIcon />
+                    </div>
+                    <h3 className={S.company}>{company}</h3>
+                    <p className={S.period}>{period}</p>
+                  </Card>
+                  <div
+                    className={classNames(S.count, {
+                      [S.collapsed]: collapsed[index],
+                    })}
+                  >
+                    <p className={S.text}>{`0${index + 1}.`}</p>
+                  </div>
                 </div>
-                <h3 className={S.company}>{company}</h3>
-                <p className={S.period}>{period}</p>
-              </Card>
-              <div
-                className={classNames(S.count, {
-                  [S.collapsed]: collapsed[index],
-                })}
-              >
-                <p className={S.text}>{`0${index + 1}.`}</p>
+                <div className={S.companyDetails} id={id}>
+                  <Card className={S.companyDetailCard}>{description}</Card>
+                  <div
+                    className={classNames(S.overlay, {
+                      [S.collapsed]: collapsed[index],
+                    })}
+                  />
+                </div>
               </div>
-            </div>
-            <div className={S.companyDetails} id={id}>
-              <Card className={S.companyDetailCard}>{description}</Card>
-              <div
-                className={classNames(S.overlay, {
-                  [S.collapsed]: collapsed[index],
-                })}
-              />
-            </div>
-          </div>
+            )}
+          </Fragment>
         ))}
+
+        {!!limit && (
+          <Link
+            href={`/about#${SectionIds.Experience}`}
+            className={S.seeAllLink}
+          >
+            <Button className={S.button} small shadow>
+              Sell All
+            </Button>
+          </Link>
+        )}
       </div>
     </SectionContainer>
   )
+}
+
+Experience.defaultProps = {
+  limit: 0,
+  collapsedTill: 2,
 }
 
 export default Experience

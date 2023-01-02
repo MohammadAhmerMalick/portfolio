@@ -20,6 +20,9 @@ body {
       top: $headerHeight;
       left: $asideWidth;
 
+      display: grid;
+      gap: 30px;
+
       height: calc(100vh - $headerHeight);
       width: calc(100vw - $asideWidth);
 
@@ -89,6 +92,7 @@ p {
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 
   padding: 0;
   margin: 0;

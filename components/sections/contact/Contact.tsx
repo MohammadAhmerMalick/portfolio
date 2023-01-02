@@ -1,7 +1,9 @@
+import Link from 'next/link'
 import classNames from 'classnames'
 import { toast } from 'react-toastify'
 import { FormEvent, useState } from 'react'
 
+import { contactRoutes } from '@/components/aside/Aside'
 import UserIcon from '@/components/common/icons/UserIcon'
 import BookIcon from '@/components/common/icons/BookIcon'
 import EmailIcon from '@/components/common/icons/EmailIcon'
@@ -57,7 +59,20 @@ const Contact = () => {
         primary="get in touch"
         secondary="with me"
         paragraph="If you have anything to say please let me know in the following form."
-      />
+      >
+        <div className={S.links}>
+          {contactRoutes.map((route) => (
+            <Link
+              key={route.link}
+              target="_blank"
+              href={route.link}
+              className={S.link}
+            >
+              {route.icon} {route.text}
+            </Link>
+          ))}
+        </div>
+      </SectionHeading>
 
       <form
         className={S.form}

@@ -27,11 +27,13 @@
   }
 
   .paragraph {
-    position: relative;
-
     max-width: 500px;
+  }
 
-    padding-bottom: 30px;
+  .after {
+    position: relative;
+    max-width: 550px;
+    padding-top: 20px;
 
     &:before {
       content: '';

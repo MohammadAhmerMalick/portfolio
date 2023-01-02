@@ -94,6 +94,22 @@ p {
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primaryColor;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $textColor;
+}
+
 // @media (prefers-color-scheme: dark) {
 //   html {
 //     color-scheme: dark;

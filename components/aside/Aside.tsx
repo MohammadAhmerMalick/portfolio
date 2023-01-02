@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 
 import { uuid } from '@/utils/utilFunctions'
+import { ContactEnum } from '@/utils/enums'
 
 import Button from '@/components/common/button/Button'
 import HomeIcon from '@/components/common/icons/HomeIcon'
@@ -48,12 +49,32 @@ const socialRoutes = [
   },
 ]
 
-const contactRoutes = [
-  { link: '/', text: 'mohammadahmermalick\n@gmail.com', icon: <EmailIcon /> },
-  { link: '/', text: 'Sindh, Karchi, Pakistan', icon: <LocationIcon /> },
-  { link: '/', text: 'Sharja', icon: <LocationIcon /> },
-  { link: '/', text: '+92 3494941593', icon: <WhatsAppIcon /> },
-  { link: '/', text: '+92 3494941593', icon: <WhatsAppIcon /> },
+export const contactRoutes = [
+  {
+    link: `https://wa.me/${ContactEnum.UAEContactNumber}`,
+    text: ContactEnum.UAEContactNumber,
+    icon: <WhatsAppIcon />,
+  },
+  {
+    link: `https://wa.me/${ContactEnum.PakistanContactNumber}`,
+    text: ContactEnum.PakistanContactNumber,
+    icon: <WhatsAppIcon />,
+  },
+  {
+    link: `mailto:${ContactEnum.email}`,
+    text: ContactEnum.emailWithLinebreak,
+    icon: <EmailIcon />,
+  },
+  {
+    link: 'https://goo.gl/maps/JLT6hZkHid4ERL57A',
+    text: ContactEnum.UAELocation,
+    icon: <LocationIcon />,
+  },
+  {
+    link: 'https://goo.gl/maps/6xbN4RE2KPoqgWdf9',
+    text: ContactEnum.PakistanLocation,
+    icon: <LocationIcon />,
+  },
 ]
 
 interface Aside {
@@ -91,7 +112,12 @@ const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
 
           <div className={S.links}>
             {contactRoutes.map((route) => (
-              <Link key={uuid()} href={route.link} className={S.link}>
+              <Link
+                key={route.link}
+                target="_blank"
+                href={route.link}
+                className={S.link}
+              >
                 {route.icon} {route.text}
               </Link>
             ))}

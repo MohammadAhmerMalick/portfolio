@@ -60,6 +60,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="twitter:title" content="Mohammad Ahmer Malick" />
         <meta property="twitter:description" content={metaDescription} />
         <meta property="twitter:image" content={metaImage} />
+
+        <link rel="shortcut icon" href="./favicon.svg" type="image/x-icon" />
       </Head>
 
       <ToastContainer />

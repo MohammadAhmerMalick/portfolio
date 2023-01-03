@@ -26,6 +26,10 @@ export const HTMLTag = { name: 'HTML', link: '/images/html.svg' }
 export const CSSTag = { name: 'CSS', link: '/images/css.svg' }
 export const SASSTag = { name: 'SASS', link: '/images/sass.svg' }
 export const BootstrapTag = { name: 'Bootstrap', link: '/images/bootstrap.svg' }
+export const TailwindTag = {
+  name: 'Tailwind',
+  link: '/images/tailwind-icon.svg',
+}
 export const SVGAnimationTag = {
   name: 'SVG Animation',
   link: '/images/svg.svg',
@@ -35,8 +39,10 @@ export const JavaScriptTag = {
   link: '/images/javascript.svg',
 }
 export const ReactJSTag = { name: 'React.JS', link: '/images/react-js.svg' }
+export const VueJSTag = { name: 'React.JS', link: '/images/vue-js.svg' }
 export const NodeJSTag = { name: 'Node.JS', link: '/images/node-js.svg' }
 export const NextJSTag = { name: 'Next.JS', link: '/images/next-js.svg' }
+export const NuxtJSTag = { name: 'Next.JS', link: '/images/nuxt-js.svg' }
 export const APITag = { name: 'API', link: '/images/api.svg' }
 export const jQueryTag = { name: 'jQuery', link: '/images/jquery.svg' }
 export const WordPressTag = { name: 'WordPress', link: '/images/wordpress.svg' }
@@ -80,21 +86,24 @@ export const skillList: x = {
     CSSTag,
     SASSTag,
     BootstrapTag,
+    TailwindTag,
     SVGAnimationTag,
+    WordPressTag,
     JavaScriptTag,
     ReactJSTag,
-    NodeJSTag,
     NextJSTag,
-    APITag,
+    VueJSTag,
+    NuxtJSTag,
+    NodeJSTag,
     jQueryTag,
-    WordPressTag,
-    EmailTemplatesTag,
-    SendGridTag,
     PHPTag,
-    MongoDBTag,
-    MYSQLTag,
+    EmailTemplatesTag,
+    APITag,
     GitHubTag,
+    MYSQLTag,
+    MongoDBTag,
     CPanelTag,
+    SendGridTag,
   ],
   [SkillCategories.graphic]: [
     FigmaTag,

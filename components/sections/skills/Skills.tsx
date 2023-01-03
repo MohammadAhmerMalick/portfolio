@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import SkillTags, {
   SkillCategories,
 } from '@/components/common/skillTags/SkillTags'
-import Button from '@/components/common/button/Button'
 import ColarPalette from '@/components/common/icons/ColarPalette'
 import WebDevelopmentIcon from '@/components/common/icons/WebDevelopmentIcon'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
@@ -58,25 +57,21 @@ const Skills = () => {
           />
           <SectionHeading
             secondary="Skills"
-            primary="Web Development"
+            primary={
+              category === SkillCategories.web
+                ? 'Web Development'
+                : 'Graphic Designer'
+            }
             className={S.sectionHeading}
+            fullWidthPara
             paragraph="
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
-            repellendus expedita recusandae quam nam doloremque accusantium quod
-            nostrum voluptates earum? Eius deleniti laudantium tenetur
-            consequatur iusto quidem quos eaque corrupti."
+            As a graphic designer, I always had a passion for creating visually stunning designs that effectively communicated a message. However, I delved deeper into the world of design and became increasingly interested in the technical side of things. I wanted to be able to not just create the design, but also bring it to life on the web.
+            So, I decided to make the transition from graphic design to web development and taught myself the necessary skills, such as HTML, CSS, and JavaScript, and began building websites from scratch.
+            Now, as a web developer, I am able to combine my creative eye with technical proficiency to build websites that are not only visually appealing, but also functional and user-friendly. I constantly learning and staying up-to-date on the latest graphic skills along with web development technologies."
           />
         </div>
 
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio
-          repellendus expedita recusandae quam nam doloremque accusantium quod
-          nostrum voluptates earum? Eius deleniti laudantium tenetur consequatur
-          iusto quidem quos eaque corrupti.
-        </p>
-
         <SkillTags categories={[category]} />
-        <Button small>Checkout {category} Projects</Button>
       </SectionContainer>
     </div>
   )

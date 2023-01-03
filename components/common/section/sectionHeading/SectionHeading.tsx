@@ -5,6 +5,7 @@ import S from './SectionHeading.module.scss'
 
 interface SectionHeading {
   paragraph?: string
+  fullWidthPara?: boolean
   className?: string
   children?: ReactNode
 }
@@ -25,6 +26,7 @@ const SectionHeading: FC<SectionHeading1 | SectionHeading2> = ({
   paragraph,
   className,
   children,
+  fullWidthPara,
 }) => {
   return (
     <div className={classNames(S.sectionHeading, className)}>
@@ -32,7 +34,15 @@ const SectionHeading: FC<SectionHeading1 | SectionHeading2> = ({
         <span className={S.primary}>{primary}</span>{' '}
         <span className={S.secondary}>{secondary}</span>
       </h1>
-      {paragraph && <p className={S.paragraph}>{paragraph}</p>}
+      {paragraph && (
+        <p
+          className={classNames(S.paragraph, {
+            [S.fullWidthPara]: fullWidthPara,
+          })}
+        >
+          {paragraph}
+        </p>
+      )}
       {children}
       <div className={S.after} />
     </div>

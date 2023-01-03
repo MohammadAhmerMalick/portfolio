@@ -1,0 +1,46 @@
+@import '/styles/variables.scss';
+
+.experienceDetail {
+  display: grid;
+  gap: 8px;
+
+  overflow: hidden;
+
+  transition: $transitionDuration;
+
+  @media (max-width: $mobileRes) {
+    padding: 15px;
+  }
+
+  .points {
+    list-style: none;
+
+    .point {
+      position: relative;
+
+      padding-left: 20px;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+        top: 2px;
+        bottom: 0;
+        left: 0;
+
+        margin: auto;
+
+        width: $dotSize;
+        height: $dotSize;
+
+        border-radius: 100%;
+
+        background-color: $primaryColor;
+      }
+    }
+  }
+
+  .button {
+    margin-top: 8px;
+  }
+}

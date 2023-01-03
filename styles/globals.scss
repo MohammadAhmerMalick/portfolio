@@ -9,6 +9,11 @@ body {
 
   background-color: $lightGrayColor;
 
+  ::selection {
+    color: $textColor;
+    background: $primaryColor;
+  }
+
   #__next {
     display: grid;
     grid-template-rows: 80px auto;
@@ -19,6 +24,9 @@ body {
       position: absolute;
       top: $headerHeight;
       left: $asideWidth;
+
+      display: grid;
+      gap: 30px;
 
       height: calc(100vh - $headerHeight);
       width: calc(100vw - $asideWidth);
@@ -89,9 +97,26 @@ p {
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 
   padding: 0;
   margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primaryColor;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $textColor;
 }
 
 // @media (prefers-color-scheme: dark) {

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 
 import { uuid } from '@/utils/utilFunctions'
+import { ContactEnum } from '@/utils/enums'
 
 import Button from '@/components/common/button/Button'
 import HomeIcon from '@/components/common/icons/HomeIcon'
@@ -14,14 +15,14 @@ import TwitterIcon from '@/components/common/icons/TwitterIcon'
 import LinkedInIcon from '@/components/common/icons/LinkedInIcon'
 import WhatsAppIcon from '@/components/common/icons/WhatsAppIcon'
 import LocationIcon from '@/components/common/icons/LocationIcon'
-import PortfolioIcon from '@/components/common/icons/PortfolioIcon'
+// import PortfolioIcon from '@/components/common/icons/PortfolioIcon'
 
 import S from './Aside.module.scss'
 
 const routes = [
   { link: '/', icon: <HomeIcon />, text: 'Home' },
   { link: '/about', icon: <HomeIcon />, text: 'About' },
-  { link: '/portfolio', icon: <PortfolioIcon />, text: 'Portfolio' },
+  // { link: '/portfolio', icon: <PortfolioIcon />, text: 'Portfolio' },
   { link: '/contact', icon: <ContactIcon />, text: 'Contact' },
 ]
 
@@ -48,12 +49,32 @@ const socialRoutes = [
   },
 ]
 
-const contactRoutes = [
-  { link: '/', text: 'mohammadahmermalick\n@gmail.com', icon: <EmailIcon /> },
-  { link: '/', text: 'Sindh, Karchi, Pakistan', icon: <LocationIcon /> },
-  { link: '/', text: 'Sharja', icon: <LocationIcon /> },
-  { link: '/', text: '+92 3494941593', icon: <WhatsAppIcon /> },
-  { link: '/', text: '+92 3494941593', icon: <WhatsAppIcon /> },
+export const contactRoutes = [
+  {
+    link: `https://wa.me/${ContactEnum.UAEContactNumber}`,
+    text: ContactEnum.UAEContactNumber,
+    icon: <WhatsAppIcon />,
+  },
+  {
+    link: `https://wa.me/${ContactEnum.PakistanContactNumber}`,
+    text: ContactEnum.PakistanContactNumber,
+    icon: <WhatsAppIcon />,
+  },
+  {
+    link: `mailto:${ContactEnum.email}`,
+    text: ContactEnum.emailWithLinebreak,
+    icon: <EmailIcon />,
+  },
+  {
+    link: 'https://goo.gl/maps/Y7ZTPGro1LHjNXF97',
+    text: ContactEnum.UAELocation,
+    icon: <LocationIcon />,
+  },
+  {
+    link: 'https://goo.gl/maps/6xbN4RE2KPoqgWdf9',
+    text: ContactEnum.PakistanLocation,
+    icon: <LocationIcon />,
+  },
 ]
 
 interface Aside {
@@ -87,11 +108,16 @@ const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
         </nav>
 
         <div className={S.contactLinksSection}>
-          <p className={S.title}>Contact Info</p>
+          <p className={S.title}>Contact</p>
 
           <div className={S.links}>
             {contactRoutes.map((route) => (
-              <Link key={uuid()} href={route.link} className={S.link}>
+              <Link
+                key={route.link}
+                target="_blank"
+                href={route.link}
+                className={S.link}
+              >
                 {route.icon} {route.text}
               </Link>
             ))}
@@ -99,7 +125,7 @@ const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
         </div>
 
         <div className={S.socialLinksSection}>
-          <p className={S.title}>Social Links</p>
+          <p className={S.title}>Follow</p>
 
           <div className={S.links}>
             {socialRoutes.map((route) => (

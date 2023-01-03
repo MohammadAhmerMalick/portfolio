@@ -9,37 +9,11 @@ import Button from '@/components/common/button/Button'
 import AddIcon from '@/components/common/icons/AddIcon'
 import SubtractIcon from '@/components/common/icons/SubtractIcon'
 import BriefcaseIcon from '@/components/common/icons/BriefcaseIcon'
+import ExperienceDetail from '@/components/sections/experience/ExperienceDetail'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
 import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
 
 import S from './Experience.module.scss'
-
-const Epx1Details = () => {
-  return (
-    <>
-      <h4 className={S.designation}>COMPLETE THE PROJECT DOMIK</h4>
-      <div className={S.details}>
-        <p className={S.detail}>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which dont look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isnt anything embarrassing hidden in the middle of text.F
-        </p>
-      </div>
-
-      <ul className={S.points}>
-        <li className={S.point}>Door portals plan</li>
-        <li className={S.point}>Furniture specifications</li>
-        <li className={S.point}>Interior design</li>
-      </ul>
-
-      <Button small className={S.button}>
-        Details
-      </Button>
-    </>
-  )
-}
 
 const data = [
   {
@@ -47,21 +21,18 @@ const data = [
     company: 'Denovers',
     period: 'Dec 2021 - Dec 2022',
     designation: 'Full Stack Developer',
-    description: <Epx1Details />,
+  },
+  {
+    id: 'exp-2',
+    company: 'Phoenix Technologies',
+    period: 'May 2021 - Nov 2021',
+    designation: 'Frontend Developer',
   },
   {
     id: 'exp-3',
-    company: 'Phoenix Technologies',
-    period: 'May 2021 - Nov 2021',
-    designation: 'Full Stack Developer',
-    description: <Epx1Details />,
-  },
-  {
-    id: 'exp-4',
     company: 'Bizz World Communications',
     period: 'Aug 2019 - Jan 2021',
     designation: 'Full Stack Developer',
-    description: <Epx1Details />,
   },
 ]
 
@@ -124,7 +95,7 @@ const Experience: FC<Experience> = ({ limit, collapsedTill }) => {
       />
 
       <div className={S.experience}>
-        {data.map(({ id, company, period, description }, index) => (
+        {data.map(({ id, company, period, designation }, index) => (
           <Fragment key={id}>
             {(limit || 100) > index && (
               <div className={S.block}>
@@ -160,7 +131,7 @@ const Experience: FC<Experience> = ({ limit, collapsedTill }) => {
                   </div>
                 </div>
                 <div className={S.companyDetails} id={id}>
-                  <Card className={S.companyDetailCard}>{description}</Card>
+                  <ExperienceDetail designation={designation} />
                   <div
                     className={classNames(S.overlay, {
                       [S.collapsed]: collapsed[index],

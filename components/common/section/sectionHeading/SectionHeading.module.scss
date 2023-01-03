@@ -31,6 +31,10 @@
 
   .paragraph {
     max-width: 500px;
+
+    &.fullWidthPara {
+      max-width: unset;
+    }
   }
 
   .after {

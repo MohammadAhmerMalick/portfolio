@@ -14,6 +14,8 @@
 
   .points {
     list-style: none;
+    display: grid;
+    gap: 5px;
 
     .point {
       position: relative;
@@ -24,11 +26,9 @@
         content: '';
 
         position: absolute;
-        top: 2px;
+        top: 10px;
         bottom: 0;
         left: 0;
-
-        margin: auto;
 
         width: $dotSize;
         height: $dotSize;

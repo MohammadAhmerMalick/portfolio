@@ -14,7 +14,7 @@ import RouteProgressBar from '@/components/common/loading/routeProgressBar/Route
 import '@/styles/globals.scss'
 import 'react-toastify/dist/ReactToastify.css'
 
-const metaUrl = 'http://www.mohammadahmermalick.com'
+const metaUrl = 'https://www.mohammadahmermalick.com'
 const metaImage = '/'
 const metaDescription =
   'This is my portfolio website. Here you will find all my project and ways to contact me, Mohammad Ahmer Malick | mohammadahmermalick@gmail.com'

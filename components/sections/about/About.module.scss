@@ -26,12 +26,18 @@
   .resume {
     text-align: center;
 
-    @media (max-width: $tabletRes) {
-     display: none;
-    }
-
+    
     .resumeQRCode {
       width: 100%;
+
+      @media (max-width: $tabletRes) {
+       display: none;
+      }
+    }
+
+    .button{
+      width: 200px;
+      max-width: 100%;
     }
   }
 }

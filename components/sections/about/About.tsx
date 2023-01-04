@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { ContactEnum } from '@/utils/enums'
 
-import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
+import Button from '@/components/common/button/Button'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
+import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
 
 import S from './About.module.scss'
 
@@ -50,17 +52,20 @@ const About = () => {
             </p>
           </div>
           <div className={S.resume}>
-            <img
+            <Image
+              width={300}
+              height={220}
               className={S.resumeQRCode}
-              src="./images/resume-qr-code.svg"
+              src="/images/resume-qr-code.svg"
               alt="mohammadahmermalick.com/resume/Mohammad%20Ahmer%20Malick%20CV.pdf"
             />
             <Link
               target="_blank"
-              className={S.link}
-              href="/resume/Mohammad%20Ahmer%20Malick%20CV.pdf"
+              href="/resume/Mohammad%20Ahmer%20Malick%20Resume.pdf"
             >
-              Mohammad Ahmer Malick Resume
+              <Button shadow small className={S.button}>
+                My Resume
+              </Button>
             </Link>
           </div>
         </div>

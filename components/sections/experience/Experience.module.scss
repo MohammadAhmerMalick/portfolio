@@ -223,8 +223,14 @@
   .seeAllLink {
     margin: auto;
 
+    width: 100%;
+    max-width: 300px;
+
     .button {
-      min-width: 300px;
+      display: block;
+
+      width: 100%;
+      max-width: unset;
     }
   }
 }

@@ -20,7 +20,7 @@ const Header: FC<Header> = ({
 
   return (
     <header className={S.header}>
-      <div className={S.logo}>Mohammad Ahmer Malick</div>
+      <h1 className={S.logo}>Mohammad Ahmer Malick</h1>
       <div className={S.left}>
         <div className={S.title}>
           <p className={S.text}>{router.pathname.split('/')[1] || 'home'}</p>

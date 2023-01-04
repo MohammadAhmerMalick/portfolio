@@ -30,14 +30,15 @@ const About = () => {
               create value with my work, both personally and professionally.
             </p>
             <p>
+              Here are some of the{' '}
               <Link
                 target="_blank"
                 className={S.link}
                 href="https://shorturl.at/uIQZ5"
               >
-                Here
+                websites
               </Link>{' '}
-              are some of the websites that I designed in my career.
+              that I designed in my career.
             </p>
             <p>
               Currently located in UAE till February-20-2023 and you can contact

@@ -12,7 +12,7 @@ interface ExperienceDetail {
 const ExperienceDetail: FC<ExperienceDetail> = ({ designation, points }) => {
   return (
     <Card className={S.experienceDetail}>
-      <h4 className={S.designation}>{designation}</h4>
+      <h2 className={S.designation}>{designation}</h2>
 
       <ul className={S.points}>
         {points.map((point) => (

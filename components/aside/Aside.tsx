@@ -149,8 +149,9 @@ const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
       </div>
 
       <button
-        className={classNames(S.toggle, { [S.minimized]: minimized })}
+        aria-label="Toggle"
         onClick={() => setMinimized(!minimized)}
+        className={classNames(S.toggle, { [S.minimized]: minimized })}
       >
         <span className={S.line} />
         <span className={S.line} />

@@ -131,6 +131,7 @@ const Experience: FC<Experience> = ({ limit, collapsedTill }) => {
                   <button
                     className={S.toggler}
                     onClick={() => handleToggle(index, id)}
+                    aria-label={company}
                   >
                     <div className={S.icon}>
                       {collapsed[index] ? <AddIcon /> : <SubtractIcon />}

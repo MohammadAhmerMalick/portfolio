@@ -1,5 +1,5 @@
 export enum ContactEnum {
-  UAEContactNumber = '971545153604',
+  UAEContactNumber = '971545149849',
   PakistanContactNumber = '923494941593',
   email = 'mohammadahmermalick@gmail.com',
   emailWithLinebreak = 'mohammadahmermalick\n@gmail.com',

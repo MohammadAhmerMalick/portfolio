@@ -16,14 +16,14 @@ const About = () => {
         <div className={S.about}>
           <div className={S.content}>
             <p>
-              I am a Computer Scientist with more than three years of field
-              experience as a Web Developer. I have developed analytical skills
-              with expertise in handling teams along with other challenges. I am
-              Specialize in developing responsive, search engine optimized,
-              speed optimized web applications and websites and have extensive
-              experience in frontend and can handle backend on multiple
-              programming languages, also capable of handling a variety of
-              graphic-based tasks as well.
+              I am a passionate Full Stack Web Developer with over 4 years of
+              experience in creating dynamic and responsive web applications. I
+              have developed analytical skills with expertise in handling teams
+              along with other challenges. I am Specialize in developing
+              responsive, search engine optimized, speed optimized web
+              applications and websites and have extensive experience in
+              frontend and can handle backend on multiple programming languages,
+              also capable of handling a variety of graphic-based tasks as well.
             </p>
             <p>
               I am passionate about growing businesses profitably. I aspire to
@@ -40,16 +40,17 @@ const About = () => {
               </Link>{' '}
               that I designed in my career.
             </p>
+
             <p>
-              Currently located in UAE till February-20-2023 and you can contact
-              me through{' '}
-              <Link
-                target="_blank"
-                className={S.link}
-                href={`tel:+${ContactEnum.PakistanContactNumber}`}
-              >
-                +{ContactEnum.UAEContactNumber}
-              </Link>
+              Whether it&#39;s developing a complex web application from scratch
+              or enhancing an existing project, I thrive on solving challenges
+              and delivering high-quality solutions on time and within budget.
+            </p>
+            <p>
+              Let&#39;s connect! Whether you&#39;re looking to collaborate on a
+              project or simply want to chat about web development, feel free to
+              reach out. I&#39;m always eager to network and share knowledge
+              with like-minded professionals.
             </p>
           </div>
           <div className={S.resume}>

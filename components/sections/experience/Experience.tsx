@@ -18,33 +18,6 @@ import S from './Experience.module.scss'
 const data = [
   {
     id: 'exp-1',
-    company: 'Denovers',
-    period: 'Dec 2021 - Dec 2022',
-    designation: 'Full Stack Developer',
-    points: [
-      'Collaborate with the team and international clients to produce a variety of concepts.',
-      'Attend to multiple projects while prioritizing and meeting tight deadlines.',
-      'Design SAAP applications on the latest technologies like Next.js, Nest.js and tailwind.',
-      'Design a website with a component-based approach while maintaining responsiveness, SEO, and speed optimization on the website.',
-      'Convert Figma to Next.js or Nest.js SAAP application.',
-      'Debug and refactor existing applications with the latest technologies.',
-    ],
-  },
-  {
-    id: 'exp-2',
-    company: 'Phoenix Technologies',
-    period: 'May 2021 - Nov 2021',
-    designation: 'Frontend Developer',
-    points: [
-      'Convert Figma designs or PSD designs into fully functioning React or vanilla javascript applications and websites.',
-      'Third-party API integration into existing applications. Created SVG micro animation for websites.',
-      'Lottie animation with Adobe Premiere Pro.',
-      'Add on-page SEO optimization.',
-      'Manage clients’ NameCheap accounts including domain, hosting and email hosting.',
-    ],
-  },
-  {
-    id: 'exp-3',
     company: 'Bizz World Communications',
     period: 'Aug 2019 - Jan 2021',
     designation: 'Full Stack Developer',
@@ -55,14 +28,56 @@ const data = [
       'Website Backup, Cloning & Migration from Cpanel.',
       'Landing page design using HTML, SCSS, jQuery, Photoshop & PHP',
       'Implemented cross-browser compatibility in websites and applications.',
-      'Implement web optimization using google lighthouse and  e3c coding standards.',
+      'Implement web optimization using Google Lighthouse and  e3c coding standards.',
       'I developed an application to automate mass emailing through Sendgrid.',
       'Create dynamic and responsive email templates.',
       'Manage website and email hosting and domain.',
       'Manage email assets and keep records.',
     ],
   },
-]
+
+  {
+    id: 'exp-2',
+    company: 'Phoenix Technologies',
+    period: 'May 2021 - Nov 2021',
+    designation: 'Frontend Developer',
+    points: [
+      'Convert Figma designs or PSD designs into fully functioning React or vanilla JavaScript applications and websites.',
+      'Third-party API integration into existing applications.',
+      'Created SVG micro animation for websites.',
+      'Lottie animation with Adobe Premiere Pro.',
+      'Add on-page SEO optimization.',
+      'Manage clients’ NameCheap accounts including domain, hosting and email hosting.',
+    ],
+  },
+  {
+    id: 'exp-3',
+    company: 'Denovers',
+    period: 'Dec 2021 - Dec 2022',
+    designation: 'Full Stack Developer',
+    points: [
+      'Collaborate with the team and international clients to produce a variety of concepts.',
+      'Attend to multiple projects while prioritizing and meeting tight deadlines.',
+      'Design SAAP applications on the latest technologies like Next.js, Nest.js and Tailwind.',
+      'Design a website with a component-based approach while maintaining responsiveness, SEO, and speed optimization on the website.',
+      'Convert Figma to Next.js or Nest.js SAAP application.',
+      'Debug and refactor existing applications with the latest technologies.',
+    ],
+  },
+  {
+    id: 'exp-4',
+    company: 'Service My Car',
+    period: 'Jan 2023 - Present',
+    designation: 'Full Stack Developer',
+    points: [
+      'Maintain the company’s main website.',
+      'Create new APIs to meet new business requirements and integrate them into projects.',
+      'Implemented cross-browser compatibility.',
+      'Improve the performance and SEO optimization points with industrial standard tools.',
+      'Migrate existing projects to the latest technologies.',
+    ],
+  },
+].reverse()
 
 interface Experience {
   limit?: number
@@ -77,6 +92,7 @@ const Experience: FC<Experience> = ({ limit, collapsedTill }) => {
   const adjustHeight = (id: string, isCollapsed: boolean) => {
     const exp = document.getElementById(id)
     const child = exp?.children[0]
+
     const height = child?.clientHeight
 
     if (exp && child && height) {

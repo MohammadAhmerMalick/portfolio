@@ -68,7 +68,7 @@ const Contact = () => {
               href={route.link}
               className={S.link}
             >
-              {route.icon} {route.text}
+              {route.icon} {route.text.replace('\n', '')}
             </Link>
           ))}
         </div>

@@ -70,11 +70,6 @@ export const contactRoutes = [
     text: ContactEnum.UAELocation,
     icon: <LocationIcon />,
   },
-  {
-    link: 'https://goo.gl/maps/6xbN4RE2KPoqgWdf9',
-    text: ContactEnum.PakistanLocation,
-    icon: <LocationIcon />,
-  },
 ]
 
 interface Aside {

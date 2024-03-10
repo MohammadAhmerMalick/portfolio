@@ -1,0 +1,34 @@
+@import '/styles/variables.scss';
+
+.bodyOverlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  background-color: rgba($color: #000000, $alpha: 0.5);
+
+  opacity: 0;
+
+  transition-duration: $transitionDuration;
+  pointer-events: none;
+  z-index: 40;
+
+  &.isDrawn {
+    pointer-events: all;
+    @media (max-width: $sidePanelLayoutShiftRes) {
+      opacity: 1;
+    }
+  }
+
+  // idea is to stop the transition for initial rendering to prevent layout shift
+  &.initialState {
+    transition-duration: 0s;
+
+    @media (max-width: $sidePanelLayoutShiftRes) {
+      pointer-events: none;
+      opacity: 0;
+    }
+  }
+}

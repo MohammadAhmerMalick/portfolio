@@ -9,6 +9,14 @@
     left: -($asideWidth);
   }
 
+  &.initialState {
+    left: 0;
+
+    @media (max-width: $sidePanelLayoutShiftRes) {
+      left: -($asideWidth);
+    }
+  }
+
   color: $textColor;
   font-weight: 500;
   font-size: 14px;

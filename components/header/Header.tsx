@@ -10,13 +10,20 @@ import S from './Header.module.scss'
 interface Header {
   isSidePanelminimized: boolean
   setIsSidePanelMinimized: Dispatch<SetStateAction<boolean>>
+  setIsUserSwitchedSidePanel: Dispatch<SetStateAction<boolean>>
 }
 
 const Header: FC<Header> = ({
   isSidePanelminimized,
   setIsSidePanelMinimized,
+  setIsUserSwitchedSidePanel,
 }) => {
   const router = useRouter()
+
+  const handleSwitchPanel = () => {
+    setIsSidePanelMinimized(!isSidePanelminimized)
+    setIsUserSwitchedSidePanel(true)
+  }
 
   return (
     <header className={S.header}>
@@ -25,10 +32,7 @@ const Header: FC<Header> = ({
         <div className={S.title}>
           <p className={S.text}>{router.pathname.split('/')[1] || 'home'}</p>
         </div>
-        <Button
-          className={S.menuButton}
-          onClick={() => setIsSidePanelMinimized(!isSidePanelminimized)}
-        >
+        <Button className={S.menuButton} onClick={handleSwitchPanel}>
           {isSidePanelminimized ? <MenuIcon /> : <CloseIcon />}
           <span className={S.text}>Menu</span>
         </Button>

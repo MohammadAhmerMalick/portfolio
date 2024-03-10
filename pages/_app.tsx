@@ -9,6 +9,7 @@ import { capitalize } from '@/utils/utilFunctions'
 
 import Aside from '@/components/aside/Aside'
 import Header from '@/components/header/Header'
+import BodyOverlay from '@/components/bodyOverlay/BodyOverlay'
 import RouteProgressBar from '@/components/common/loading/routeProgressBar/RouteProgressBar'
 
 import '@/styles/globals.scss'
@@ -23,10 +24,21 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const [isSidePanelminimized, setIsSidePanelMinimized] = useState(true)
 
+  // idea is to stop the transition for initial rendering to prevent layout shift
+  const [isUserSwitchedSidePanel, setIsUserSwitchedSidePanel] = useState(false)
+
   useEffect(() => {
-    setIsSidePanelMinimized(
-      typeof window !== 'undefined' && window.screen.width <= 992
-    )
+    // monitor the initial state if sidepanel weather is open or not and updated the 'isSidePanelminimized' state accordingly
+    const handleSidePanelInitialState = () => {
+      setIsSidePanelMinimized(
+        typeof window !== 'undefined' && window.document.body.clientWidth <= 992
+      )
+    }
+
+    window.addEventListener('resize', handleSidePanelInitialState)
+    return () => {
+      window.removeEventListener('resize', handleSidePanelInitialState)
+    }
   }, [])
 
   return (
@@ -69,21 +81,27 @@ export default function App({ Component, pageProps }: AppProps) {
       <Header
         isSidePanelminimized={isSidePanelminimized}
         setIsSidePanelMinimized={setIsSidePanelMinimized}
+        setIsUserSwitchedSidePanel={setIsUserSwitchedSidePanel}
       />
       <Aside
         minimized={isSidePanelminimized}
         setMinimized={setIsSidePanelMinimized}
+        isUserSwitchedSidePanel={isUserSwitchedSidePanel}
+        setIsUserSwitchedSidePanel={setIsUserSwitchedSidePanel}
+      />
+      <BodyOverlay
+        isDrawn={!isSidePanelminimized}
+        onClick={setIsSidePanelMinimized}
+        isUserSwitchedSidePanel={isUserSwitchedSidePanel}
       />
       <RouteProgressBar minimizeSidepanel={setIsSidePanelMinimized} />
-      <main className={classNames({ expended: isSidePanelminimized })}>
+      <main
+        className={classNames({
+          expended: isSidePanelminimized,
+          mainInitialState: !isUserSwitchedSidePanel, // idea is to stop the transition for initial rendering to prevent layout shift
+        })}
+      >
         <Component {...pageProps} />
-        <div
-          aria-hidden
-          onClick={() => setIsSidePanelMinimized(true)}
-          className={classNames('bodyOverlay', {
-            expended: isSidePanelminimized,
-          })}
-        />
       </main>
     </>
   )

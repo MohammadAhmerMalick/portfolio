@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { ContactEnum } from '@/utils/enums'
-
 import Button from '@/components/common/button/Button'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
 import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'

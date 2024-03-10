@@ -1,7 +1,13 @@
+import {
+  type FC,
+  useState,
+  useEffect,
+  type Dispatch,
+  SetStateAction,
+} from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
 import { useRouter } from 'next/router'
-import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 
 import { uuid } from '@/utils/utilFunctions'
 import { ContactEnum } from '@/utils/enums'
@@ -15,7 +21,6 @@ import TwitterIcon from '@/components/common/icons/TwitterIcon'
 import LinkedInIcon from '@/components/common/icons/LinkedInIcon'
 import WhatsAppIcon from '@/components/common/icons/WhatsAppIcon'
 import LocationIcon from '@/components/common/icons/LocationIcon'
-// import PortfolioIcon from '@/components/common/icons/PortfolioIcon'
 
 import S from './Aside.module.scss'
 
@@ -74,18 +79,34 @@ export const contactRoutes = [
 
 interface Aside {
   minimized: boolean
+  isUserSwitchedSidePanel: boolean
   setMinimized: Dispatch<SetStateAction<boolean>>
+  setIsUserSwitchedSidePanel: Dispatch<SetStateAction<boolean>>
 }
 
-const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
+const Aside: FC<Aside> = ({
+  minimized,
+  setMinimized,
+  isUserSwitchedSidePanel,
+  setIsUserSwitchedSidePanel,
+}) => {
   const router = useRouter()
 
   const [pageLink, setPageLink] = useState('/')
 
   useEffect(() => setPageLink(`/${router.pathname.split('/')[1]}`), [router])
 
+  const toggleSidePanel = () => {
+    setMinimized(!minimized)
+    setIsUserSwitchedSidePanel(true)
+  }
   return (
-    <aside className={classNames(S.aside, { [S.minimized]: minimized })}>
+    <aside
+      className={classNames(S.aside, {
+        [S.initialState]: !isUserSwitchedSidePanel, // idea is to stop the transition for initial rendering to prevent layout shift
+        [S.minimized]: minimized,
+      })}
+    >
       <div className={S.container}>
         <nav className={S.nav}>
           {routes.map((route) => (
@@ -145,7 +166,7 @@ const Aside: FC<Aside> = ({ minimized, setMinimized }) => {
 
       <button
         aria-label="Toggle"
-        onClick={() => setMinimized(!minimized)}
+        onClick={toggleSidePanel}
         className={classNames(S.toggle, { [S.minimized]: minimized })}
       >
         <span className={S.line} />

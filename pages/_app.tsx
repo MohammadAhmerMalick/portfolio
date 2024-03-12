@@ -35,6 +35,8 @@ export default function App({ Component, pageProps }: AppProps) {
       )
     }
 
+    handleSidePanelInitialState()
+
     window.addEventListener('resize', handleSidePanelInitialState)
     return () => {
       window.removeEventListener('resize', handleSidePanelInitialState)

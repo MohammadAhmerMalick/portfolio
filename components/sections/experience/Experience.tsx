@@ -68,7 +68,7 @@ const data = [
     id: 'exp-4',
     company: 'Service My Car',
     period: 'Jan 2023 - Present',
-    designation: 'Full Stack Developer',
+    designation: 'Frontend Web Developer',
     points: [
       'Maintain the company’s main website.',
       'Create new APIs to meet new business requirements and integrate them into projects.',

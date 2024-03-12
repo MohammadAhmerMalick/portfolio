@@ -16,8 +16,8 @@
   z-index: 40;
 
   &.isDrawn {
-    pointer-events: all;
     @media (max-width: $sidePanelLayoutShiftRes) {
+      pointer-events: all;
       opacity: 1;
     }
   }
@@ -25,9 +25,9 @@
   // idea is to stop the transition for initial rendering to prevent layout shift
   &.initialState {
     transition-duration: 0s;
+    pointer-events: none;
 
     @media (max-width: $sidePanelLayoutShiftRes) {
-      pointer-events: none;
       opacity: 0;
     }
   }

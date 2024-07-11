@@ -43,7 +43,7 @@ const Skills = () => {
       </div>
 
       <SectionContainer className={S.block}>
-        <div className={S.haad}>
+        <div className={S.head}>
           <Image
             width={440}
             height={293}

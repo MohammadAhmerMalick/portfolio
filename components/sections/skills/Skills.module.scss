@@ -113,17 +113,13 @@
 
     padding: 30px;
 
-    .haad {
+    .head {
       display: grid;
       grid-template-columns: 440px auto;
       align-items: center;
       gap: 30px;
 
       @media (max-width: $fullWideRes) {
-        grid-template-columns: 400px auto;
-      }
-
-      @media (max-width: $wideRes) {
         grid-template-columns: auto;
       }
 

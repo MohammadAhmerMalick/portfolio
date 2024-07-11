@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 html,
 body {
@@ -7,7 +8,13 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
+  font-family: 'Roboto', sans-serif;
+
   background-color: $lightGrayColor;
+
+  * {
+    line-height: 1.5;
+  }
 
   ::selection {
     color: $textColor;
@@ -32,6 +39,7 @@ body {
       width: calc(100vw - $asideWidth);
 
       padding: 30px;
+
       @media (max-width: $sidePanelLayoutShiftRes) {
         padding: 15px;
       }

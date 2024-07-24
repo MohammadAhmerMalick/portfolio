@@ -14,7 +14,7 @@ const About = () => {
         <div className={S.about}>
           <div className={S.content}>
             <p>
-              I am a passionate Full Stack Web Developer with over 4 years of
+              I am a passionate Full Stack Web Developer with over 5 years of
               experience in creating dynamic and responsive web applications. I
               have developed analytical skills with expertise in handling teams
               along with other challenges. I am Specialize in developing

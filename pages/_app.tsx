@@ -10,6 +10,7 @@ import { capitalize } from '@/utils/utilFunctions'
 import Aside from '@/components/aside/Aside'
 import Header from '@/components/header/Header'
 import BodyOverlay from '@/components/bodyOverlay/BodyOverlay'
+import CursorPointer from 'app/components/cursorPointer/CursorPointer'
 import RouteProgressBar from '@/components/common/loading/routeProgressBar/RouteProgressBar'
 
 import '@/styles/globals.scss'
@@ -79,6 +80,8 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <ToastContainer />
+
+      <CursorPointer />
 
       <Header
         isSidePanelminimized={isSidePanelminimized}

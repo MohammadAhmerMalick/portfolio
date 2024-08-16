@@ -26,16 +26,15 @@
   .resume {
     text-align: center;
 
-    
     .resumeQRCode {
       width: 100%;
 
       @media (max-width: $tabletRes) {
-       display: none;
+        display: none;
       }
     }
 
-    .button{
+    .button {
       width: 200px;
       max-width: 100%;
     }

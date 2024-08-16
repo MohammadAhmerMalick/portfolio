@@ -193,7 +193,7 @@ const Experience: FC<Experience> = ({ limit, collapsedTill }) => {
             href={`/about#${SectionIds.Experience}`}
             className={S.seeAllLink}
           >
-            <Button className={S.button} small shadow>
+            <Button className={S.button} small shadow icon={<BriefcaseIcon />}>
               Sell All
             </Button>
           </Link>

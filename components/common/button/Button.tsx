@@ -14,6 +14,7 @@ interface Button {
   title?: string
   small?: boolean
   shadow?: boolean
+  icon?: ReactNode
   disabled?: boolean
   className?: string
   ariaLabel?: string
@@ -24,6 +25,7 @@ interface Button {
 
 const Button: FC<Button> = ({
   type,
+  icon,
   form,
   small,
   title,
@@ -45,12 +47,14 @@ const Button: FC<Button> = ({
       className={classNames(
         S.button,
         { [S.small]: small },
+        { [S.withIcon]: icon },
         { [S.shadow]: shadow },
         { [S.disabled]: disabled },
         className
       )}
     >
-      {children}
+      {icon && <div className={S.iconContainer}>{icon}</div>}
+      <span className={S.childrenContainer}>{children}</span>
     </button>
   )
 }
@@ -59,6 +63,7 @@ Button.defaultProps = {
   small: false,
   shadow: false,
   className: '',
+  icon: undefined,
   disabled: false,
   form: undefined,
   title: undefined,

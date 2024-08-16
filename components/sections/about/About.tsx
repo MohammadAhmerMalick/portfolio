@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import Button from '@/components/common/button/Button'
+import AiOutlineCloudDownload from '@/components/common/icons/AiOutlineCloudDownload'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
 import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
 
@@ -14,7 +15,7 @@ const About = () => {
         <div className={S.about}>
           <div className={S.content}>
             <p>
-              I am a passionate Full Stack Web Developer with over 4 years of
+              I am a passionate Full Stack Web Developer with over 5 years of
               experience in creating dynamic and responsive web applications. I
               have developed analytical skills with expertise in handling teams
               along with other challenges. I am Specialize in developing
@@ -63,7 +64,12 @@ const About = () => {
               target="_blank"
               href="/resume/Mohammad%20Ahmer%20Malick%20Resume.pdf"
             >
-              <Button shadow small className={S.button}>
+              <Button
+                small
+                shadow
+                className={S.button}
+                icon={<AiOutlineCloudDownload />}
+              >
                 My Resume
               </Button>
             </Link>

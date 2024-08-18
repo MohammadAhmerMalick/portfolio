@@ -29,4 +29,8 @@
 
     background: $textColor;
   }
+
+  @media (max-width: $tabletRes) {
+    display: none;
+  }
 }

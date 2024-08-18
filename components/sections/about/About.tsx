@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import Button from '@/components/common/button/Button'
+import AiOutlineCloudDownload from '@/components/common/icons/AiOutlineCloudDownload'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
 import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
 
@@ -63,7 +64,12 @@ const About = () => {
               target="_blank"
               href="/resume/Mohammad%20Ahmer%20Malick%20Resume.pdf"
             >
-              <Button shadow small className={S.button}>
+              <Button
+                small
+                shadow
+                className={S.button}
+                icon={<AiOutlineCloudDownload />}
+              >
                 My Resume
               </Button>
             </Link>

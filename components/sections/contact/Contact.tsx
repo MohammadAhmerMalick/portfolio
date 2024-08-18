@@ -7,6 +7,7 @@ import { contactRoutes } from '@/components/aside/Aside'
 import UserIcon from '@/components/common/icons/UserIcon'
 import BookIcon from '@/components/common/icons/BookIcon'
 import EmailIcon from '@/components/common/icons/EmailIcon'
+import ContactIcon from '@/components/common/icons/ContactIcon'
 import Button, { buttonType } from '@/components/common/button/Button'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
 import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
@@ -136,8 +137,10 @@ const Contact = () => {
         />
       </form>
       <Button
-        type={buttonType.submit}
         form="contactForm"
+        className={S.button}
+        icon={<ContactIcon />}
+        type={buttonType.submit}
         disabled={isFormDisabled}
       >
         Submit

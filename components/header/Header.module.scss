@@ -66,10 +66,6 @@
     }
 
     .menuButton {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-
       width: max-content;
       height: 40px;
 
@@ -80,13 +76,19 @@
 
       z-index: 5;
 
-      svg {
-        font-size: 20px;
-      }
+      .buttonContent {
+        display: flex;
+        align-items: center;
+        gap: 6px;
 
-      .text {
-        @media (max-width: $mobileRes) {
-          display: none;
+        svg {
+          font-size: 16px;
+        }
+
+        .text {
+          @media (max-width: $mobileRes) {
+            display: none;
+          }
         }
       }
     }

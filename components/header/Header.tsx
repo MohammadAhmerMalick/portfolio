@@ -33,8 +33,10 @@ const Header: FC<Header> = ({
           <p className={S.text}>{router.pathname.split('/')[1] || 'home'}</p>
         </div>
         <Button className={S.menuButton} onClick={handleSwitchPanel}>
-          {isSidePanelminimized ? <MenuIcon /> : <CloseIcon />}
-          <span className={S.text}>Menu</span>
+          <div className={S.buttonContent}>
+            {isSidePanelminimized ? <MenuIcon /> : <CloseIcon />}
+            <span className={S.text}>Menu</span>
+          </div>
         </Button>
       </div>
     </header>

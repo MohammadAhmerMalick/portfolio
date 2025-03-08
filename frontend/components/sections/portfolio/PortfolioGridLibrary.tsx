@@ -36,10 +36,10 @@ const PortfolioGridLibrary = () => {
     SkillCategories.web
   )
 
-  useEffect(() => {
-    const category = router.query.category as keyof typeof SkillCategories
-    setActiveCategory(SkillCategories[category] || SkillCategories.web)
-  }, [router])
+  // useEffect(() => {
+  //   const category = router.query.category as keyof typeof SkillCategories
+  //   setActiveCategory(SkillCategories[category] || SkillCategories.web)
+  // }, [router])
 
   return (
     <section className={S.portfolioGridLibrary}>

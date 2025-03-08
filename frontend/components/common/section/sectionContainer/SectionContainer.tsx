@@ -23,9 +23,4 @@ const SectionContainer: FC<SectionContainer> = ({
   )
 }
 
-SectionContainer.defaultProps = {
-  className: '',
-  id: undefined,
-}
-
 export default SectionContainer

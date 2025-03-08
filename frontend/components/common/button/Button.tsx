@@ -60,16 +60,4 @@ const Button: FC<Button> = ({
   )
 }
 
-Button.defaultProps = {
-  small: false,
-  shadow: false,
-  className: '',
-  icon: undefined,
-  disabled: false,
-  form: undefined,
-  title: undefined,
-  onClick: undefined,
-  ariaLabel: undefined,
-  type: buttonType.button,
-}
 export default Button

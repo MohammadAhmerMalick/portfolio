@@ -21,9 +21,5 @@ const Card: FC<Card> = ({ children, className, onClick }) => {
     </div>
   )
 }
-Card.defaultProps = {
-  className: '',
-  onClick: undefined,
-}
 
 export default Card

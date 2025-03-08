@@ -121,7 +121,15 @@ interface SkillTags {
   hideName?: boolean
 }
 
-const SkillTags: FC<SkillTags> = ({ categories, customList, hideName }) => {
+const defaultCategories = (
+  Object.keys(SkillCategories) as Array<keyof typeof SkillCategories>
+).map((key) => SkillCategories[key])
+
+const SkillTags: FC<SkillTags> = ({
+  categories = defaultCategories,
+  customList = [],
+  hideName,
+}) => {
   return (
     <div className={S.skillTags}>
       {customList?.length
@@ -164,14 +172,6 @@ const SkillTags: FC<SkillTags> = ({ categories, customList, hideName }) => {
           )}
     </div>
   )
-}
-
-SkillTags.defaultProps = {
-  categories: (
-    Object.keys(SkillCategories) as Array<keyof typeof SkillCategories>
-  ).map((key) => SkillCategories[key]),
-  customList: [],
-  hideName: false,
 }
 
 export default SkillTags

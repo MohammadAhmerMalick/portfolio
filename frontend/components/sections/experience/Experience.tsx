@@ -84,7 +84,7 @@ interface Experience {
   collapsedTill?: number
 }
 
-const Experience: FC<Experience> = ({ limit, collapsedTill }) => {
+const Experience: FC<Experience> = ({ limit = 0, collapsedTill = 2 }) => {
   const [collapsed, setCollapsed] = useState<boolean[]>(
     data.map((_, index) => index >= (collapsedTill || 2))
   )
@@ -204,11 +204,6 @@ const Experience: FC<Experience> = ({ limit, collapsedTill }) => {
       </div>
     </SectionContainer>
   )
-}
-
-Experience.defaultProps = {
-  limit: 0,
-  collapsedTill: 2,
 }
 
 export default Experience

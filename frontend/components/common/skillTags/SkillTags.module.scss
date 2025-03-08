@@ -1,0 +1,45 @@
+@import 'frontend/styles/variables.scss';
+
+.skillTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  height: min-content;
+
+  .tag {
+    $height: 12px;
+
+    display: grid;
+    align-items: center;
+    gap: 5px;
+    grid-template: 'a b' $height / auto auto;
+    &.onlyIcon {
+      grid-template: 'a' $height / auto;
+    }
+
+    padding: 5px;
+
+    border-radius: 5px;
+    border: 1px solid $borderColor;
+
+    background-color: $lightGrayColor;
+
+    font-size: $height;
+
+    height: min-content;
+
+    .iconContainer {
+      position: relative;
+
+      display: flex;
+
+      height: 100%;
+
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

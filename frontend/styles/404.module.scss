@@ -1,0 +1,18 @@
+@import 'frontend/styles/variables.scss';
+
+.custom404 {
+  width: 100%;
+  height: calc(100% - $headerHeight);
+
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .image {
+    max-width: 100%;
+    max-height: calc(100vh - 251px);
+  }
+}

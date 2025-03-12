@@ -9,46 +9,41 @@ import {
 } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { IoLocationOutline } from 'react-icons/io5'
+import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa6'
+import { AiOutlineContacts, AiOutlineHome, AiOutlineMail } from 'react-icons/ai'
 
 import { ContactEnum, classNames } from '@/utils'
 import Button from '@/components/common/button/Button'
-import HomeIcon from '@/components/common/icons/HomeIcon'
-import EmailIcon from '@/components/common/icons/EmailIcon'
-import GithubIcon from '@/components/common/icons/GithubIcon'
-import ContactIcon from '@/components/common/icons/ContactIcon'
-import TwitterIcon from '@/components/common/icons/TwitterIcon'
-import LinkedInIcon from '@/components/common/icons/LinkedInIcon'
-import WhatsAppIcon from '@/components/common/icons/WhatsAppIcon'
-import LocationIcon from '@/components/common/icons/LocationIcon'
 
 import S from './Aside.module.scss'
 
 const routes = [
-  { link: '/', icon: <HomeIcon />, text: 'Home' },
-  { link: '/about', icon: <HomeIcon />, text: 'About' },
+  { link: '/', icon: <AiOutlineHome />, text: 'Home' },
+  { link: '/about', icon: <AiOutlineHome />, text: 'About' },
   // { link: '/portfolio', icon: <PortfolioIcon />, text: 'Portfolio' },
-  { link: '/contact', icon: <ContactIcon />, text: 'Contact' },
+  { link: '/contact', icon: <AiOutlineContacts />, text: 'Contact' },
 ]
 
 const socialRoutes = [
   {
     ariaLabel: 'Github',
-    icon: <GithubIcon />,
+    icon: <FaGithub />,
     link: 'https://github.com/MohammadAhmerMalick/',
   },
   {
-    icon: <GithubIcon />,
+    icon: <FaGithub />,
     ariaLabel: 'Github Gist',
     link: 'https://gist.github.com/MohammadAhmerMalick',
   },
   {
     ariaLabel: 'linkedin',
-    icon: <LinkedInIcon />,
+    icon: <FaLinkedin />,
     link: 'https://www.linkedin.com/in/mohammad-ahmer-malick-1a6586175',
   },
   {
     ariaLabel: 'Twitter',
-    icon: <TwitterIcon />,
+    icon: <FaTwitter />,
     link: 'https://twitter.com/MohammadAhmerMK',
   },
 ]
@@ -57,22 +52,22 @@ export const contactRoutes = [
   {
     link: `https://wa.me/${ContactEnum.UAEContactNumber}`,
     text: ContactEnum.UAEContactNumber,
-    icon: <WhatsAppIcon />,
+    icon: <FaWhatsapp />,
   },
   {
     link: `https://wa.me/${ContactEnum.PakistanContactNumber}`,
     text: ContactEnum.PakistanContactNumber,
-    icon: <WhatsAppIcon />,
+    icon: <FaWhatsapp />,
   },
   {
     link: `mailto:${ContactEnum.email}`,
     text: ContactEnum.emailWithLinebreak,
-    icon: <EmailIcon />,
+    icon: <AiOutlineMail />,
   },
   {
     link: 'https://goo.gl/maps/Y7ZTPGro1LHjNXF97',
     text: ContactEnum.UAELocation,
-    icon: <LocationIcon />,
+    icon: <IoLocationOutline size={20} />,
   },
 ]
 

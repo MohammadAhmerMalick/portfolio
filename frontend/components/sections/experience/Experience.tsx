@@ -1,14 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import { FaMinus, FaPlus } from 'react-icons/fa6'
+import { IoBriefcaseOutline } from 'react-icons/io5'
 import { FC, Fragment, useCallback, useEffect, useState } from 'react'
 
 import Card from '@/components/common/card/Card'
 import { SectionIds, classNames } from '@/utils'
 import Button from '@/components/common/button/Button'
-import AddIcon from '@/components/common/icons/AddIcon'
-import SubtractIcon from '@/components/common/icons/SubtractIcon'
-import BriefcaseIcon from '@/components/common/icons/BriefcaseIcon'
 import ExperienceDetail from '@/components/sections/experience/ExperienceDetail'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
 import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
@@ -150,7 +149,7 @@ const Experience: FC<Experience> = ({ limit = 0, collapsedTill = 2 }) => {
                     aria-label={company}
                   >
                     <div className={S.icon}>
-                      {collapsed[index] ? <AddIcon /> : <SubtractIcon />}
+                      {collapsed[index] ? <FaPlus /> : <FaMinus />}
                     </div>
                   </button>
                 </div>
@@ -163,7 +162,7 @@ const Experience: FC<Experience> = ({ limit = 0, collapsedTill = 2 }) => {
                     )}
                   >
                     <div className={S.icon}>
-                      <BriefcaseIcon />
+                      <IoBriefcaseOutline />
                     </div>
                     <h3 className={S.company}>{company}</h3>
                     <p className={S.period}>{period}</p>
@@ -196,7 +195,7 @@ const Experience: FC<Experience> = ({ limit = 0, collapsedTill = 2 }) => {
             href={`/about#${SectionIds.Experience}`}
             className={S.seeAllLink}
           >
-            <Button className={S.button} small shadow icon={<BriefcaseIcon />}>
+            <Button className={S.button} small shadow icon={<IoBriefcaseOutline />}>
               Sell All
             </Button>
           </Link>

@@ -2,13 +2,13 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { BsCodeSlash } from 'react-icons/bs'
+import { VscSymbolColor } from 'react-icons/vsc'
 
 import SkillTags, {
   SkillCategories,
 } from '@/components/common/skillTags/SkillTags'
 import { classNames } from '@/utils'
-import ColarPalette from '@/components/common/icons/ColarPalette'
-import WebDevelopmentIcon from '@/components/common/icons/WebDevelopmentIcon'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
 import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
 
@@ -28,7 +28,7 @@ const Skills = () => {
           )}
         >
           <span className={S.icon}>
-            <WebDevelopmentIcon />
+            <BsCodeSlash />
           </span>
           <p className={S.title}>{SkillCategories.web}</p>
         </button>
@@ -40,7 +40,7 @@ const Skills = () => {
           )}
         >
           <span className={S.icon}>
-            <ColarPalette />
+            <VscSymbolColor />
           </span>
           <p className={S.title}>{SkillCategories.graphic}</p>
         </button>

@@ -3,13 +3,12 @@
 import Link from 'next/link'
 import { toast } from 'react-toastify'
 import { FormEvent, useState } from 'react'
+import { LuUserRound } from 'react-icons/lu'
+import { IoMdPaperPlane } from 'react-icons/io'
+import { MdOutlineEmail, MdOutlineSubject } from 'react-icons/md'
 
 import { classNames } from '@/utils'
 import { contactRoutes } from '@/components/aside/Aside'
-import UserIcon from '@/components/common/icons/UserIcon'
-import BookIcon from '@/components/common/icons/BookIcon'
-import EmailIcon from '@/components/common/icons/EmailIcon'
-import ContactIcon from '@/components/common/icons/ContactIcon'
 import Button, { buttonType } from '@/components/common/button/Button'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
 import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
@@ -84,7 +83,7 @@ const Contact = () => {
       >
         <div className={S.field}>
           <div className={classNames(S.icon, isFormDisabled && [S.disabled])}>
-            <UserIcon />
+            <LuUserRound />
           </div>
           <input
             required
@@ -99,7 +98,7 @@ const Contact = () => {
         </div>
         <div className={S.field}>
           <div className={classNames(S.icon, isFormDisabled && [S.disabled])}>
-            <EmailIcon />
+            <MdOutlineEmail />
           </div>
           <input
             required
@@ -114,7 +113,7 @@ const Contact = () => {
         </div>
         <div className={S.field}>
           <div className={classNames(S.icon, isFormDisabled && [S.disabled])}>
-            <BookIcon />
+            <MdOutlineSubject />
           </div>
           <input
             required
@@ -141,7 +140,7 @@ const Contact = () => {
       <Button
         form="contactForm"
         className={S.button}
-        icon={<ContactIcon />}
+        icon={<IoMdPaperPlane />}
         type={buttonType.submit}
         disabled={isFormDisabled}
       >

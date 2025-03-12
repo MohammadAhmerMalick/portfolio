@@ -1,9 +1,9 @@
-import { usePathname, useRouter } from 'next/navigation'
+import { FiMenu } from 'react-icons/fi'
+import { CgClose } from 'react-icons/cg'
+import { usePathname } from 'next/navigation'
 import { Dispatch, FC, SetStateAction } from 'react'
 
 import Button from '@/components/common/button/Button'
-import MenuIcon from '@/components/common/icons/MenuIcon'
-import CloseIcon from '@/components/common/icons/CloseIcon'
 
 import S from './Header.module.scss'
 
@@ -34,7 +34,7 @@ const Header: FC<Header> = ({
         </div>
         <Button className={S.menuButton} onClick={handleSwitchPanel}>
           <div className={S.buttonContent}>
-            {isSidePanelminimized ? <MenuIcon /> : <CloseIcon />}
+            {isSidePanelminimized ? <FiMenu /> : <CgClose />}
             <span className={S.text}>Menu</span>
           </div>
         </Button>

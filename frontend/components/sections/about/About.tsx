@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaMinus } from 'react-icons/fa6'
+import { AiOutlineCloudDownload } from 'react-icons/ai'
 
 import Button from '@/components/common/button/Button'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
@@ -64,7 +64,12 @@ const About = () => {
               target="_blank"
               href="/resume/Mohammad%20Ahmer%20Malick%20Resume.pdf"
             >
-              <Button small shadow className={S.button} icon={<FaMinus />}>
+              <Button
+                small
+                shadow
+                className={S.button}
+                icon={<AiOutlineCloudDownload />}
+              >
                 My Resume
               </Button>
             </Link>

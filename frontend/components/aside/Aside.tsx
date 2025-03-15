@@ -1,18 +1,13 @@
 'use client'
 
-import {
-  type FC,
-  useState,
-  useEffect,
-  type Dispatch,
-  SetStateAction,
-} from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { IoLocationOutline } from 'react-icons/io5'
+import { useState, useEffect, useContext } from 'react'
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa6'
 import { AiOutlineContacts, AiOutlineHome, AiOutlineMail } from 'react-icons/ai'
 
+import { UiContext } from '@/context/uiContext'
 import { ContactEnum, classNames } from '@/utils'
 import Button from '@/components/common/button/Button'
 
@@ -71,20 +66,15 @@ export const contactRoutes = [
   },
 ]
 
-interface Aside {
-  minimized: boolean
-  isUserSwitchedSidePanel: boolean
-  setMinimized: Dispatch<SetStateAction<boolean>>
-  setIsUserSwitchedSidePanel: Dispatch<SetStateAction<boolean>>
-}
-
-const Aside: FC<Aside> = ({
-  minimized,
-  setMinimized,
-  isUserSwitchedSidePanel,
-  setIsUserSwitchedSidePanel,
-}) => {
+const Aside = () => {
   const pathname = usePathname()
+
+  const {
+    isUserSwitchedSidePanel,
+    setIsUserSwitchedSidePanel,
+    isSidePanelminimized: minimized,
+    setIsSidePanelMinimized: setMinimized,
+  } = useContext(UiContext)
 
   const [pageLink, setPageLink] = useState('/')
 

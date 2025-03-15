@@ -1,28 +1,25 @@
+import { useContext } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { CgClose } from 'react-icons/cg'
 import { usePathname } from 'next/navigation'
-import { Dispatch, FC, SetStateAction } from 'react'
 
+import { UiContext } from '@/context/uiContext'
 import Button from '@/components/common/button/Button'
 
 import S from './Header.module.scss'
 
-interface Header {
-  isSidePanelminimized: boolean
-  setIsSidePanelMinimized: Dispatch<SetStateAction<boolean>>
-  setIsUserSwitchedSidePanel: Dispatch<SetStateAction<boolean>>
-}
-
-const Header: FC<Header> = ({
-  isSidePanelminimized,
-  setIsSidePanelMinimized,
-  setIsUserSwitchedSidePanel,
-}) => {
+const Header = () => {
   const pathname = usePathname()
 
+  const {
+    isSidePanelminimized,
+    setIsSidePanelMinimized,
+    setIsUserSwitchedSidePanel,
+  } = useContext(UiContext)
+
   const handleSwitchPanel = () => {
-    setIsSidePanelMinimized(!isSidePanelminimized)
     setIsUserSwitchedSidePanel(true)
+    setIsSidePanelMinimized(!isSidePanelminimized)
   }
 
   return (

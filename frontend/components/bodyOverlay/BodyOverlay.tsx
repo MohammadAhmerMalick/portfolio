@@ -1,26 +1,30 @@
-import type { FC, Dispatch, SetStateAction } from 'react'
+'use client'
+
+import { useContext } from 'react'
 
 import { classNames } from '@/utils'
+import { UiContext } from '@/context/uiContext'
 
 import S from './BodyOverlay.module.scss'
 
-interface BodyOverlay {
-  isDrawn: boolean
-  isUserSwitchedSidePanel: boolean
-  onClick: Dispatch<SetStateAction<boolean>>
-}
-const BodyOverlay: FC<BodyOverlay> = ({
-  isDrawn,
-  isUserSwitchedSidePanel,
-  onClick,
-}) => {
+const BodyOverlay = () => {
+  const {
+    isUserSwitchedSidePanel,
+    isSidePanelminimized: minimized,
+    setIsSidePanelMinimized: setMinimized,
+  } = useContext(UiContext)
+
+  const open = () => {
+    setMinimized(true)
+  }
+
   return (
     <div
       aria-hidden
-      onClick={() => onClick(true)}
+      onClick={open}
       className={classNames(
         S.bodyOverlay,
-        isDrawn && [S.isDrawn],
+        !minimized && [S.isDrawn],
         !isUserSwitchedSidePanel && [S.initialState] // idea is to stop the transition for initial rendering to prevent layout shift
       )}
     />

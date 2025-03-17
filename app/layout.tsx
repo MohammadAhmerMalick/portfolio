@@ -20,19 +20,18 @@ export const metadata: Metadata = {
     startupImage: metaFavicon,
   },
   openGraph: {
+    url: metaUrl,
+    type: 'website',
     title: metaTitle,
     images: metaFavicon,
     description: metaDescription,
-    url: metaUrl,
-    type: 'website',
   },
   twitter: {
+    site: metaUrl,
+    card: 'summary',
     title: metaTitle,
     images: metaFavicon,
     creator: metaCreator,
-    site: metaUrl,
-    card: 'summary',
-
     description: metaDescription,
   },
 }

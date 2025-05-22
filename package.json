@@ -10,7 +10,7 @@
     "format": "npx prettier . --write"
   },
   "dependencies": {
-    "next": "15.1.7",
+    "next": "^15.3.2",
     "nodemailer": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

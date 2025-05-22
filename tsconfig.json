@@ -21,6 +21,8 @@
     "paths": {
       "@/utils": ["./frontend/utils"],
       "@/styles/*": ["./frontend/styles/*"],
+      "@/modules/*": ["./backend/modules/*"],
+      "@/constants": ["./frontend/constants"],
       "@/context/*": ["./frontend/context/*"],
       "@/components/*": ["./frontend/components/*"]
     }

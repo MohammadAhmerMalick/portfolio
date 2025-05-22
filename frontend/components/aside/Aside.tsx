@@ -1,14 +1,21 @@
 'use client'
 
 import Link from 'next/link'
+import { useContext } from 'react'
 import { usePathname } from 'next/navigation'
 import { IoLocationOutline } from 'react-icons/io5'
-import { useState, useEffect, useContext } from 'react'
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa6'
 import { AiOutlineContacts, AiOutlineHome, AiOutlineMail } from 'react-icons/ai'
 
+import {
+  githubLink,
+  twitterLink,
+  contactInfo,
+  linkedinLink,
+  githubGistLink,
+} from '@/constants'
+import { classNames } from '@/utils'
 import { UiContext } from '@/context/uiContext'
-import { ContactEnum, classNames } from '@/utils'
 import Button from '@/components/common/button/Button'
 
 import S from './Aside.module.scss'
@@ -24,44 +31,44 @@ const socialRoutes = [
   {
     ariaLabel: 'Github',
     icon: <FaGithub />,
-    link: 'https://github.com/MohammadAhmerMalick/',
+    link: twitterLink,
   },
   {
     icon: <FaGithub />,
     ariaLabel: 'Github Gist',
-    link: 'https://gist.github.com/MohammadAhmerMalick',
+    link: githubLink,
   },
   {
     ariaLabel: 'linkedin',
     icon: <FaLinkedin />,
-    link: 'https://www.linkedin.com/in/mohammad-ahmer-malick-1a6586175',
+    link: githubGistLink,
   },
   {
     ariaLabel: 'Twitter',
     icon: <FaTwitter />,
-    link: 'https://twitter.com/MohammadAhmerMK',
+    link: linkedinLink,
   },
 ]
 
 export const contactRoutes = [
   {
-    link: `https://wa.me/${ContactEnum.UAEContactNumber}`,
-    text: ContactEnum.UAEContactNumber,
+    link: `https://wa.me/${contactInfo.uaeContactNumber}`,
+    text: contactInfo.uaeContactNumber,
     icon: <FaWhatsapp />,
   },
   {
-    link: `https://wa.me/${ContactEnum.PakistanContactNumber}`,
-    text: ContactEnum.PakistanContactNumber,
+    link: `https://wa.me/${contactInfo.pakistanContactNumber}`,
+    text: contactInfo.pakistanContactNumber,
     icon: <FaWhatsapp />,
   },
   {
-    link: `mailto:${ContactEnum.email}`,
-    text: ContactEnum.emailWithLinebreak,
+    link: `mailto:${contactInfo.email}`,
+    text: contactInfo.emailWithLinebreak,
     icon: <AiOutlineMail />,
   },
   {
     link: 'https://goo.gl/maps/Y7ZTPGro1LHjNXF97',
-    text: ContactEnum.UAELocation,
+    text: contactInfo.uaeLocation,
     icon: <IoLocationOutline size={20} />,
   },
 ]
@@ -75,12 +82,6 @@ const Aside = () => {
     isSidePanelminimized: minimized,
     setIsSidePanelMinimized: setMinimized,
   } = useContext(UiContext)
-
-  const [pageLink, setPageLink] = useState('/')
-
-  useEffect(() => {
-    setPageLink(`/${pathname.split('/')[1]}`)
-  }, [pathname])
 
   const toggleSidePanel = () => {
     setMinimized(!minimized)
@@ -102,7 +103,7 @@ const Aside = () => {
               <span
                 className={classNames(
                   S.text,
-                  pageLink === route.link && [S.active]
+                  `/${pathname.split('/')[1]}` === route.link && [S.active]
                 )}
               >
                 {route.text}

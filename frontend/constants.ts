@@ -1,10 +1,10 @@
 export const baseUrl = 'https://www.mohammadahmermalick.com'
 
 // meta tags
-export const metaTitle = 'Mohammad Ahmer Malick'
-export const metaCreator = metaTitle
-export const metaFavicon = '/icon?<generated>'
 export const metaUrl = baseUrl
+export const metaFavicon = '/icon?<generated>'
+export const metaTitle = 'Mohammad Ahmer Malick'
+export const metaCreator = 'Mohammad Ahmer Malick'
 export const metaDescription =
   'This is my portfolio website. Here you will find all my project and ways to contact me, Mohammad Ahmer Malick | mohammadahmermalick@gmail.com'
 
@@ -16,10 +16,18 @@ export const linkedinLink = 'https://www.linkedin.com/in/mohammadahmermalick'
 
 // contact links
 export const contactInfo = {
+  uaeLocation: 'Dubai, UAE',
   uaeContactNumber: '971545149849',
   pakistanContactNumber: '923494941593',
   email: 'mohammadahmermalick@gmail.com',
-  emailWithLinebreak: 'mohammadahmermalick\n@gmail.com',
   pakistanLocation: 'Karchi, Sindh, Pakistan',
-  uaeLocation: 'Dubai, UAE',
+  emailWithLinebreak: 'mohammadahmermalick\n@gmail.com',
+}
+
+// resume links
+export const routes = {
+  home: '/',
+  about: '/about',
+  resume: '/resume',
+  contact: '/contact',
 }

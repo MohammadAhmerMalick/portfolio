@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { AiOutlineCloudDownload } from 'react-icons/ai'
 
+import { routes } from '@/constants'
 import Button from '@/components/common/button/Button'
 import SectionHeading from '@/components/common/section/sectionHeading/SectionHeading'
 import SectionContainer from '@/components/common/section/sectionContainer/SectionContainer'
@@ -60,10 +61,7 @@ const About = () => {
               src="/images/resume-qr-code.svg"
               alt="https://wwwmohammadahmermalick.com/resume/Mohammad%20Ahmer%20Malick%20CV.pdf"
             />
-            <Link
-              target="_blank"
-              href="/resume/Mohammad%20Ahmer%20Malick%20Resume.pdf"
-            >
+            <Link target="_blank" href={routes.resume}>
               <Button
                 small
                 shadow

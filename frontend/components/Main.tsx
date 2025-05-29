@@ -1,32 +1,15 @@
+'use client'
+
+import { useContext } from 'react'
 import { ToastContainer } from 'react-toastify'
-import React, { useContext, useEffect } from 'react'
 
 import { classNames } from '@/utils'
 import { UiContext } from '@/context/uiContext'
 import CursorPointer from '@/components/cursorPointer/CursorPointer'
 
 const Main = ({ children }: { children: React.ReactNode }) => {
-  const {
-    isSidePanelminimized,
-    isUserSwitchedSidePanel,
-    setIsSidePanelMinimized,
-  } = useContext(UiContext)
-
-  useEffect(() => {
-    // monitor the initial state if sidepanel weather is open or not and updated the 'isSidePanelminimized' state accordingly
-    const handleSidePanelInitialState = () => {
-      setIsSidePanelMinimized(
-        typeof window !== 'undefined' && window.document.body.clientWidth <= 992
-      )
-    }
-
-    handleSidePanelInitialState()
-
-    window.addEventListener('resize', handleSidePanelInitialState)
-    return () => {
-      window.removeEventListener('resize', handleSidePanelInitialState)
-    }
-  }, [setIsSidePanelMinimized])
+  const { isSidePanelminimized, isUserSwitchedSidePanel } =
+    useContext(UiContext)
 
   return (
     <main

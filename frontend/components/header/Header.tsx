@@ -1,3 +1,5 @@
+'use client'
+
 import { useContext } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { CgClose } from 'react-icons/cg'

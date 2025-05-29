@@ -1,9 +1,12 @@
+'use client'
+
 import { useEffect, useRef } from 'react'
 
 import S from './CursorPointer.module.scss'
 
 const CursorPointer = () => {
   const CORSOR_POINTER = useRef<HTMLDivElement | null>(null)
+
   useEffect(() => {
     document.body.onpointermove = (event) => {
       const { clientX, clientY } = event

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { IoLocationOutline } from 'react-icons/io5'
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa6'
@@ -87,6 +87,23 @@ const Aside = () => {
     setMinimized(!minimized)
     setIsUserSwitchedSidePanel(true)
   }
+
+  useEffect(() => {
+    // monitor the initial state if sidepanel weather is open or not and updated the 'isSidePanelminimized' state accordingly
+    const handleSidePanelInitialState = () => {
+      setMinimized(
+        typeof window !== 'undefined' && window.document.body.clientWidth <= 992
+      )
+    }
+
+    handleSidePanelInitialState()
+
+    window.addEventListener('resize', handleSidePanelInitialState)
+    return () => {
+      window.removeEventListener('resize', handleSidePanelInitialState)
+    }
+  }, [setMinimized])
+
   return (
     <aside
       className={classNames(

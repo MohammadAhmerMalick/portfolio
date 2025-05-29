@@ -1,0 +1,136 @@
+@import 'frontend/styles/variables.scss';
+
+.skills {
+  display: grid;
+  grid-template-columns: 200px auto;
+  gap: 15px;
+
+  @media (max-width: $tabletRes) {
+    grid-template-columns: auto;
+    gap: 8px;
+  }
+
+  .categories {
+    display: grid;
+    gap: 8px;
+
+    height: min-content;
+
+    * {
+      transition: $transitionDuration;
+    }
+
+    .category {
+      display: grid;
+      grid-template-columns: 40px auto;
+      align-items: center;
+      gap: 8px;
+
+      height: 60px;
+
+      padding: 8px;
+
+      border: 0;
+
+      background-color: white;
+
+      text-align: left;
+
+      cursor: pointer;
+
+      .icon {
+        position: relative;
+
+        display: grid;
+        place-content: center;
+
+        width: 40px;
+        height: 40px;
+
+        padding: 10px;
+
+        background-color: $primaryColor;
+
+        font-size: 20px;
+
+        svg {
+          z-index: 1;
+        }
+
+        &::after {
+          content: '';
+
+          $addition: 7px;
+          position: absolute;
+          top: (-$addition);
+          left: (-$addition);
+
+          width: calc(100% + $addition + $addition);
+          height: calc(100% + $addition + $addition);
+
+          background-color: rgba($color: white, $alpha: 0.5);
+
+          opacity: 0;
+        }
+      }
+
+      .title {
+        font-size: 14px;
+      }
+
+      &.active {
+        background-color: $primaryColor;
+
+        padding: 15px;
+
+        .icon {
+          background-color: white;
+
+          width: 30px;
+          height: 30px;
+
+          border-radius: 100%;
+
+          &::after {
+            content: '';
+
+            $addition: 7px;
+            width: calc(100% + $addition + $addition);
+            height: calc(100% + $addition + $addition);
+
+            border-radius: 100%;
+
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .block {
+    display: grid;
+    gap: 15px;
+
+    padding: 30px;
+
+    .head {
+      display: grid;
+      grid-template-columns: 440px auto;
+      align-items: center;
+      gap: 30px;
+
+      @media (max-width: $fullWideRes) {
+        grid-template-columns: auto;
+      }
+
+      .image {
+        max-width: 100%;
+        height: 100%;
+      }
+
+      .sectionHeading {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

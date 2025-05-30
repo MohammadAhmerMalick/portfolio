@@ -1,0 +1,115 @@
+@import './variables.scss';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif !important;
+
+  background-color: $lightGrayColor;
+
+  * {
+    line-height: 1.5;
+  }
+
+  ::selection {
+    color: $textColor;
+    background: $primaryColor;
+  }
+
+  #__next {
+    display: grid;
+    grid-template-rows: 80px auto;
+
+    height: 100vh;
+
+    main {
+      position: absolute;
+      top: $headerHeight;
+      left: $asideWidth;
+
+      display: grid;
+      gap: 30px;
+
+      height: calc(100vh - $headerHeight);
+      width: calc(100vw - $asideWidth);
+
+      padding: 30px;
+
+      @media (max-width: $sidePanelLayoutShiftRes) {
+        padding: 15px;
+      }
+
+      transition: $transitionDuration;
+
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      &.expended {
+        left: 0;
+        width: calc(100vw);
+      }
+
+      @media (max-width: $sidePanelLayoutShiftRes) {
+        left: 0;
+
+        width: calc(100vw);
+      }
+
+      &.mainInitialState {
+        left: $asideWidth;
+
+        width: calc(100vw - $asideWidth);
+
+        @media (max-width: $sidePanelLayoutShiftRes) {
+          left: 0;
+
+          width: calc(100vw);
+        }
+      }
+    }
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p {
+  color: $textColor;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  padding: 0;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primaryColor;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $textColor;
+}
+
+// @media (prefers-color-scheme: dark) {
+//   html {
+//     color-scheme: dark;
+//   }
+//   body {
+//     color: white;
+//     background: black;
+//   }
+// }

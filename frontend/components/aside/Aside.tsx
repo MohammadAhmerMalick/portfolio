@@ -31,22 +31,22 @@ const socialRoutes = [
   {
     ariaLabel: 'Github',
     icon: <FaGithub />,
-    link: twitterLink,
+    link: githubLink,
   },
   {
     icon: <FaGithub />,
     ariaLabel: 'Github Gist',
-    link: githubLink,
+    link: githubGistLink,
   },
   {
     ariaLabel: 'linkedin',
     icon: <FaLinkedin />,
-    link: githubGistLink,
+    link: linkedinLink,
   },
   {
     ariaLabel: 'Twitter',
     icon: <FaTwitter />,
-    link: linkedinLink,
+    link: twitterLink,
   },
 ]
 

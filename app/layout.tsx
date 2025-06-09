@@ -1,38 +1,26 @@
 import type { Metadata } from 'next'
+
 import '@/styles/global.scss'
-import {
-  metaUrl,
-  metaTitle,
-  metaCreator,
-  metaFavicon,
-  metaDescription,
-} from '@/constants'
+
+import { routes, metaTitle, metaCreator, metaDescription } from '@/constants'
 
 export const metadata: Metadata = {
   title: metaTitle,
-
   description: metaDescription,
-
+  metadataBase: new URL(routes.baseUrl || '/'),
   appleWebApp: {
     capable: true,
     title: metaTitle,
     statusBarStyle: 'default',
-    startupImage: metaFavicon,
   },
   openGraph: {
-    url: metaUrl,
     type: 'website',
-    title: metaTitle,
-    images: metaFavicon,
-    description: metaDescription,
+
+    url: new URL(routes.baseUrl || '/'),
   },
   twitter: {
-    site: metaUrl,
     card: 'summary',
-    title: metaTitle,
-    images: metaFavicon,
     creator: metaCreator,
-    description: metaDescription,
   },
 }
 

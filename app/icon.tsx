@@ -2,20 +2,17 @@ import { ImageResponse } from 'next/og'
 
 import Favicon from '@/components/Favicon'
 
-// Route segment config
-export const runtime = 'edge'
-
 export const contentType = 'image/png'
 
 export function generateImageMetadata() {
   return [
-    //
+    // android
     {
       id: 'android-icon-192x192.png',
       contentType: 'image/png',
       size: { width: 192, height: 192 },
     },
-    //
+    // favicon
     {
       id: 'favicon-32x32.png',
       contentType: 'image/png',

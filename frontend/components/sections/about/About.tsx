@@ -16,20 +16,18 @@ const About = () => {
         <div className={S.about}>
           <div className={S.content}>
             <p>
-              I am a passionate Full Stack Web Developer with over 5 years of
-              experience in creating dynamic and responsive web applications. I
-              have developed analytical skills with expertise in handling teams
-              along with other challenges. I am Specialize in developing
-              responsive, search engine optimized, speed optimized web
-              applications and websites and have extensive experience in
-              frontend and can handle backend on multiple programming languages,
-              also capable of handling a variety of graphic-based tasks as well.
+              Full Stack Developer with 5+ years of experience building
+              high-performance web applications using modern frontend and
+              backend technologies. Passionate about crafting pixel-perfect,
+              responsive UIs to enhance user engagement. Adept at bridging
+              design and development, ensuring seamless translation of visuals
+              into functional code.
             </p>
             <p>
               I am passionate about growing businesses profitably. I aspire to
               create value with my work, both personally and professionally.
             </p>
-            <p>
+            {/* <p>
               Here are some of the{' '}
               <Link
                 target="_blank"
@@ -39,7 +37,7 @@ const About = () => {
                 websites
               </Link>{' '}
               that I designed in my career.
-            </p>
+            </p> */}
 
             <p>
               Whether it&#39;s developing a complex web application from scratch
@@ -59,7 +57,7 @@ const About = () => {
               height={220}
               className={S.resumeQRCode}
               src="/images/resume-qr-code.svg"
-              alt="https://wwwmohammadahmermalick.com/resume/Mohammad%20Ahmer%20Malick%20CV.pdf"
+              alt={'Mohammad Ahmer Malick Resume'}
             />
             <Link target="_blank" href={routes.resume}>
               <Button

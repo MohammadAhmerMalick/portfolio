@@ -1,8 +1,6 @@
 export const baseUrl = 'https://www.mohammadahmermalick.com'
 
 // meta tags
-export const metaUrl = baseUrl
-export const metaFavicon = '/icon?<generated>'
 export const metaTitle = 'Mohammad Ahmer Malick'
 export const metaCreator = 'Mohammad Ahmer Malick'
 export const metaDescription =
@@ -30,4 +28,6 @@ export const routes = {
   about: '/about',
   resume: '/resume',
   contact: '/contact',
+
+  baseUrl: 'https://www.mohammadahmermalick.com',
 }

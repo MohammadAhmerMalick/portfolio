@@ -195,7 +195,12 @@ const Experience: FC<Experience> = ({ limit = 0, collapsedTill = 2 }) => {
             href={`/about#${SectionIds.Experience}`}
             className={S.seeAllLink}
           >
-            <Button className={S.button} small shadow icon={<IoBriefcaseOutline />}>
+            <Button
+              small
+              shadow
+              className={S.button}
+              icon={<IoBriefcaseOutline />}
+            >
               Sell All
             </Button>
           </Link>

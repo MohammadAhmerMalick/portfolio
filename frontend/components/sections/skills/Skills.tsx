@@ -50,7 +50,7 @@ const Skills = () => {
         <div className={S.head}>
           <Image
             width={440}
-            height={293}
+            height={316}
             alt={category}
             className={S.image}
             src={

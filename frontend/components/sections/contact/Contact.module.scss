@@ -69,9 +69,10 @@
       resize: vertical;
       border-bottom: 2px solid $primaryColor;
     }
+  }
 
-    .button {
-      width: 180px;
-    }
+  .button {
+    width: 180px;
+    font-weight: normal;
   }
 }

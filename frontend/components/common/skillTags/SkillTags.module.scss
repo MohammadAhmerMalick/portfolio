@@ -29,17 +29,12 @@
 
     height: min-content;
 
-    .iconContainer {
-      position: relative;
+    .icon {
+      width: 100%;
+      height: 12px;
+      max-width: 20px;
 
-      display: flex;
-
-      height: 100%;
-
-      .icon {
-        width: 100%;
-        height: 100%;
-      }
+      object-fit: contain;
     }
   }
 }

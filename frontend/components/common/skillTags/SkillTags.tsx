@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import Image from 'next/image'
 
 import { uuid, classNames } from '@/utils'
 
@@ -138,15 +139,13 @@ const SkillTags: FC<SkillTags> = ({
               key={uuid()}
               className={classNames(S.tag, hideName && [S.onlyIcon])}
             >
-              <div className={S.iconContainer}>
-                <img
-                  width={50}
-                  height={50}
-                  src={tag.link}
-                  alt={tag.name}
-                  className={S.icon}
-                />
-              </div>
+              <Image
+                width={40}
+                height={12}
+                src={tag.link}
+                alt={tag.name}
+                className={S.icon}
+              />
               {!hideName && <span>{tag.name}</span>}
             </div>
           ))
@@ -157,15 +156,13 @@ const SkillTags: FC<SkillTags> = ({
                 key={uuid()}
                 className={classNames(S.tag, hideName && [S.onlyIcon])}
               >
-                <div className={S.iconContainer}>
-                  <img
-                    width={50}
-                    height={50}
-                    src={tag.link}
-                    alt={tag.name}
-                    className={S.icon}
-                  />
-                </div>
+                <Image
+                  width={40}
+                  height={12}
+                  src={tag.link}
+                  alt={tag.name}
+                  className={S.icon}
+                />
                 {!hideName && <span>{tag.name}</span>}
               </div>
             ))

@@ -1,0 +1,7 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "astro-v2": false
+    }
+  }
+}

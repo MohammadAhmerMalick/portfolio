@@ -1,0 +1,97 @@
+# Commit messages
+
+When generating git commit messages for this repo, follow these rules.
+
+## Before writing
+
+- Read the full staged diff (and `git status` for new/deleted/renamed files).
+- Summarize the **intent and user-visible outcome**, not a file list.
+- One logical change per commit; if the diff mixes unrelated work, say so instead of blending it into one vague message.
+
+## Format
+
+Use [Conventional Commits](https://www.conventionalcommits.org/) with an optional scope:
+
+```
+<type>(<scope>): <short summary>
+
+<Subheading>:
+- <modification point>
+- <modification point>
+
+<Subheading>: (optional, e.g. Why)
+- <reason / tradeoff / follow-up>
+
+<optional footer>
+```
+
+The commit message body must be **plain text**. Git does not render Markdown—do not use `#`, `###`, `**`, backticks, or links in the generated commit text.
+
+**Types:** `feat`, `fix`, `refactor`, `style`, `docs`, `chore`, `build`, `ci`, `perf`, `test`
+
+**Scopes (examples for this project):** `astro`, `pages`, `components`, `content`, `styles`, `config`, `deps`
+
+## Subject line
+
+- Imperative mood: "add hero section" not "added hero section" or "adds hero section"
+- ~72 characters max; no trailing period
+- Specific enough that someone scanning `git log` understands what changed
+
+## Body (use when the change is non-trivial)
+
+- **Never** use long prose paragraphs in the body.
+- **Never** use Markdown in the commit message (no `###`, headings with `#`, bold, inline code fences, or URLs as link syntax).
+- Group changes with **plain-text section labels** on their own line, Title Case, ending with a colon (e.g. `Deployment:`, `UI:`, `Why:`).
+- Leave a blank line after the subject, between sections, and before bullets as in the example below.
+- Under each label, use `-` bullet lines—one concrete modification per bullet.
+- Add a `Why:` section when reason, tradeoffs, breaking changes, or follow-up work matter.
+- Keep bullets short and scannable; explain what changed, not every line of the diff.
+- Do not repeat the subject line verbatim.
+
+## Quality bar
+
+**Avoid:**
+
+- `update files`, `fix stuff`, `wip`, `changes`, `misc`
+- Messages that only list filenames without saying what changed
+- Past tense or first person ("I fixed…")
+- Body text as a single long paragraph instead of labeled sections and bullets
+- Markdown syntax in the commit body (`###`, `#`, `**`, backticks)
+
+**Prefer (subject only for tiny changes):**
+
+- `feat(pages): add project grid with filter by tag`
+- `fix(styles): prevent nav overlap on mobile viewports`
+
+**Prefer (subject + point-wise body for larger changes):**
+
+```
+feat(pages): add project grid with filter by tag
+
+Layout:
+- Add responsive grid for project cards
+- Show empty state when no projects match a tag
+
+Behavior:
+- Filter projects by tag from query or control
+- Preserve filter when navigating back to the page
+
+Why:
+- Keeps the projects page scannable as the portfolio grows
+```
+
+```
+chore(config): add Vercel deployment settings
+
+Deployment:
+- Add vercel.json for Astro build and routing on Vercel
+- Disable auto-deploy for astro-v2 git branch
+
+Why:
+- Control which branches deploy to production
+```
+
+## This project
+
+- Stack: Astro 7, Biome for lint/format
+- Prefer scopes that match `src/pages`, `src/components`, and config (`astro.config`, `biome.json`)

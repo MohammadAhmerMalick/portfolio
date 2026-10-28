@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "astro": "^7.4.3"
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "name": "portfolio",
+  "scripts": {
+    "astro": "astro",
+    "biome": "pnpm biome-check && pnpm biome-format && pnpm biome-lint",
+    "biome-check": "npx @biomejs/biome@2.5.13 check --write",
+    "biome-format": "npx @biomejs/biome@2.5.13 format --write",
+    "biome-lint": "npx @biomejs/biome@2.5.13 lint --write",
+    "build": "astro build",
+    "dev": "astro dev",
+    "preview": "astro preview"
+  },
+  "type": "module",
+  "version": "0.0.1"
+}

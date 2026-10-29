@@ -4,7 +4,7 @@ Personal site for Mohammad Ahmer Malick. Single-page portfolio for hiring manage
 
 ## Stack
 
-- Astro 7, React islands, Tailwind CSS 4, shadcn/ui, Biome
+- Astro 7, Tailwind CSS 4, Biome
 - Identity and default SEO copy: `src/lib/site.ts`
 - Document head (title, description, canonical, Open Graph, Twitter, JSON-LD): `src/components/layout/Layout.astro`
 - Public origin: `https://www.mohammadahmermalick.com` (no trailing slash in `site` config). Homepage: `https://www.mohammadahmermalick.com/`

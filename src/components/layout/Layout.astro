@@ -1,0 +1,129 @@
+---
+import { site } from '@/lib/site'
+import '@/styles/global.css'
+
+interface Props {
+  description?: string
+  image?: string
+  imageAlt?: string
+  noindex?: boolean
+  title?: string
+  type?: 'article' | 'profile' | 'website'
+}
+
+const {
+  description = site.description,
+  image,
+  imageAlt = site.title,
+  noindex = false,
+  title,
+  type = 'website',
+}: Props = Astro.props
+
+const titleText =
+  !title || title === site.name || title === site.title
+    ? site.title
+    : `${title} | ${site.name}`
+
+const origin = Astro.site ?? new URL(Astro.url.origin)
+const canonicalUrl = new URL(Astro.url.pathname, origin).href
+const imageUrl = image ? new URL(image, origin).href : undefined
+const robots = noindex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+
+const personId = new URL('/#person', origin).href
+const websiteId = new URL('/#website', origin).href
+const isHome = Astro.url.pathname === '/'
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@id': personId,
+      '@type': 'Person',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'AE',
+      },
+      email: `mailto:${site.email}`,
+      jobTitle: site.jobTitle,
+      name: site.name,
+      sameAs: [...site.sameAs],
+      telephone: site.telephone,
+      url: new URL('/', origin).href,
+    },
+    {
+      '@id': websiteId,
+      '@type': 'WebSite',
+      author: { '@id': personId },
+      description: site.description,
+      inLanguage: 'en',
+      name: site.name,
+      publisher: { '@id': personId },
+      url: new URL('/', origin).href,
+    },
+    {
+      '@id': `${canonicalUrl}#webpage`,
+      '@type': isHome ? 'ProfilePage' : 'WebPage',
+      about: { '@id': personId },
+      description,
+      inLanguage: 'en',
+      isPartOf: { '@id': websiteId },
+      name: titleText,
+      url: canonicalUrl,
+    },
+  ],
+}
+
+const jsonLdScript = JSON.stringify(jsonLd).replace(/</g, '\\u003c')
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content={Astro.generator}>
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content={site.themeColor}>
+    <meta name="author" content={site.author}>
+    <meta name="description" content={description}>
+    <meta name="robots" content={robots}>
+    <link rel="canonical" href={canonicalUrl}>
+    <title>{titleText}</title>
+
+    <meta property="og:type" content={type}>
+    <meta property="og:site_name" content={site.name}>
+    <meta property="og:locale" content={site.locale}>
+    <meta property="og:title" content={titleText}>
+    <meta property="og:description" content={description}>
+    <meta property="og:url" content={canonicalUrl}>
+    {imageUrl && (
+        <>
+          <meta property="og:image" content={imageUrl} />
+          <meta property="og:image:alt" content={imageAlt} />
+        </>
+      )}
+
+    <meta
+      name="twitter:card"
+      content={imageUrl ? 'summary_large_image' : 'summary'}
+    >
+    <meta name="twitter:title" content={titleText}>
+    <meta name="twitter:description" content={description}>
+    {imageUrl && (
+        <>
+          <meta name="twitter:image" content={imageUrl} />
+          <meta name="twitter:image:alt" content={imageAlt} />
+        </>
+      )}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" href="/favicon.ico">
+    <slot name="head" />
+    <script type="application/ld+json" set:html={jsonLdScript} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

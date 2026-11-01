@@ -1,0 +1,22 @@
+---
+import { Icon } from 'astro-icon/components'
+import { cn } from '@/lib/cn'
+
+interface Props {
+  class?: string
+  icon?: string
+  label: string
+}
+
+const { class: className = '', icon, label } = Astro.props
+
+const classes = cn(
+  'inline-flex py-2 items-center gap-2 rounded-md border bg-white px-3 font-medium text-sm',
+  className
+)
+---
+
+<li class={classes}>
+  {icon ? <Icon name={`devicon:${icon}`} class="size-4" /> : null}
+  {label}
+</li>

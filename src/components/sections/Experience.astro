@@ -1,0 +1,62 @@
+---
+import ExperienceDetails from '@/components/blocks/ExperienceDetails.astro'
+import ExperienceRoles from '@/components/blocks/ExperienceRoles.astro'
+import SectionIntro from '@/components/blocks/SectionIntro.astro'
+import Container from '@/components/layout/Container.astro'
+import { hero } from '@/lib/content'
+---
+
+<section
+  id="experience"
+  class="scroll-mt-28 py-12 lg:py-16"
+  aria-labelledby="experience-title"
+>
+  <Container>
+    <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
+      <div class="flex flex-col gap-8 lg:sticky lg:top-28">
+        <SectionIntro
+          id="experience-title"
+          label="Experience"
+          title="Building for <span>teams</span> and <span>users</span> at scale."
+        >
+          {hero.summary}
+        </SectionIntro>
+        <ExperienceDetails />
+      </div>
+
+      <ExperienceRoles />
+    </div>
+  </Container>
+</section>
+
+<script>
+const section = document.getElementById('experience')
+if (section) {
+  const panels = [
+    ...section.querySelectorAll<HTMLElement>('[data-experience-panel]'),
+  ]
+  const triggers = [
+    ...section.querySelectorAll<HTMLElement>('[data-experience-trigger]'),
+  ]
+
+  const setActive = (index: number) => {
+    for (const panel of panels) {
+      const isActive = Number(panel.dataset.index) === index
+      panel.toggleAttribute('data-active', isActive)
+      panel.setAttribute('aria-hidden', String(!isActive))
+    }
+
+    for (const trigger of triggers) {
+      const isActive = Number(trigger.dataset.index) === index
+      const card = trigger.querySelector<HTMLElement>('[data-experience-card]')
+      card?.toggleAttribute('data-active', isActive)
+    }
+  }
+
+  for (const trigger of triggers) {
+    trigger.addEventListener('pointerenter', () => {
+      setActive(Number(trigger.dataset.index))
+    })
+  }
+}
+</script>

@@ -1,0 +1,73 @@
+---
+import { cn } from '@/lib/cn'
+
+interface Props {
+  class?: string
+  ringClass?: string
+  theme?: 'brand' | 'default'
+  grid?: boolean
+  hoverToBrand?: boolean
+  active?: boolean
+}
+
+const {
+  class: className = '',
+  ringClass = '',
+  theme = 'default',
+  grid = false,
+  hoverToBrand = false,
+  active = false,
+} = Astro.props
+
+const isBrand = theme === 'brand'
+const canHoverToBrand = !isBrand && hoverToBrand
+
+const themeClasses = cn(
+  isBrand &&
+    'bg-linear-to-tl from-brand to-primary text-white border border-brand/800',
+  !isBrand &&
+    'bg-white text-foreground border border-slate-200 hover:border-brand/800',
+  canHoverToBrand &&
+    'transition-[colors,transform] duration-200 hover:text-white hover:shadow-brand/20 hover:shadow-3xl hover:-translate-y-1 hover:scale-101 data-[active]:border-brand/800 data-[active]:text-white data-[active]:shadow-brand/20 data-[active]:shadow-3xl data-[active]:-translate-y-1 data-[active]:scale-101'
+)
+
+const classes = cn(
+  'group relative flex flex-col justify-between overflow-hidden rounded-4xl shadow-slate-100 shadow-xl p-6 sm:p-8',
+  themeClasses,
+  className
+)
+
+const ringClasses = cn(
+  'pointer-events-none absolute z-2 rounded-full border border-white/20',
+  'shadow-[0_0_0_35px_rgba(255,255,255,0.08),0_0_0_70px_rgba(255,255,255,0.05)]',
+  '-right-16 top-11 h-60 w-60',
+  canHoverToBrand &&
+    'opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[active]:opacity-100',
+  ringClass
+)
+
+const brandOverlayClasses = cn(
+  'pointer-events-none absolute inset-0 z-0 bg-linear-to-tl from-brand to-primary',
+  'opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[active]:opacity-100'
+)
+---
+
+<div
+  class={classes}
+  data-active={active ? '' : undefined}
+  data-experience-card={canHoverToBrand ? '' : undefined}
+>
+  {canHoverToBrand && (
+    <div aria-hidden="true" class={brandOverlayClasses}></div>
+  )}
+  <div aria-hidden="true" class={ringClasses}></div>
+  {grid && (
+    <div
+      aria-hidden="true"
+      class="mask-[radial-gradient(ellipse,black_15%,transparent_72%)] pointer-events-none absolute inset-x-0 top-5 bottom-0 z-1 bg-[linear-gradient(#ffffff10_1px,transparent_1px),linear-gradient(90deg,#ffffff10_1px,transparent_1px)] bg-size-[34px_34px]"
+    />
+  )}
+  <div class="relative z-3 flex flex-1 flex-col justify-between gap-[inherit]">
+    <slot />
+  </div>
+</div>

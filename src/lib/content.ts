@@ -84,7 +84,15 @@ export const projects = [
 export const experience = [
   {
     bullets: [
-      'Built AutoRent from scratch and raised Lighthouse and Core Web Vitals from ~40% to ~91%, with an SEO score of 100%.',
+      'Built AutoRent (autorent-me.com) from scratch, a multi-country car rental web application using Next.js 15, React 19, TypeScript, and Tailwind, with multi-step booking, OTP auth, coupons/offers, Google Maps, CMS content, and region-specific market logic.',
+      'Architected a multi-step booking flow using Server Actions, TanStack React Query, and Zustand, managing complex server/client state across search, vehicle selection, add-ons, checkout, and payment stages.',
+      'Integrated multi-gateway payment systems with secure redirect and callback flows, enabling market-specific provider support across GCC and international markets, plus locale-aware routing.',
+      'Engineered locale-aware routing and i18n configurations for seamless multi-country rollouts.',
+      'Architected and built an interactive real-time dashboard for service tracking, document uploads, and in-platform customer support chat.',
+      'Automated CRM workflows, reducing manual effort and improving service lifecycle visibility across multiple departments.',
+      'Architected a modular, component-based automobile e-commerce platform featuring reusable UI components and API-driven catalogue flows, improving development velocity and maintainability.',
+      'Led cross-functional code review initiatives, enforcing rigorous security standards and coding best practices to minimise software vulnerabilities.',
+      'Improved Lighthouse and Core Web Vitals performance from ~40% to ~91%, and SEO score to 100%.',
     ],
     company: 'Service My Car',
     dates: 'Jan 2023 – Jul 2026',
@@ -94,7 +102,10 @@ export const experience = [
   },
   {
     bullets: [
-      'Turned Figma prototypes into production-ready Next.js and Nuxt applications for international clients.',
+      'Designed and developed SaaS applications using Next.js, Nuxt, and Tailwind CSS for international clients.',
+      'Transformed Figma prototypes into production-ready Next.js and Nuxt applications, collaborating directly with product and design leads.',
+      'Managed multiple concurrent projects under tight deadlines while maintaining code quality and design fidelity.',
+      'Debugged and refactored legacy applications, migrating them to modern frameworks and improving maintainability.',
     ],
     company: 'Denovers',
     dates: 'Dec 2021 – Dec 2022',
@@ -104,7 +115,10 @@ export const experience = [
   },
   {
     bullets: [
-      'Rebuilt legacy projects in React and Vue.js with cross-browser support across Chrome, Safari, Firefox, and Edge.',
+      'Re-engineered existing projects using modern libraries (React, Vue.js) to replace legacy implementations and ensure cross-browser compatibility across Chrome, Safari, Firefox, and Edge.',
+      'Converted Figma and PSD designs into fully functioning, responsive React and vanilla JavaScript applications.',
+      'Integrated third-party APIs into existing React and JavaScript applications to extend application functionality.',
+      'Created custom SVG and Lottie micro-interactions in Adobe After Effects to enhance user engagement and perceived performance in client applications.',
     ],
     company: 'Phoenix Technologies',
     dates: 'May 2021 – Nov 2021',
@@ -114,7 +128,9 @@ export const experience = [
   },
   {
     bullets: [
-      'Built an email-marketing automation dashboard that removed 40% of the manual workflow.',
+      'Developed an automation dashboard for email marketing campaigns, eliminating manual workflows by 40% and delivering consistent, predictable campaign outcomes.',
+      'Redesigned and maintained multiple web projects while managing deployment, hosting and email infrastructure across the application lifecycle.',
+      'Managed and updated the company’s WordPress and WooCommerce websites, configuring key plugins for additional functionality and ensuring mobile-first, responsive designs across all devices.',
     ],
     company: 'Bizz World Communications',
     dates: 'Aug 2019 – Jan 2021',

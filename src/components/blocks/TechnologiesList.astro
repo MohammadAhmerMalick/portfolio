@@ -1,0 +1,19 @@
+---
+import Chip from '@/components/ui/Chip.astro'
+import { technologies } from '@/lib/content'
+
+interface Props {
+  title?: string
+}
+
+const { title = '' }: Props = Astro.props
+
+const technologiesItems = Object.values(technologies).flatMap((z) => z.items)
+---
+
+{title && <p class="text-left font-semibold uppercase">{title}</p>}
+<ul class="flex flex-wrap justify-center gap-2 mt-4">
+  {technologiesItems.map((item) => (
+    <Chip icon={item.icon} label={item.label} />
+  ))}
+</ul>

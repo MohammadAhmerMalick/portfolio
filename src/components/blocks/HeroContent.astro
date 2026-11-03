@@ -1,0 +1,37 @@
+---
+import { Icon } from 'astro-icon/components'
+import Button from '@/components/ui/Button.astro'
+import { cvPath, hero, me } from '@/lib/content'
+---
+
+<div class="text-center md:text-left grid max-w-3xl items-center gap-5">
+  <p class="text-3xl font-medium text-foreground">
+    {hero.greeting}
+    <span class="text-brand font-semibold"> {me.middleName} </span>
+    {me.lastName}
+  </p>
+  <h1
+    class="text-4xl font-bold md:text-5xl capitalize leading-tight [&_span]:text-brand"
+  >
+    I build <span>fast</span>,
+    <span> user</span>-<span>focused </span>
+    and <span> scalable </span>
+    applications.
+  </h1>
+  <p class="max-w-xl leading-relaxed ">
+    {hero.summary}
+  </p>
+  <div class="mt-3 flex flex-col gap-3 sm:flex-row">
+    <Button href="#work" label="View my work" variant="primary">
+      <Icon name="coolicons:arrow-right" class="size-5" />
+    </Button>
+    <Button
+      href={cvPath}
+      label="Download CV"
+      variant="secondary"
+      download="Mohammad-Ahmer-Malick-CV.pdf"
+    >
+      <Icon name="coolicons:download" class="size-5" />
+    </Button>
+  </div>
+</div>

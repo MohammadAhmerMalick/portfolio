@@ -2,14 +2,23 @@ import { site } from '@/lib/site'
 
 export const cvPath = '/mohammad-ahmer-malick-cv.pdf'
 
+export const me = {
+  firstName: 'Mohammad',
+  getFullName: () => `${me.firstName} ${me.middleName} ${me.lastName}`,
+  lastName: 'Malick',
+  middleName: 'Ahmer',
+  title: 'Software Engineer',
+} as const
+
 export const hero = {
   availability: 'Immediately available',
+  greeting: "Hello 👋, I'm",
   headline: 'Full-stack Software Engineer',
   location: 'Based in the UAE',
   locationDetail: 'Immediately available',
-  punchline: 'I build fast, user-focused and scalable web applications.',
+  punchline: 'I build fast, user-focused and scalable applications.',
   summary:
-    'Frontend Developer with 7+ years of experience building high-performance web apps using React, Next.js, TypeScript and modern web technologies.',
+    'Full-stack Software Engineer with 7+ years of experience building high-performance web apps using React, Next.js, TypeScript and modern web technologies.',
   yearsLabel: 'Years of experience',
   yearsValue: '7+',
 } as const

@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [
     icon({
       include: {
-        andrsrxn: ['menu-burger', 'x'],
+        coolicons: ['menu', 'close', 'arrow-right', 'download'],
         devicon: [...deviconIconSlugs],
       },
     }),

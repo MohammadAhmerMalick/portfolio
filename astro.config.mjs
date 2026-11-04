@@ -11,7 +11,14 @@ export default defineConfig({
   integrations: [
     icon({
       include: {
-        coolicons: ['menu', 'close', 'arrow-right', 'download'],
+        coolicons: [
+          'menu',
+          'close',
+          'arrow-right',
+          'download',
+          'chevron-left',
+          'chevron-right',
+        ],
         devicon: [...deviconIconSlugs],
       },
     }),

@@ -67,7 +67,9 @@ const brandOverlayClasses = cn(
       class="mask-[radial-gradient(ellipse,black_15%,transparent_72%)] pointer-events-none absolute inset-x-0 top-5 bottom-0 z-1 bg-[linear-gradient(#ffffff10_1px,transparent_1px),linear-gradient(90deg,#ffffff10_1px,transparent_1px)] bg-size-[34px_34px]"
     />
   )}
-  <div class="relative z-3 flex flex-1 flex-col justify-between gap-[inherit]">
+  <div
+    class="relative z-3 flex flex-1 flex-col [justify-content:inherit] gap-[inherit]"
+  >
     <slot />
   </div>
 </div>

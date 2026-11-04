@@ -28,27 +28,53 @@ export { deviconIconSlugs, technologies } from '@/lib/technologies'
 export const services = [
   {
     description:
-      'Responsive, accessible interfaces with React, Next.js, Vue.js, and TypeScript.',
-    icon: 'code',
+      'Responsive, accessible interfaces with React, Next.js, Vue.js, and TypeScript across multi-country products.',
     title: 'Frontend Development',
   },
   {
     description:
-      'Products built from scratch, including multi-country booking and service platforms.',
-    icon: 'cube',
-    title: 'Product Engineering',
+      'End-to-end product builds from scratch—booking flows, payments, CMS, and market-specific logic.',
+    title: 'Full-stack Engineering',
+  },
+  {
+    description:
+      'Cross-platform mobile experiences with React Native, aligned with the same product systems as the web.',
+    title: 'Mobile App Development',
+  },
+  {
+    description:
+      'Figma and Adobe XD prototypes translated into production-ready Next.js and Nuxt applications.',
+    title: 'UI/UX Design',
+  },
+  {
+    description:
+      'Clean, responsive layouts from Figma and PSD into React, Vue, and modern CSS systems.',
+    title: 'Web Design',
+  },
+  {
+    description:
+      'Visual systems and brand-ready assets with Photoshop, Illustrator, and consistent UI foundations.',
+    title: 'Brand Identity',
+  },
+  {
+    description:
+      'Motion that supports usability—CSS animations, SVG, and Lottie micro-interactions.',
+    title: 'Interaction Design',
   },
   {
     description:
       'Lighthouse and Core Web Vitals raised from ~40% to ~91%, with an SEO score of 100%.',
-    icon: 'chart',
-    title: 'Performance Optimization',
+    title: 'Performance & SEO',
   },
   {
     description:
-      'Figma prototypes turned into production Next.js and Nuxt applications for international clients.',
-    icon: 'users',
-    title: 'Team Collaboration',
+      'REST APIs, Node.js, Laravel, and data layers that power booking, CRM, and service workflows.',
+    title: 'Backend & APIs',
+  },
+  {
+    description:
+      'Real-time tracking dashboards, document management, and CRM automation for operations teams.',
+    title: 'Dashboards & CRM',
   },
 ] as const
 

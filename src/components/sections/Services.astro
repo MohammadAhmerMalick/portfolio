@@ -1,0 +1,152 @@
+---
+import { Icon } from 'astro-icon/components'
+import SectionIntro from '@/components/blocks/SectionIntro.astro'
+import Container from '@/components/layout/Container.astro'
+import Card from '@/components/ui/Card.astro'
+import { services } from '@/lib/content'
+---
+
+<section
+  id="services"
+  class="scroll-mt-28 py-12 lg:py-16"
+  aria-labelledby="services-title"
+  data-services-carousel
+>
+  <Container>
+    <div
+      class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-center md:justify-between"
+    >
+      <SectionIntro
+        id="services-title"
+        label="What I Do"
+        title="Frontend to <span>product</span>, built for <span>performance</span>."
+      >
+        Interfaces, platforms, and delivery workflows shaped around real users
+        and measurable Core Web Vitals.
+      </SectionIntro>
+
+      <div class="hidden md:flex items-center gap-3">
+        <button
+          type="button"
+          class="flex size-11 items-center justify-center rounded-full border border-muted text-foreground transition-shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground hover:shadow-lg duration-300 shadow-muted cursor-pointer"
+          aria-label="Previous service"
+          data-services-prev
+        >
+          <Icon name="coolicons:chevron-left" class="size-5" />
+        </button>
+        <button
+          type="button"
+          class="flex size-11 items-center justify-center rounded-full border border-muted text-foreground transition-shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground hover:shadow-lg duration-300 shadow-muted cursor-pointer"
+          aria-label="Next service"
+          data-services-next
+        >
+          <Icon name="coolicons:chevron-right" class="size-5" />
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-6 md:mt-10 min-w-0" data-services-embla>
+      <div class="overflow-hidden pb-7" data-services-viewport>
+        <ul
+          class="flex gap-4 touch-pan-y touch-pinch-zoom"
+          data-services-container
+        >
+          {services.map((service, index) => (
+            <li
+              class="min-w-0 shrink-0 grow-0 basis-[min(20rem,85%)] sm:basis-[calc((100%-1rem)/2)] lg:basis-[calc((100%-3rem)/3)]"
+              data-services-slide
+            >
+              <Card class="h-full justify-start gap-0">
+                <p class="font-semibold text-muted-foreground text-xs tracking-[0.18em]">
+                  {String(index + 1).padStart(2, '0')}
+                </p>
+                <h3 class="mt-5 font-bold font-heading text-2xl text-primary tracking-tight">
+                  {service.title}
+                </h3>
+                <p class="mt-4 text-secondary">{service.description}</p>
+              </Card>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <nav
+        class="mt-2 flex flex-wrap justify-center gap-2 sm:mt-6"
+        aria-label="Service slides"
+        data-services-dots
+      >
+        {services.map((service, index) => (
+          <button
+            type="button"
+            class="size-2.5 rounded-full bg-muted transition-[transform,background-color] duration-200 focus-visible:outline-2 focus-visible:outline-foreground focus-visible:outline-offset-2 data-active:scale-125 data-active:bg-brand"
+            aria-label={`Go to ${service.title}`}
+            aria-current={index === 0 ? 'true' : undefined}
+            data-services-dot
+            data-index={index}
+          />
+        ))}
+      </nav>
+    </div>
+  </Container>
+</section>
+
+<script>
+import EmblaCarousel from 'embla-carousel'
+import Autoplay from 'embla-carousel-autoplay'
+
+const root = document.querySelector<HTMLElement>('[data-services-carousel]')
+const viewport = root?.querySelector<HTMLElement>('[data-services-viewport]')
+const prevButton = root?.querySelector<HTMLButtonElement>(
+  '[data-services-prev]'
+)
+const nextButton = root?.querySelector<HTMLButtonElement>(
+  '[data-services-next]'
+)
+const dots = [
+  ...(root?.querySelectorAll<HTMLButtonElement>('[data-services-dot]') ?? []),
+]
+
+if (root && viewport && prevButton && nextButton) {
+  const embla = EmblaCarousel(
+    viewport,
+    {
+      align: 'start',
+      containScroll: 'trimSnaps',
+      slidesToScroll: 1,
+    },
+    [
+      Autoplay({
+        delay: 4500,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+      }),
+    ]
+  )
+
+  const syncUi = () => {
+    const selected = embla.selectedScrollSnap()
+
+    for (const [index, dot] of dots.entries()) {
+      const isActive = index === selected
+      dot.toggleAttribute('data-active', isActive)
+      if (isActive) dot.setAttribute('aria-current', 'true')
+      else dot.removeAttribute('aria-current')
+    }
+  }
+
+  prevButton.addEventListener('click', () => embla.scrollPrev(), false)
+  nextButton.addEventListener('click', () => embla.scrollNext(), false)
+
+  for (const dot of dots) {
+    dot.addEventListener(
+      'click',
+      () => embla.scrollTo(Number(dot.dataset.index)),
+      false
+    )
+  }
+
+  embla.on('select', syncUi)
+  embla.on('reInit', syncUi)
+  syncUi()
+}
+</script>

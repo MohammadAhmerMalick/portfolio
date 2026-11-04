@@ -232,14 +232,6 @@ export const skillGroups = [
   },
 ] as const
 
-export const education = {
-  cgpa: 'CGPA 3.22',
-  dates: '2017 – 2020',
-  degree: 'Bachelor of Science in Computer Science',
-  school: 'University of Karachi',
-  schoolDetail: 'UBIT – Umaer Basha Institute of Information Technology',
-} as const
-
 export const contact = {
   email: site.email,
   github: site.github,

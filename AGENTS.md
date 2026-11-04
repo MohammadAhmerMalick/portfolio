@@ -29,7 +29,7 @@ Hero summary: I build performant, scalable web applications with React, Next.js,
 
 ## Pages
 
-One page, in this order: Navigation, Hero, Stats, Featured projects, Experience, Skills, Education, Contact and footer. Do not add a testimonials section.
+One page, in this order: Navigation, Hero, Stats, Featured projects, Experience, Skills, Contact and footer. Do not add a testimonials section. Do not add an education section.
 
 Navigation: initials or name, links to Work, Experience, Skills, and Contact, plus a "Let's talk" button.
 
@@ -57,10 +57,6 @@ Only these two. Project previews stay [PROJECT SCREENSHOT] until real images are
 - Styling and design: Tailwind CSS, Shadcn/UI, SCSS/SASS, Bootstrap, CSS Animations, React Aria, Figma, Adobe XD, Photoshop, Illustrator, Lottie, SVG Animation
 - Backend and data: Node.js, PHP, Laravel, REST APIs, Drizzle ORM, Prisma, PostgreSQL, MongoDB, Firebase
 - DevOps and workflow: Docker, Vercel, Git, GitHub, Webpack, Vite, Agile/Scrum, Jira, WordPress, Cursor, Claude Code
-
-## Education
-
-Bachelor of Science in Computer Science, 2017 – 2020, University of Karachi (UBIT – Umaer Basha Institute of Information Technology), CGPA 3.22. No certifications.
 
 ## Design
 

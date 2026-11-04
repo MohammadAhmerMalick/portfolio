@@ -7,6 +7,7 @@ interface Props {
   theme?: 'brand' | 'default'
   grid?: boolean
   hoverToBrand?: boolean
+  activeToBrand?: boolean
   active?: boolean
 }
 
@@ -16,19 +17,23 @@ const {
   theme = 'default',
   grid = false,
   hoverToBrand = false,
+  activeToBrand = false,
   active = false,
 } = Astro.props
 
 const isBrand = theme === 'brand'
 const canHoverToBrand = !isBrand && hoverToBrand
+const canActiveToBrand = !isBrand && (hoverToBrand || activeToBrand)
 
 const themeClasses = cn(
   isBrand &&
     'bg-linear-to-tl from-brand to-primary text-white border border-brand/800',
   !isBrand &&
     'bg-white text-foreground border border-slate-200 hover:border-brand/800',
+  canActiveToBrand &&
+    'transition-[colors,transform] duration-200 data-[active]:border-brand/800 data-[active]:text-white data-[active]:shadow-brand/20 data-[active]:shadow-3xl data-[active]:-translate-y-1 data-[active]:scale-101',
   canHoverToBrand &&
-    'transition-[colors,transform] duration-200 hover:text-white hover:shadow-brand/20 hover:shadow-3xl hover:-translate-y-1 hover:scale-101 data-[active]:border-brand/800 data-[active]:text-white data-[active]:shadow-brand/20 data-[active]:shadow-3xl data-[active]:-translate-y-1 data-[active]:scale-101'
+    'hover:text-white hover:shadow-brand/20 hover:shadow-3xl hover:-translate-y-1 hover:scale-101'
 )
 
 const classes = cn(
@@ -41,14 +46,16 @@ const ringClasses = cn(
   'pointer-events-none absolute z-2 rounded-full border border-white/20',
   'shadow-[0_0_0_35px_rgba(255,255,255,0.08),0_0_0_70px_rgba(255,255,255,0.05)]',
   '-right-16 top-11 h-60 w-60',
-  canHoverToBrand &&
-    'opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[active]:opacity-100',
+  canActiveToBrand &&
+    'opacity-0 transition-opacity duration-200 group-data-[active]:opacity-100',
+  canHoverToBrand && 'group-hover:opacity-100',
   ringClass
 )
 
 const brandOverlayClasses = cn(
   'pointer-events-none absolute inset-0 z-0 bg-linear-to-tl from-brand to-primary',
-  'opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-data-[active]:opacity-100'
+  'opacity-0 transition-opacity duration-200 group-data-[active]:opacity-100',
+  canHoverToBrand && 'group-hover:opacity-100'
 )
 ---
 
@@ -57,7 +64,7 @@ const brandOverlayClasses = cn(
   data-active={active ? '' : undefined}
   data-experience-card={canHoverToBrand ? '' : undefined}
 >
-  {canHoverToBrand && (
+  {canActiveToBrand && (
     <div aria-hidden="true" class={brandOverlayClasses}></div>
   )}
   <div aria-hidden="true" class={ringClasses}></div>

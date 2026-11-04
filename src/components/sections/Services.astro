@@ -48,7 +48,7 @@ import { services } from '@/lib/content'
     <div class="mt-6 md:mt-10 min-w-0" data-services-embla>
       <div class="overflow-hidden pb-7" data-services-viewport>
         <ul
-          class="flex gap-4 touch-pan-y touch-pinch-zoom"
+          class="flex gap-4 touch-pan-y touch-pinch-zoom py-1"
           data-services-container
         >
           {services.map((service, index) => (
@@ -56,14 +56,16 @@ import { services } from '@/lib/content'
               class="min-w-0 shrink-0 grow-0 basis-[min(20rem,85%)] sm:basis-[calc((100%-1rem)/2)] lg:basis-[calc((100%-3rem)/3)]"
               data-services-slide
             >
-              <Card class="h-full justify-start gap-0">
-                <p class="font-semibold text-muted-foreground text-xs tracking-[0.18em]">
+              <Card activeToBrand class="h-full justify-start gap-0">
+                <p class="font-semibold text-muted-foreground text-xs tracking-[0.18em] transition-colors duration-200 group-data-active:text-white/70">
                   {String(index + 1).padStart(2, '0')}
                 </p>
-                <h3 class="mt-5 font-bold font-heading text-2xl text-primary tracking-tight">
+                <h3 class="mt-5 font-bold font-heading text-2xl text-primary tracking-tight transition-colors duration-200 group-data-active:text-white">
                   {service.title}
                 </h3>
-                <p class="mt-4 text-secondary">{service.description}</p>
+                <p class="mt-4 text-secondary transition-colors duration-200 group-data-active:text-white/90">
+                  {service.description}
+                </p>
               </Card>
             </li>
           ))}
@@ -107,6 +109,10 @@ const dots = [
 ]
 
 if (root && viewport && prevButton && nextButton) {
+  const cards = [...root.querySelectorAll<HTMLElement>('[data-services-slide]')]
+    .map((slide) => slide.firstElementChild)
+    .filter((card): card is HTMLElement => card instanceof HTMLElement)
+
   const embla = EmblaCarousel(
     viewport,
     {
@@ -123,14 +129,36 @@ if (root && viewport && prevButton && nextButton) {
     ]
   )
 
+  const getVisibleCount = () => {
+    if (window.matchMedia('(min-width: 1024px)').matches) return 3
+    if (window.matchMedia('(min-width: 640px)').matches) return 2
+    return 1
+  }
+
+  const getActiveSlideIndex = () => {
+    const selected = embla.selectedScrollSnap()
+    const visibleCount = getVisibleCount()
+    const slideCount = embla.slideNodes().length
+
+    // Odd visible set (e.g. 3 on lg): highlight the center card.
+    // Even or single (sm / mobile): highlight the first visible card.
+    const offset = visibleCount % 2 === 1 ? Math.floor(visibleCount / 2) : 0
+    return Math.min(selected + offset, slideCount - 1)
+  }
+
   const syncUi = () => {
     const selected = embla.selectedScrollSnap()
+    const activeSlide = getActiveSlideIndex()
 
     for (const [index, dot] of dots.entries()) {
       const isActive = index === selected
       dot.toggleAttribute('data-active', isActive)
       if (isActive) dot.setAttribute('aria-current', 'true')
       else dot.removeAttribute('aria-current')
+    }
+
+    for (const [index, card] of cards.entries()) {
+      card.toggleAttribute('data-active', index === activeSlide)
     }
   }
 
@@ -147,6 +175,7 @@ if (root && viewport && prevButton && nextButton) {
 
   embla.on('select', syncUi)
   embla.on('reInit', syncUi)
+  window.addEventListener('resize', syncUi, { passive: true })
   syncUi()
 }
 </script>

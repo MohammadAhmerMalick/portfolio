@@ -18,6 +18,7 @@ export default defineConfig({
           'download',
           'chevron-left',
           'chevron-right',
+          'chevron-up',
         ],
         devicon: [...deviconIconSlugs],
       },

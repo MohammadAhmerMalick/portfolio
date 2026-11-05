@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.13/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.6.5/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -58,13 +58,9 @@
     "enabled": true,
     "rules": {
       "nursery": {
-        "useSortedClasses": {
-          "fix": "safe",
-          "level": "info",
-          "options": {
-            "attributes": ["class", "classList", "className"],
-            "functions": ["classnames", "clsx", "cva", "tw", "tw.*"]
-          }
+        "useTailwindSortedClasses": {
+          "fix": "unsafe",
+          "level": "warn"
         }
       },
       "preset": "recommended"
@@ -87,6 +83,12 @@
       }
     }
   ],
+  "tailwind": {
+    "attributes": ["class", "classList", "className"],
+    "mergeFunctions": ["classnames", "clsx", "tw"],
+    "stylesheet": "./src/styles/global.css",
+    "variantFunctions": ["cva"]
+  },
   "vcs": {
     "clientKind": "git",
     "enabled": true,

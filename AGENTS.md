@@ -31,9 +31,9 @@ Hero summary: I build performant, scalable web applications with React, Next.js,
 
 One page, in this order: Navigation, Hero, Stats, Featured projects, Experience, Skills, Contact and footer. Do not add a testimonials section. Do not add an education section.
 
-Navigation: initials or name, links to Work, Experience, Skills, and Contact, plus a "Let's talk" button.
+Navigation: initials or name, links to Work, Experience, Skills, and Contact, plus a "Download resume" button.
 
-Hero: availability badge, headline, two-line summary, "View my work" and "Download CV" buttons, and two floating stat cards. No personal photo.
+Hero: availability badge, headline, two-line summary, "View my work" and "Download resume" buttons, and two floating stat cards. No personal photo.
 
 Stats that are real: 7+ years, markets UAE / Oman / UK / Qatar, Core Web Vitals ~91%, SEO score 100%. The fourth stat stays [PROJECTS SHIPPED] until a real number is provided. Do not invent a project count or a user count.
 

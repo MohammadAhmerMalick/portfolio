@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import Button from '@/components/ui/Button.astro'
-import { cvPath, hero, me } from '@/lib/content'
+import { hero, me, resumePath } from '@/lib/content'
 ---
 
 <div class="text-center md:text-left grid max-w-3xl items-center gap-5">
@@ -26,10 +26,10 @@ import { cvPath, hero, me } from '@/lib/content'
       <Icon name="coolicons:arrow-right" class="size-5" />
     </Button>
     <Button
-      href={cvPath}
-      label="Download CV"
+      href={resumePath}
+      label="Download resume"
       variant="secondary"
-      download="Mohammad-Ahmer-Malick-CV.pdf"
+      download="Mohammad-Ahmer-Malick-Resume.pdf"
     >
       <Icon name="coolicons:download" class="size-5" />
     </Button>

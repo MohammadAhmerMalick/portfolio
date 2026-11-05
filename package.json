@@ -11,6 +11,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.6.5",
     "@iconify-json/coolicons": "^1.2.1",
     "@iconify-json/devicon": "^1.2.47"
   },
@@ -20,12 +21,10 @@
   "name": "portfolio",
   "scripts": {
     "astro": "astro",
-    "biome": "pnpm biome-check && pnpm biome-format && pnpm biome-lint",
-    "biome-check": "npx @biomejs/biome@2.5.13 check --write",
-    "biome-format": "npx @biomejs/biome@2.5.13 format --write",
-    "biome-lint": "npx @biomejs/biome@2.5.13 lint --write",
+    "biome": "biome check --write --unsafe",
     "build": "astro build",
-    "dev": "astro dev",
+    "dev": "astro dev --host",
+    "format": "biome check --write --unsafe",
     "preview": "astro preview"
   },
   "type": "module",

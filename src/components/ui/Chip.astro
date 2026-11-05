@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { cn } from '@/lib/cn'
+import { resolveTechnologyIcon } from '@/lib/technologies'
 
 interface Props {
   class?: string
@@ -17,6 +18,8 @@ const classes = cn(
 ---
 
 <li class={classes}>
-  {icon ? <Icon name={`devicon:${icon}`} class="size-4" /> : null}
+  {icon ? (
+    <Icon name={resolveTechnologyIcon(icon)} class="size-4 shrink-0" />
+  ) : null}
   {label}
 </li>

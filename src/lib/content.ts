@@ -23,7 +23,12 @@ export const hero = {
   yearsValue: '7+',
 } as const
 
-export { deviconIconSlugs, technologies } from '@/lib/technologies'
+export {
+  deviconIconSlugs,
+  heroTechnologyKeys,
+  skillGroups,
+  technologies,
+} from '@/lib/technologies'
 
 export const services = [
   {
@@ -163,72 +168,6 @@ export const experience = [
     location: 'Pakistan',
     mark: 'B',
     role: 'Web Developer',
-  },
-] as const
-
-export const skillGroups = [
-  {
-    items: [
-      'React.js',
-      'Next.js',
-      'Vue.js',
-      'TypeScript',
-      'JavaScript (ES6+)',
-      'React Native',
-      'jQuery',
-      'SSR',
-      'i18n',
-      'Zustand',
-      'Redux',
-    ],
-    title: 'Frontend',
-  },
-  {
-    items: [
-      'Tailwind CSS',
-      'Shadcn/UI',
-      'SCSS/SASS',
-      'Bootstrap',
-      'CSS Animations',
-      'React Aria',
-      'Figma',
-      'Adobe XD',
-      'Photoshop',
-      'Illustrator',
-      'Lottie',
-      'SVG Animation',
-    ],
-    title: 'Styling and design',
-  },
-  {
-    items: [
-      'Node.js',
-      'PHP',
-      'Laravel',
-      'REST APIs',
-      'Drizzle ORM',
-      'Prisma',
-      'PostgreSQL',
-      'MongoDB',
-      'Firebase',
-    ],
-    title: 'Backend and data',
-  },
-  {
-    items: [
-      'Docker',
-      'Vercel',
-      'Git',
-      'GitHub',
-      'Webpack',
-      'Vite',
-      'Agile/Scrum',
-      'Jira',
-      'WordPress',
-      'Cursor',
-      'Claude Code',
-    ],
-    title: 'DevOps and workflow',
   },
 ] as const
 

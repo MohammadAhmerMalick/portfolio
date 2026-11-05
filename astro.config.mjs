@@ -4,7 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 import icon from 'astro-icon'
 import { site } from './src/lib/site.ts'
-import { deviconIconSlugs } from './src/lib/technologies.ts'
+import {
+  cooliconTechSlugs,
+  deviconIconSlugs,
+} from './src/lib/technologies.ts'
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +29,7 @@ export default defineConfig({
           'mail',
           'copy',
           'check',
+          ...cooliconTechSlugs,
         ],
         devicon: [...deviconIconSlugs],
       },

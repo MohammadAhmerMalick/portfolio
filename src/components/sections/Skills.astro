@@ -1,0 +1,51 @@
+---
+import SectionIntro from '@/components/blocks/SectionIntro.astro'
+import Container from '@/components/layout/Container.astro'
+import Card from '@/components/ui/Card.astro'
+import Chip from '@/components/ui/Chip.astro'
+import { skillGroups } from '@/lib/content'
+---
+
+<section id="skills" class="py-12 lg:py-16" aria-labelledby="skills-title">
+  <Container>
+    <div class="flex flex-col gap-10 lg:gap-12">
+      <SectionIntro
+        id="skills-title"
+        label="Skills"
+        title="A stack tuned for <span>Speed</span> and <span>Clarity</span>."
+      >
+        Frontend, design systems, backend data, and delivery tooling used across
+        production products.
+      </SectionIntro>
+
+      <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {skillGroups.map((group, index) => (
+          <li class="min-w-0">
+            <Card
+              hoverToBrand
+              class="h-full justify-start gap-0 p-5 sm:p-6"
+              ringClass="-right-20 top-8 h-44 w-44 shadow-[0_0_0_24px_rgba(255,255,255,0.08),0_0_0_48px_rgba(255,255,255,0.05)]"
+            >
+              <h3 class="font-heading text-xl font-bold tracking-tight text-primary transition-colors duration-200 group-hover:text-white">
+                {group.title}
+              </h3>
+              <p class="mt-2 text-sm leading-6 text-secondary transition-colors duration-200 group-hover:text-white/85">
+                {group.description}
+              </p>
+
+              <ul class="mt-5 flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <Chip
+                    icon={item.icon}
+                    label={item.label}
+                    class="border-muted bg-muted/20 py-1.5 text-secondary transition-colors duration-200 group-hover:border-white/25 group-hover:bg-white/10 group-hover:text-white"
+                  />
+                ))}
+              </ul>
+            </Card>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Container>
+</section>

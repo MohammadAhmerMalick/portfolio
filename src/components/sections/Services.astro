@@ -8,7 +8,7 @@ import { services } from '@/lib/content'
 
 <section
   id="services"
-  class="scroll-mt-28 py-12 lg:py-16"
+  class="py-12 lg:py-16"
   aria-labelledby="services-title"
   data-services-carousel
 >
@@ -57,7 +57,7 @@ import { services } from '@/lib/content'
               data-services-slide
             >
               <Card activeToBrand class="h-full justify-start gap-0">
-                <p class="font-semibold text-muted-foreground text-xs tracking-[0.18em] transition-colors duration-200 group-data-active:text-white/70">
+                <p class="font-semibold text-muted-foreground text-xs tracking-[0.18em] transition-colors duration-200 group-data-active:text-muted">
                   {String(index + 1).padStart(2, '0')}
                 </p>
                 <h3 class="mt-5 font-bold font-heading text-2xl text-primary tracking-tight transition-colors duration-200 group-data-active:text-white">
@@ -73,14 +73,14 @@ import { services } from '@/lib/content'
       </div>
 
       <nav
-        class="mt-2 flex flex-wrap justify-center gap-2 sm:mt-6"
+        class="mt-2 flex flex-wrap justify-center gap-x-3 sm:mt-6"
         aria-label="Service slides"
         data-services-dots
       >
         {services.map((service, index) => (
           <button
             type="button"
-            class="size-2.5 rounded-full bg-muted transition-[transform,background-color] duration-200 focus-visible:outline-2 focus-visible:outline-foreground focus-visible:outline-offset-2 data-active:scale-125 data-active:bg-brand"
+            class="size-3 rounded-full bg-muted transition-[transform,background-color] duration-200 focus-visible:outline-2 focus-visible:outline-foreground focus-visible:outline-offset-2 data-active:scale-125 data-active:bg-brand"
             aria-label={`Go to ${service.title}`}
             aria-current={index === 0 ? 'true' : undefined}
             data-services-dot

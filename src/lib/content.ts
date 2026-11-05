@@ -1,6 +1,6 @@
 import { site } from '@/lib/site'
 
-export const cvPath = '/mohammad-ahmer-malick-cv.pdf'
+export const resumePath = '/mohammad-ahmer-malick-cv.pdf'
 
 export const me = {
   firstName: 'Mohammad',
@@ -238,4 +238,48 @@ export const contact = {
   linkedin: 'https://www.linkedin.com/in/mohammadahmermalick',
   phoneDisplay: '+971 545149849',
   phoneHref: `tel:${site.telephone}`,
+  whatsappHref: `https://wa.me/${site.telephone.replace(/\D/g, '')}`,
 } as const
+
+export const contactChannels = [
+  {
+    detail: contact.email,
+    external: false,
+    featured: true,
+    href: `mailto:${contact.email}`,
+    icon: 'coolicons:mail',
+    label: 'Email',
+  },
+  {
+    detail: contact.phoneDisplay,
+    external: true,
+    featured: false,
+    href: contact.whatsappHref,
+    icon: 'coolicons:whatsapp',
+    label: 'WhatsApp',
+  },
+  {
+    detail: contact.phoneDisplay,
+    external: false,
+    featured: false,
+    href: contact.phoneHref,
+    icon: 'coolicons:phone-call',
+    label: 'Call',
+  },
+  {
+    detail: 'mohammadahmermalick',
+    external: true,
+    featured: false,
+    href: contact.linkedin,
+    icon: 'coolicons:linkedin',
+    label: 'LinkedIn',
+  },
+  {
+    detail: 'MohammadAhmerMalick',
+    external: true,
+    featured: false,
+    href: contact.github,
+    icon: 'coolicons:github',
+    label: 'GitHub',
+  },
+] as const
